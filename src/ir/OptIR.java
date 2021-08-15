@@ -12,7 +12,7 @@ public class OptIR {
         for(int i=0;i<2;i++){
             local_common_subexpression_elimination(ir);
             local_common_constexpr_function(ir,constexpr_function);
-            dead_code_elimination(ir);
+            //dead_code_elimination(ir);
         }
     }
 
