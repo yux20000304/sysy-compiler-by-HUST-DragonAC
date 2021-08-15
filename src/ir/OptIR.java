@@ -246,7 +246,7 @@ public class OptIR {
                                                      List<IR> ir_jmp, List<IR> ir_do,
                                                      List<IR> ir_continue){
 
-        HashSet<String> never_write_var=new HashSet<>();
+        Set<String> never_write_var=new HashSet<>();
         boolean do_optimize=false;
         Vector<List<IR>> temp=new Vector<>();
         temp.add(ir_cond);
@@ -313,7 +313,9 @@ public class OptIR {
                 }
 
                 if(can_optimize){
-                    ir_before.add(ir);
+                    IR outir=new IR();
+                    outir=ir.clone();
+                    ir_before.add(outir);
                     ir.op_code=IR.OpCode.NOOP;
                     ir.op1.type=OpName.Type.Null;
                     ir.op2.type=OpName.Type.Null;

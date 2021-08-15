@@ -3,7 +3,7 @@ package ir;
 import java.io.PrintStream;
 import java.util.*;
 
-public class IR implements Comparable {
+public class IR implements Comparable,Cloneable {
 
 
     public enum OpCode {
@@ -315,6 +315,41 @@ public class IR implements Comparable {
             return this.op_code.compareTo(ir.op_code);
         return 0;
     }
+
+    public IR clone(){
+        IR temp=new IR();
+        if(this.op_code!=null)
+            temp.op_code=this.op_code;
+        else
+            temp.op_code=null;
+        if(this.label!=null)
+            temp.label= new String(this.label);
+        else
+            temp.label=null;
+        if(this.op1!=null)
+            temp.op1=this.op1.clone();
+        else
+            temp.op1=null;
+        if(this.op2!=null)
+            temp.op2=this.op2.clone();
+        else
+            temp.op2=null;
+        if(this.op3!=null)
+            temp.op3=this.op3.clone();
+        else
+            temp.op3=null;
+        if(this.dest!=null)
+            temp.dest=this.dest.clone();
+        else
+            temp.dest=null;
+        if(this.phi_block!=null)
+            temp.phi_block=this.phi_block.clone();
+        else
+            temp.phi_block=null;
+        return temp;
+    }
+
+
 }
 
 

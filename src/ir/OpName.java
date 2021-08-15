@@ -12,6 +12,20 @@ public class OpName {
     public String name;
     public int value;
 
+    public OpName clone(){
+        OpName temp=new OpName();
+        if(this.type!=null)
+            temp.type=this.type;
+        else
+            temp.type=null;
+        if(this.name!=null)
+            temp.name=new String(this.name);
+        else
+            temp.name=null;
+            temp.value= this.value;
+        return temp;
+    }
+
     public OpName() {
         this.type = Type.Null;
     }
