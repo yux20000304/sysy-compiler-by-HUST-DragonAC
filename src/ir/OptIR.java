@@ -48,7 +48,7 @@ public class OptIR {
                     Integer time=maybe_opt.get(it);
                     if(mutability_var.last().equals(opt_ir.dest.name)){
                         //相距太远
-                        if(ctx.ir_to_time.get(it) - time <20){
+                        if(ctx.ir_to_time.get(it) - time <100){
                             IR temp1=new IR(IR.OpCode.MOV,it.dest,opt_ir.dest);
                             ir_begin.remove();
                             ir_begin.add(temp1);
