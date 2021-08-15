@@ -323,7 +323,7 @@ public class IR implements Comparable,Cloneable {
         else
             temp.op_code=null;
         if(this.label!=null)
-            temp.label= new String(this.label);
+            temp.label= this.label;
         else
             temp.label=null;
         if(this.op1!=null)

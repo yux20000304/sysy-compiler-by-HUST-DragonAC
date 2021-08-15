@@ -281,7 +281,8 @@ public class OptIR {
         }
 
         for(List<IR> irs:temp) {
-            for (IR ir : irs) {
+            for (int i=0;i< irs.size();i++) {
+                IR ir=irs.get(i);
                 boolean can_optimize=true;
                 if(ir.op_code==IR.OpCode.LOAD || ir.op_code==IR.OpCode.CALL ||
                 ir.op_code==IR.OpCode.PHI_MOV ||
@@ -313,15 +314,8 @@ public class OptIR {
                 }
 
                 if(can_optimize){
-                    IR outir=new IR();
-                    outir=ir.clone();
-                    ir_before.add(outir);
-                    ir.op_code=IR.OpCode.NOOP;
-                    ir.op1.type=OpName.Type.Null;
-                    ir.op2.type=OpName.Type.Null;
-                    ir.op3.type=OpName.Type.Null;
-                    ir.dest.type=OpName.Type.Null;
-                    do_optimize=true;
+                    ir_before.add(ir);
+                    irs.remove(ir);
                 }
             }
         }

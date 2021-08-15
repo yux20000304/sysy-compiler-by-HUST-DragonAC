@@ -19,7 +19,7 @@ public class OpName {
         else
             temp.type=null;
         if(this.name!=null)
-            temp.name=new String(this.name);
+            temp.name=this.name;
         else
             temp.name=null;
             temp.value= this.value;

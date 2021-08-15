@@ -2,271 +2,532 @@
         movw \reg, #:lower16:\val
         movt \reg, #:upper16:\val
     .endm
-# 1 FUNCTION_BEGIN  	1			get_one
+.data
+.global __Var__1n
+__Var__1n:
+.word 0
+# 1 FUNCTION_BEGIN  	1			bubblesort
 # 2 MOV             %2	$arg0			
-# 3 RET             	1			
-# 4 RET             0				
-#FUNCTION_BEGIN  	1			get_one
-.text
-.global get_one
-.type get_one, %function
-get_one:
-    SUB sp, sp, #4
-    STR r11, [sp, #0]
-#MOV             %2	$arg0			
-#RET             	1			
-    MOV r0, #1
-    LDR r11, [sp,#0]
-    ADD sp, sp, #4
-    MOV PC, LR
-#RET             0				
-    LDR r11, [sp,#0]
-    ADD sp, sp, #4
-    MOV PC, LR
-# 1 FUNCTION_BEGIN  	2			deepWhileBr
-# 2 MOV             %3	$arg0			
-# 3 MOV             %4	$arg1			
-# 4 ADD             %6	%3	%4		
-# 5 PHI_MOV         %8	%6			
-# 6 MOV             %10	42			
-# 7 IMUL            %15	%10	2		
-# 8 IMUL            %18	%15	2		
-# 9 LABEL           				LOOP_7_BEGIN
-# 10 CMP             	%8	75		
-# 11 JGE             				LOOP_7_END
-# 12 LABEL           				LOOP_7_DO
-# 13 NOOP            				
-# 14 CMP             	%8	100		
-# 15 JGE             				IF_11_ELSE
-# 16 ADD             %12	%8	%10		
-# 17 CMP             	%12	99		
-# 18 JLE             				IF_13_ELSE
-# 19 NOOP            				
-# 20 SET_ARG         0	0			
-# 21 CALL            %17				get_one
-# 22 CMP             	%17	1		
-# 23 JNE             				IF_16_ELSE
-# 24 NOOP            				
-# 25 PHI_MOV         %19	%18			
-# 26 JMP             				IF_16_END
-# 27 LABEL           				IF_16_ELSE
-# 28 PHI_MOV         %19	%12			
-# 29 LABEL           				IF_16_END
-# 30 PHI_MOV         %20	%19			
-# 31 JMP             				IF_13_END
-# 32 LABEL           				IF_13_ELSE
-# 33 PHI_MOV         %20	%12			
-# 34 LABEL           				IF_13_END
-# 35 PHI_MOV         %21	%20			
-# 36 JMP             				IF_11_END
-# 37 LABEL           				IF_11_ELSE
-# 38 PHI_MOV         %21	%8			
-# 39 LABEL           				IF_11_END
+# 3 INFO            				NOT CONSTEXPR
+# 4 MOV             %5	0			
+# 5 PHI_MOV         %7	%5			
+# 6 PHI_MOV         %8	%4			
+# 7 SUB             %9	@n	1		
+# 8 MOV             %10	0			
+# 9 LABEL           				LOOP_6_BEGIN
+# 10 CMP             	%7	%9		
+# 11 JGE             				LOOP_6_END
+# 12 LABEL           				LOOP_6_DO
+# 13 PHI_MOV         %12	%10			
+# 14 SUB             %14	@n	%7		
+# 15 LABEL           				LOOP_11_BEGIN
+# 16 SUB             %13	%14	1		
+# 17 CMP             	%12	%13		
+# 18 JGE             				LOOP_11_END
+# 19 LABEL           				LOOP_11_DO
+# 20 SAL             %17	%12	2		
+# 21 LOAD            %16	%2	%17		
+# 22 ADD             %22	%12	1		
+# 23 SAL             %20	%22	2		
+# 24 LOAD            %19	%2	%20		
+# 25 CMP             	%16	%19		
+# 26 JLE             				IF_15_ELSE
+# 27 ADD             %27	%12	1		
+# 28 SAL             %25	%27	2		
+# 29 LOAD            %24	%2	%25		
+# 30 SAL             %29	%12	2		
+# 31 LOAD            %28	%2	%29		
+# 32 ADD             %33	%12	1		
+# 33 SAL             %31	%33	2		
+# 34 STORE           	%2	%31	%28	
+# 35 SAL             %34	%12	2		
+# 36 STORE           	%2	%34	%24	
+# 37 LABEL           				IF_15_ELSE
+# 38 LABEL           				IF_15_END
+# 39 ADD             %36	%12	1		
 # 40 NOOP            				
-# 41 LABEL           				LOOP_7_CONTINUE
-# 42 PHI_MOV         %8	%21			
-# 43 JMP             				LOOP_7_BEGIN
-# 44 NOOP            	%8			
-# 45 NOOP            	%8			
-# 46 NOOP            	%8			
-# 47 NOOP            	%10			
-# 48 NOOP            	%18			
-# 49 NOOP            	%8			
-# 50 LABEL           				LOOP_7_END
-# 51 RET             	%8			
-# 52 RET             0				
-# [log]4 expire %3 r0
-# [log]4 expire %4 r1
-# [log]5 expire %6 r0
-# [log]16 expire %15 r0
-# [log]21 expire $arg:0:0 r0
-# [log]21 expire $arg:0:21 r0
-# [log]21 expire $arg:1:21 r1
-# [log]21 expire $arg:2:21 r2
-# [log]25 expire $arg:3:21 r3
-# [log]25 expire %17 r8
-# [log]30 expire %19 r0
-# [log]35 expire %20 r0
-# [log]35 expire %12 r7
-#FUNCTION_BEGIN  	2			deepWhileBr
+# 41 LABEL           				LOOP_11_CONTINUE
+# 42 PHI_MOV         %12	%36			
+# 43 JMP             				LOOP_11_BEGIN
+# 44 NOOP            	%14			
+# 45 NOOP            	%12			
+# 46 NOOP            	%12			
+# 47 NOOP            	%2			
+# 48 NOOP            	%12			
+# 49 NOOP            	%2			
+# 50 NOOP            	%12			
+# 51 NOOP            	%2			
+# 52 NOOP            	%12			
+# 53 NOOP            	%2			
+# 54 NOOP            	%12			
+# 55 NOOP            	%2			
+# 56 NOOP            	%12			
+# 57 NOOP            	%2			
+# 58 NOOP            	%12			
+# 59 LABEL           				LOOP_11_END
+# 60 ADD             %37	%7	1		
+# 61 NOOP            				
+# 62 LABEL           				LOOP_6_CONTINUE
+# 63 PHI_MOV         %7	%37			
+# 64 PHI_MOV         %8	%12			
+# 65 JMP             				LOOP_6_BEGIN
+# 66 NOOP            	%7			
+# 67 NOOP            	%9			
+# 68 NOOP            	%10			
+# 69 NOOP            	@n			
+# 70 NOOP            	%7			
+# 71 NOOP            	%2			
+# 72 NOOP            	%2			
+# 73 NOOP            	%2			
+# 74 NOOP            	%2			
+# 75 NOOP            	%2			
+# 76 NOOP            	%2			
+# 77 NOOP            	%2			
+# 78 NOOP            	%2			
+# 79 NOOP            	%2			
+# 80 NOOP            	%2			
+# 81 NOOP            	%2			
+# 82 NOOP            	%2			
+# 83 NOOP            	%7			
+# 84 LABEL           				LOOP_6_END
+# 85 RET             	0			
+# 86 RET             0				
+# [log]5 expire %5 r1
+# [log]20 expire %13 r7
+# [log]21 expire %17 r7
+# [log]23 expire %22 r8
+# [log]24 expire %20 r8
+# [log]27 expire %16 r7
+# [log]27 expire %19 r8
+# [log]28 expire %27 r7
+# [log]29 expire %25 r7
+# [log]31 expire %29 r8
+# [log]33 expire %33 r9
+# [log]35 expire %28 r8
+# [log]35 expire %31 r9
+# [log]39 expire %24 r7
+# [log]39 expire %34 r8
+# [log]60 expire %14 r6
+# [log]60 expire %36 r7
+#FUNCTION_BEGIN  	1			bubblesort
 .text
-.global deepWhileBr
-.type deepWhileBr, %function
-deepWhileBr:
+.global bubblesort
+.type bubblesort, %function
+bubblesort:
     SUB sp, sp, #28
-    STR lr, [sp, #24]
     STR r11, [sp, #0]
     STR r4, [sp, #4]
     STR r5, [sp, #8]
     STR r6, [sp, #12]
     STR r7, [sp, #16]
     STR r8, [sp, #20]
-#MOV             %3	$arg0			
-#MOV             %4	$arg1			
-#ADD             %6	%3	%4		
-    ADD r0, r0, r1
-#PHI_MOV         %8	%6			
-   MOV r4, r0
-#MOV             %10	42			
-    MOV r5, #42
-#IMUL            %15	%10	2		
-    MOV r12, #2
-    MUL r0, r5, r12
-#IMUL            %18	%15	2		
-    MOV r12, #2
-    MUL r6, r0, r12
-#LABEL           				LOOP_7_BEGIN
-LOOP_7_BEGIN:
-#CMP             	%8	75		
-    MOV r11, #75
-    CMP r4, r11
-#JGE             				LOOP_7_END
-   BGE LOOP_7_END
-#LABEL           				LOOP_7_DO
-LOOP_7_DO:
+    STR r9, [sp, #24]
+#MOV             %2	$arg0			
+#INFO            				NOT CONSTEXPR
+#MOV             %5	0			
+    MOV r1, #0
+#PHI_MOV         %7	%5			
+#PHI_MOV         %8	%4			
+    LDR r12, [sp,#0]
+   MOV r2, r12
+#SUB             %9	@n	1		
+    MOV32 r11,__Var__1n
+    LDR r11, [r11, #0]
+     SUB r3, r11, #1
+#MOV             %10	0			
+    MOV r4, #0
+#LABEL           				LOOP_6_BEGIN
+LOOP_6_BEGIN:
+#CMP             	%7	%9		
+    CMP r1, r3
+#JGE             				LOOP_6_END
+   BGE LOOP_6_END
+#LABEL           				LOOP_6_DO
+LOOP_6_DO:
+#PHI_MOV         %12	%10			
+   MOV r5, r4
+#SUB             %14	@n	%7		
+    MOV32 r11,__Var__1n
+    LDR r11, [r11, #0]
+     SUB r6, r11, r1
+#LABEL           				LOOP_11_BEGIN
+LOOP_11_BEGIN:
+#SUB             %13	%14	1		
+     SUB r7, r6, #1
+#CMP             	%12	%13		
+    CMP r5, r7
+#JGE             				LOOP_11_END
+   BGE LOOP_11_END
+#LABEL           				LOOP_11_DO
+LOOP_11_DO:
+#SAL             %17	%12	2		
+   LSL r7, r5, #2
+#LOAD            %16	%2	%17		
+    MOV r12, r0
+    ADD r12, r12, r7
+    LDR r7, [r12]
+#ADD             %22	%12	1		
+    ADD r8, r5, #1
+#SAL             %20	%22	2		
+   LSL r8, r8, #2
+#LOAD            %19	%2	%20		
+    MOV r12, r0
+    ADD r12, r12, r8
+    LDR r8, [r12]
+#CMP             	%16	%19		
+    CMP r7, r8
+#JLE             				IF_15_ELSE
+   BLE IF_15_ELSE
+#ADD             %27	%12	1		
+    ADD r7, r5, #1
+#SAL             %25	%27	2		
+   LSL r7, r7, #2
+#LOAD            %24	%2	%25		
+    MOV r12, r0
+    ADD r12, r12, r7
+    LDR r7, [r12]
+#SAL             %29	%12	2		
+   LSL r8, r5, #2
+#LOAD            %28	%2	%29		
+    MOV r12, r0
+    ADD r12, r12, r8
+    LDR r8, [r12]
+#ADD             %33	%12	1		
+    ADD r9, r5, #1
+#SAL             %31	%33	2		
+   LSL r9, r9, #2
+#STORE           	%2	%31	%28	
+    MOV r12, r0
+   ADD r12, r12, r9
+    STR r8, [r12]
+#SAL             %34	%12	2		
+   LSL r8, r5, #2
+#STORE           	%2	%34	%24	
+    MOV r12, r0
+   ADD r12, r12, r8
+    STR r7, [r12]
+#LABEL           				IF_15_ELSE
+IF_15_ELSE:
+#LABEL           				IF_15_END
+IF_15_END:
+#ADD             %36	%12	1		
+    ADD r7, r5, #1
 #NOOP            				
-#CMP             	%8	100		
-    MOV r11, #100
-    CMP r4, r11
-#JGE             				IF_11_ELSE
-   BGE IF_11_ELSE
-#ADD             %12	%8	%10		
-    ADD r7, r4, r5
-#CMP             	%12	99		
-    MOV r11, #99
-    CMP r7, r11
-#JLE             				IF_13_ELSE
-   BLE IF_13_ELSE
+#LABEL           				LOOP_11_CONTINUE
+LOOP_11_CONTINUE:
+#PHI_MOV         %12	%36			
+   MOV r5, r7
+#JMP             				LOOP_11_BEGIN
+   B LOOP_11_BEGIN
+#NOOP            	%14			
+#NOOP            	%12			
+#NOOP            	%12			
+#NOOP            	%2			
+#NOOP            	%12			
+#NOOP            	%2			
+#NOOP            	%12			
+#NOOP            	%2			
+#NOOP            	%12			
+#NOOP            	%2			
+#NOOP            	%12			
+#NOOP            	%2			
+#NOOP            	%12			
+#NOOP            	%2			
+#NOOP            	%12			
+#LABEL           				LOOP_11_END
+LOOP_11_END:
+#ADD             %37	%7	1		
+    ADD r6, r1, #1
 #NOOP            				
-#SET_ARG         0	0			
-    MOV r0, #0
-#CALL            %17				get_one
-   BL get_one
-    MOV r8, r0
-#CMP             	%17	1		
-    MOV r11, #1
-    CMP r8, r11
-#JNE             				IF_16_ELSE
-   BNE IF_16_ELSE
-#NOOP            				
-#PHI_MOV         %19	%18			
-   MOV r0, r6
-#JMP             				IF_16_END
-   B IF_16_END
-#LABEL           				IF_16_ELSE
-IF_16_ELSE:
-#PHI_MOV         %19	%12			
-   MOV r0, r7
-#LABEL           				IF_16_END
-IF_16_END:
-#PHI_MOV         %20	%19			
-#JMP             				IF_13_END
-   B IF_13_END
-#LABEL           				IF_13_ELSE
-IF_13_ELSE:
-#PHI_MOV         %20	%12			
-   MOV r0, r7
-#LABEL           				IF_13_END
-IF_13_END:
-#PHI_MOV         %21	%20			
-#JMP             				IF_11_END
-   B IF_11_END
-#LABEL           				IF_11_ELSE
-IF_11_ELSE:
-#PHI_MOV         %21	%8			
-   MOV r0, r4
-#LABEL           				IF_11_END
-IF_11_END:
-#NOOP            				
-#LABEL           				LOOP_7_CONTINUE
-LOOP_7_CONTINUE:
-#PHI_MOV         %8	%21			
-   MOV r4, r0
-#JMP             				LOOP_7_BEGIN
-   B LOOP_7_BEGIN
-#NOOP            	%8			
-#NOOP            	%8			
-#NOOP            	%8			
+#LABEL           				LOOP_6_CONTINUE
+LOOP_6_CONTINUE:
+#PHI_MOV         %7	%37			
+   MOV r1, r6
+#PHI_MOV         %8	%12			
+   MOV r2, r5
+#JMP             				LOOP_6_BEGIN
+   B LOOP_6_BEGIN
+#NOOP            	%7			
+#NOOP            	%9			
 #NOOP            	%10			
-#NOOP            	%18			
-#NOOP            	%8			
-#LABEL           				LOOP_7_END
-LOOP_7_END:
-#RET             	%8			
-    MOV r0, r4
-    LDR lr, [sp, #24]
+#NOOP            	@n			
+#NOOP            	%7			
+#NOOP            	%2			
+#NOOP            	%2			
+#NOOP            	%2			
+#NOOP            	%2			
+#NOOP            	%2			
+#NOOP            	%2			
+#NOOP            	%2			
+#NOOP            	%2			
+#NOOP            	%2			
+#NOOP            	%2			
+#NOOP            	%2			
+#NOOP            	%2			
+#NOOP            	%7			
+#LABEL           				LOOP_6_END
+LOOP_6_END:
+#RET             	0			
+    MOV r0, #0
     LDR r11, [sp,#0]
     LDR r4, [sp,#4]
     LDR r5, [sp,#8]
     LDR r6, [sp,#12]
     LDR r7, [sp,#16]
     LDR r8, [sp,#20]
+    LDR r9, [sp,#24]
     ADD sp, sp, #28
     MOV PC, LR
 #RET             0				
-    LDR lr, [sp, #24]
     LDR r11, [sp,#0]
     LDR r4, [sp,#4]
     LDR r5, [sp,#8]
     LDR r6, [sp,#12]
     LDR r7, [sp,#16]
     LDR r8, [sp,#20]
+    LDR r9, [sp,#24]
     ADD sp, sp, #28
     MOV PC, LR
 # 1 FUNCTION_BEGIN  	0			main
-# 2 MOV             %23	2			
-# 3 SET_ARG         1	%23			
-# 4 SET_ARG         0	%23			
-# 5 CALL            %24				deepWhileBr
-# 6 SET_ARG         0	%24			
-# 7 CALL            %25				putint
-# 8 RET             	0			
-# 9 RET             0				
-# [log]4 expire $arg:1:0 r1
-# [log]4 expire %23 r4
-# [log]5 expire $arg:0:0 r0
-# [log]5 expire $arg:0:5 r0
-# [log]5 expire $arg:1:5 r1
-# [log]5 expire $arg:2:5 r2
-# [log]6 expire $arg:3:5 r3
-# [log]6 expire %24 r4
-# [log]7 expire %25 r4
-# [log]7 expire $arg:0:7 r0
-# [log]7 expire $arg:1:7 r1
-# [log]7 expire $arg:2:7 r2
+# 2 MOV             @n	10			
+# 3 MALLOC_IN_STACK %&38	40			
+# 4 SAL             %39	0	2		
+# 5 STORE           	%&38	%39	4	
+# 6 SAL             %41	1	2		
+# 7 STORE           	%&38	%41	3	
+# 8 SAL             %43	2	2		
+# 9 STORE           	%&38	%43	9	
+# 10 SAL             %45	3	2		
+# 11 STORE           	%&38	%45	2	
+# 12 SAL             %47	4	2		
+# 13 STORE           	%&38	%47	0	
+# 14 SAL             %49	5	2		
+# 15 STORE           	%&38	%49	1	
+# 16 SAL             %51	6	2		
+# 17 STORE           	%&38	%51	6	
+# 18 SAL             %53	7	2		
+# 19 STORE           	%&38	%53	5	
+# 20 SAL             %55	8	2		
+# 21 STORE           	%&38	%55	7	
+# 22 SAL             %57	9	2		
+# 23 STORE           	%&38	%57	8	
+# 24 SET_ARG         0	%&38			
+# 25 CALL            %60				bubblesort
+# 26 PHI_MOV         %62	%60			
+# 27 MOV             %68	10			
+# 28 LABEL           				LOOP_61_BEGIN
+# 29 CMP             	%62	@n		
+# 30 JGE             				LOOP_61_END
+# 31 LABEL           				LOOP_61_DO
+# 32 SAL             %65	%62	2		
+# 33 LOAD            %64	%&38	%65		
+# 34 SET_ARG         0	%64			
+# 35 CALL            %67				putint
+# 36 SET_ARG         0	%68			
+# 37 CALL            %69				putch
+# 38 ADD             %70	%62	1		
+# 39 NOOP            				
+# 40 LABEL           				LOOP_61_CONTINUE
+# 41 PHI_MOV         %62	%70			
+# 42 JMP             				LOOP_61_BEGIN
+# 43 NOOP            	%62			
+# 44 NOOP            	@n			
+# 45 NOOP            	%62			
+# 46 NOOP            	%&38			
+# 47 NOOP            	%68			
+# 48 NOOP            	%62			
+# 49 LABEL           				LOOP_61_END
+# 50 RET             	0			
+# 51 RET             0				
+# [log]6 expire %39 r0
+# [log]8 expire %41 r0
+# [log]10 expire %43 r0
+# [log]12 expire %45 r0
+# [log]14 expire %47 r0
+# [log]16 expire %49 r0
+# [log]18 expire %51 r0
+# [log]20 expire %53 r0
+# [log]22 expire %55 r0
+# [log]24 expire %57 r0
+# [log]25 expire $arg:0:0 r0
+# [log]25 expire $arg:0:25 r0
+# [log]25 expire $arg:1:25 r1
+# [log]25 expire $arg:2:25 r2
+# [log]26 expire $arg:3:25 r3
+# [log]26 expire %60 r4
+# [log]33 expire %65 r0
+# [log]34 expire %64 r6
+# [log]35 expire %67 r6
+# [log]35 expire $arg:0:35 r0
+# [log]35 expire $arg:1:35 r1
+# [log]35 expire $arg:2:35 r2
+# [log]36 expire $arg:3:35 r3
+# [log]37 expire %69 r6
+# [log]37 expire $arg:0:37 r0
+# [log]37 expire $arg:1:37 r1
+# [log]37 expire $arg:2:37 r2
+# [log]38 expire $arg:3:37 r3
 #FUNCTION_BEGIN  	0			main
 .text
 .global main
 .type main, %function
 main:
-    SUB sp, sp, #12
-    STR lr, [sp, #8]
-    STR r11, [sp, #0]
-    STR r4, [sp, #4]
-#MOV             %23	2			
-    MOV r4, #2
-#SET_ARG         1	%23			
-    MOV r1, r4
-#SET_ARG         0	%23			
-    MOV r0, r4
-#CALL            %24				deepWhileBr
-   BL deepWhileBr
+    SUB sp, sp, #60
+    STR lr, [sp, #56]
+    STR r11, [sp, #40]
+    STR r4, [sp, #44]
+    STR r5, [sp, #48]
+    STR r6, [sp, #52]
+#MOV             @n	10			
+    MOV r12, #10
+    MOV32 r11, __Var__1n
+    STR r12, [r11,#0]
+#MALLOC_IN_STACK %&38	40			
+#SAL             %39	0	2		
+    MOV r11, #0
+   LSL r0, r11, #2
+#STORE           	%&38	%39	4	
+    ADD r12, sp, #0
+   ADD r12, r12, r0
+    MOV r11, #4
+    STR r11, [r12]
+#SAL             %41	1	2		
+    MOV r11, #1
+   LSL r0, r11, #2
+#STORE           	%&38	%41	3	
+    ADD r12, sp, #0
+   ADD r12, r12, r0
+    MOV r11, #3
+    STR r11, [r12]
+#SAL             %43	2	2		
+    MOV r11, #2
+   LSL r0, r11, #2
+#STORE           	%&38	%43	9	
+    ADD r12, sp, #0
+   ADD r12, r12, r0
+    MOV r11, #9
+    STR r11, [r12]
+#SAL             %45	3	2		
+    MOV r11, #3
+   LSL r0, r11, #2
+#STORE           	%&38	%45	2	
+    ADD r12, sp, #0
+   ADD r12, r12, r0
+    MOV r11, #2
+    STR r11, [r12]
+#SAL             %47	4	2		
+    MOV r11, #4
+   LSL r0, r11, #2
+#STORE           	%&38	%47	0	
+    ADD r12, sp, #0
+   ADD r12, r12, r0
+    MOV r11, #0
+    STR r11, [r12]
+#SAL             %49	5	2		
+    MOV r11, #5
+   LSL r0, r11, #2
+#STORE           	%&38	%49	1	
+    ADD r12, sp, #0
+   ADD r12, r12, r0
+    MOV r11, #1
+    STR r11, [r12]
+#SAL             %51	6	2		
+    MOV r11, #6
+   LSL r0, r11, #2
+#STORE           	%&38	%51	6	
+    ADD r12, sp, #0
+   ADD r12, r12, r0
+    MOV r11, #6
+    STR r11, [r12]
+#SAL             %53	7	2		
+    MOV r11, #7
+   LSL r0, r11, #2
+#STORE           	%&38	%53	5	
+    ADD r12, sp, #0
+   ADD r12, r12, r0
+    MOV r11, #5
+    STR r11, [r12]
+#SAL             %55	8	2		
+    MOV r11, #8
+   LSL r0, r11, #2
+#STORE           	%&38	%55	7	
+    ADD r12, sp, #0
+   ADD r12, r12, r0
+    MOV r11, #7
+    STR r11, [r12]
+#SAL             %57	9	2		
+    MOV r11, #9
+   LSL r0, r11, #2
+#STORE           	%&38	%57	8	
+    ADD r12, sp, #0
+   ADD r12, r12, r0
+    MOV r11, #8
+    STR r11, [r12]
+#SET_ARG         0	%&38			
+    ADD r0, sp, #0
+#CALL            %60				bubblesort
+   BL bubblesort
     MOV r4, r0
-#SET_ARG         0	%24			
-    MOV r0, r4
-#CALL            %25				putint
+#PHI_MOV         %62	%60			
+#MOV             %68	10			
+    MOV r5, #10
+#LABEL           				LOOP_61_BEGIN
+LOOP_61_BEGIN:
+#CMP             	%62	@n		
+    MOV32 r11,__Var__1n
+    LDR r11, [r11, #0]
+    CMP r4, r11
+#JGE             				LOOP_61_END
+   BGE LOOP_61_END
+#LABEL           				LOOP_61_DO
+LOOP_61_DO:
+#SAL             %65	%62	2		
+   LSL r0, r4, #2
+#LOAD            %64	%&38	%65		
+    ADD r12, sp, #0
+    ADD r12, r12, r0
+    LDR r6, [r12]
+#SET_ARG         0	%64			
+    MOV r0, r6
+#CALL            %67				putint
    BL putint
-    MOV r4, r0
+    MOV r6, r0
+#SET_ARG         0	%68			
+    MOV r0, r5
+#CALL            %69				putch
+   BL putch
+    MOV r6, r0
+#ADD             %70	%62	1		
+    ADD r0, r4, #1
+#NOOP            				
+#LABEL           				LOOP_61_CONTINUE
+LOOP_61_CONTINUE:
+#PHI_MOV         %62	%70			
+   MOV r4, r0
+#JMP             				LOOP_61_BEGIN
+   B LOOP_61_BEGIN
+#NOOP            	%62			
+#NOOP            	@n			
+#NOOP            	%62			
+#NOOP            	%&38			
+#NOOP            	%68			
+#NOOP            	%62			
+#LABEL           				LOOP_61_END
+LOOP_61_END:
 #RET             	0			
     MOV r0, #0
-    LDR lr, [sp, #8]
-    LDR r11, [sp,#0]
-    LDR r4, [sp,#4]
-    ADD sp, sp, #12
+    LDR lr, [sp, #56]
+    LDR r11, [sp,#40]
+    LDR r4, [sp,#44]
+    LDR r5, [sp,#48]
+    LDR r6, [sp,#52]
+    ADD sp, sp, #60
     MOV PC, LR
 #RET             0				
-    LDR lr, [sp, #8]
-    LDR r11, [sp,#0]
-    LDR r4, [sp,#4]
-    ADD sp, sp, #12
+    LDR lr, [sp, #56]
+    LDR r11, [sp,#40]
+    LDR r4, [sp,#44]
+    LDR r5, [sp,#48]
+    LDR r6, [sp,#52]
+    ADD sp, sp, #60
     MOV PC, LR
