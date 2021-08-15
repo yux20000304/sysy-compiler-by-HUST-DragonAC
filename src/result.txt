@@ -1,0 +1,1974 @@
+    .macro mov32, reg, val
+        movw \reg, #:lower16:\val
+        movt \reg, #:upper16:\val
+    .endm
+.data
+.global __Var__4maxn
+__Var__4maxn:
+.word 18
+.data
+.global __Var__3mod
+__Var__3mod:
+.word 1000000007
+.data
+.global __Var__2dp
+__Var__2dp:
+.space 52907904
+.data
+.global __Var__4list
+__Var__4list:
+.space 800
+# 1 FUNCTION_BEGIN  	2			equal
+# 2 MOV             %2	$arg0			
+# 3 MOV             %3	$arg1			
+# 4 CMP             	%2	%3		
+# 5 JNE             				IF_4_ELSE
+# 6 RET             	1			
+# 7 LABEL           				IF_4_ELSE
+# 8 LABEL           				IF_4_END
+# 9 RET             	0			
+# 10 RET             0				
+#FUNCTION_BEGIN  	2			equal
+.text
+.global equal
+.type equal, %function
+equal:
+    SUB sp, sp, #4
+    STR r11, [sp, #0]
+#MOV             %2	$arg0			
+#MOV             %3	$arg1			
+#CMP             	%2	%3		
+    CMP r0, r1
+#JNE             				IF_4_ELSE
+   BNE IF_4_ELSE
+#RET             	1			
+    MOV r0, #1
+    LDR r11, [sp,#0]
+    ADD sp, sp, #4
+    MOV PC, LR
+#LABEL           				IF_4_ELSE
+IF_4_ELSE:
+#LABEL           				IF_4_END
+IF_4_END:
+#RET             	0			
+    MOV r0, #0
+    LDR r11, [sp,#0]
+    ADD sp, sp, #4
+    MOV PC, LR
+#RET             0				
+    LDR r11, [sp,#0]
+    ADD sp, sp, #4
+    MOV PC, LR
+# 1 FUNCTION_BEGIN  	6			dfs
+# 2 MOV             %5	$arg0			
+# 3 MOV             %6	$arg1			
+# 4 MOV             %7	$arg2			
+# 5 MOV             %8	$arg3			
+# 6 MOV             %9	$arg4			
+# 7 MOV             %10	$arg5			
+# 8 SAL             %13	%10	2		
+# 9 MOV             %14	28			
+# 10 IMUL            %16	%14	%9		
+# 11 ADD             %17	%13	%16		
+# 12 IMUL            %18	%14	18		
+# 13 IMUL            %19	%18	%8		
+# 14 ADD             %20	%17	%19		
+# 15 IMUL            %21	%18	18		
+# 16 IMUL            %22	%21	%7		
+# 17 ADD             %23	%20	%22		
+# 18 IMUL            %24	%21	18		
+# 19 IMUL            %25	%24	%6		
+# 20 ADD             %26	%23	%25		
+# 21 IMUL            %27	%24	18		
+# 22 IMUL            %28	%27	%5		
+# 23 ADD             %29	%26	%28		
+# 24 LOAD            %12	@&dp	%29		
+# 25 SUB             %30	0	1		
+# 26 CMP             	%12	%30		
+# 27 JEQ             				IF_11_ELSE
+# 28 SAL             %32	%10	2		
+# 29 MOV             %33	28			
+# 30 IMUL            %35	%33	%9		
+# 31 ADD             %36	%32	%35		
+# 32 IMUL            %37	%33	18		
+# 33 IMUL            %38	%37	%8		
+# 34 ADD             %39	%36	%38		
+# 35 IMUL            %40	%37	18		
+# 36 IMUL            %41	%40	%7		
+# 37 ADD             %42	%39	%41		
+# 38 IMUL            %43	%40	18		
+# 39 IMUL            %44	%43	%6		
+# 40 ADD             %45	%42	%44		
+# 41 IMUL            %46	%43	18		
+# 42 IMUL            %47	%46	%5		
+# 43 ADD             %48	%45	%47		
+# 44 LOAD            %31	@&dp	%48		
+# 45 RET             	%31			
+# 46 LABEL           				IF_11_ELSE
+# 47 LABEL           				IF_11_END
+# 48 ADD             %53	%5	%6		
+# 49 ADD             %52	%53	%7		
+# 50 ADD             %51	%52	%8		
+# 51 ADD             %50	%51	%9		
+# 52 CMP             	%50	0		
+# 53 JNE             				IF_49_ELSE
+# 54 RET             	1			
+# 55 LABEL           				IF_49_ELSE
+# 56 LABEL           				IF_49_END
+# 57 MOV             %55	0			
+# 58 CMP             %57	%5	0		
+# 59 JEQ             				IF_56_ELSE
+# 60 SET_ARG         1	2			
+# 61 SET_ARG         0	%10			
+# 62 CALL            %62				equal
+# 63 SUB             %61	%5	%62		
+# 64 SUB             %64	%5	1		
+# 65 SET_ARG         5	1			
+# 66 SET_ARG         4	%9			
+# 67 SET_ARG         3	%8			
+# 68 SET_ARG         2	%7			
+# 69 SET_ARG         1	%6			
+# 70 SET_ARG         0	%64			
+# 71 CALL            %63				dfs
+# 72 IMUL            %60	%61	%63		
+# 73 ADD             %59	%55	%60		
+# 74 MOD             %58	%59	@mod		
+# 75 PHI_MOV         %65	%58			
+# 76 JMP             				IF_56_END
+# 77 LABEL           				IF_56_ELSE
+# 78 PHI_MOV         %65	%55			
+# 79 LABEL           				IF_56_END
+# 80 CMP             %67	%6	0		
+# 81 JEQ             				IF_66_ELSE
+# 82 SET_ARG         1	3			
+# 83 SET_ARG         0	%10			
+# 84 CALL            %72				equal
+# 85 SUB             %71	%6	%72		
+# 86 ADD             %74	%5	1		
+# 87 SUB             %75	%6	1		
+# 88 SET_ARG         5	2			
+# 89 SET_ARG         4	%9			
+# 90 SET_ARG         3	%8			
+# 91 SET_ARG         2	%7			
+# 92 SET_ARG         1	%75			
+# 93 SET_ARG         0	%74			
+# 94 CALL            %73				dfs
+# 95 IMUL            %70	%71	%73		
+# 96 ADD             %69	%65	%70		
+# 97 MOD             %68	%69	@mod		
+# 98 PHI_MOV         %76	%68			
+# 99 JMP             				IF_66_END
+# 100 LABEL           				IF_66_ELSE
+# 101 PHI_MOV         %76	%65			
+# 102 LABEL           				IF_66_END
+# 103 CMP             %78	%7	0		
+# 104 JEQ             				IF_77_ELSE
+# 105 SET_ARG         1	4			
+# 106 SET_ARG         0	%10			
+# 107 CALL            %83				equal
+# 108 SUB             %82	%7	%83		
+# 109 ADD             %85	%6	1		
+# 110 SUB             %86	%7	1		
+# 111 SET_ARG         5	3			
+# 112 SET_ARG         4	%9			
+# 113 SET_ARG         3	%8			
+# 114 SET_ARG         2	%86			
+# 115 SET_ARG         1	%85			
+# 116 SET_ARG         0	%5			
+# 117 CALL            %84				dfs
+# 118 IMUL            %81	%82	%84		
+# 119 ADD             %80	%76	%81		
+# 120 MOD             %79	%80	@mod		
+# 121 PHI_MOV         %87	%79			
+# 122 JMP             				IF_77_END
+# 123 LABEL           				IF_77_ELSE
+# 124 PHI_MOV         %87	%76			
+# 125 LABEL           				IF_77_END
+# 126 CMP             %89	%8	0		
+# 127 JEQ             				IF_88_ELSE
+# 128 SET_ARG         1	5			
+# 129 SET_ARG         0	%10			
+# 130 CALL            %94				equal
+# 131 SUB             %93	%8	%94		
+# 132 ADD             %96	%7	1		
+# 133 SUB             %97	%8	1		
+# 134 SET_ARG         5	4			
+# 135 SET_ARG         4	%9			
+# 136 SET_ARG         3	%97			
+# 137 SET_ARG         2	%96			
+# 138 SET_ARG         1	%6			
+# 139 SET_ARG         0	%5			
+# 140 CALL            %95				dfs
+# 141 IMUL            %92	%93	%95		
+# 142 ADD             %91	%87	%92		
+# 143 MOD             %90	%91	@mod		
+# 144 PHI_MOV         %98	%90			
+# 145 JMP             				IF_88_END
+# 146 LABEL           				IF_88_ELSE
+# 147 PHI_MOV         %98	%87			
+# 148 LABEL           				IF_88_END
+# 149 CMP             %100	%9	0		
+# 150 JEQ             				IF_99_ELSE
+# 151 ADD             %105	%8	1		
+# 152 SUB             %106	%9	1		
+# 153 SET_ARG         5	5			
+# 154 SET_ARG         4	%106			
+# 155 SET_ARG         3	%105			
+# 156 SET_ARG         2	%7			
+# 157 SET_ARG         1	%6			
+# 158 SET_ARG         0	%5			
+# 159 CALL            %104				dfs
+# 160 IMUL            %103	%9	%104		
+# 161 ADD             %102	%98	%103		
+# 162 MOD             %101	%102	@mod		
+# 163 PHI_MOV         %107	%101			
+# 164 JMP             				IF_99_END
+# 165 LABEL           				IF_99_ELSE
+# 166 PHI_MOV         %107	%98			
+# 167 LABEL           				IF_99_END
+# 168 MOD             %108	%107	@mod		
+# 169 SAL             %109	%10	2		
+# 170 MOV             %110	28			
+# 171 IMUL            %112	%110	%9		
+# 172 ADD             %113	%109	%112		
+# 173 IMUL            %114	%110	18		
+# 174 IMUL            %115	%114	%8		
+# 175 ADD             %116	%113	%115		
+# 176 IMUL            %117	%114	18		
+# 177 IMUL            %118	%117	%7		
+# 178 ADD             %119	%116	%118		
+# 179 IMUL            %120	%117	18		
+# 180 IMUL            %121	%120	%6		
+# 181 ADD             %122	%119	%121		
+# 182 IMUL            %123	%120	18		
+# 183 IMUL            %124	%123	%5		
+# 184 ADD             %125	%122	%124		
+# 185 STORE           	@&dp	%125	%108	
+# 186 SAL             %127	%10	2		
+# 187 MOV             %128	28			
+# 188 IMUL            %130	%128	%9		
+# 189 ADD             %131	%127	%130		
+# 190 IMUL            %132	%128	18		
+# 191 IMUL            %133	%132	%8		
+# 192 ADD             %134	%131	%133		
+# 193 IMUL            %135	%132	18		
+# 194 IMUL            %136	%135	%7		
+# 195 ADD             %137	%134	%136		
+# 196 IMUL            %138	%135	18		
+# 197 IMUL            %139	%138	%6		
+# 198 ADD             %140	%137	%139		
+# 199 IMUL            %141	%138	18		
+# 200 IMUL            %142	%141	%5		
+# 201 ADD             %143	%140	%142		
+# 202 LOAD            %126	@&dp	%143		
+# 203 RET             	%126			
+# 204 RET             0				
+# [log]11 expire %13 r0
+# [log]11 expire %16 r2
+# [log]14 expire %17 r0
+# [log]14 expire %14 r1
+# [log]14 expire %19 r3
+# [log]17 expire %20 r0
+# [log]17 expire %18 r2
+# [log]17 expire %22 r3
+# [log]20 expire %23 r0
+# [log]20 expire %21 r1
+# [log]20 expire %25 r3
+# [log]23 expire %26 r0
+# [log]23 expire %27 r1
+# [log]23 expire %24 r2
+# [log]23 expire %28 r3
+# [log]24 expire %29 r0
+# [log]28 expire %12 r0
+# [log]28 expire %30 r1
+# [log]31 expire %32 r0
+# [log]31 expire %35 r2
+# [log]34 expire %36 r0
+# [log]34 expire %33 r1
+# [log]34 expire %38 r3
+# [log]37 expire %39 r0
+# [log]37 expire %37 r2
+# [log]37 expire %41 r3
+# [log]40 expire %42 r0
+# [log]40 expire %40 r1
+# [log]40 expire %44 r3
+# [log]43 expire %45 r0
+# [log]43 expire %46 r1
+# [log]43 expire %43 r2
+# [log]43 expire %47 r3
+# [log]44 expire %48 r0
+# [log]48 expire %31 r0
+# [log]49 expire %53 r0
+# [log]50 expire %52 r0
+# [log]51 expire %51 r0
+# [log]57 expire %50 r0
+# [log]60 expire %57 r0
+# [log]61 expire $arg:1:0 r1
+# [log]62 expire $arg:0:0 r0
+# [log]62 expire $arg:0:62 r0
+# [log]62 expire $arg:1:62 r1
+# [log]62 expire $arg:2:62 r2
+# [log]63 expire $arg:3:62 r3
+# [log]63 expire %62 r4
+# [log]68 expire $arg:3:0 r3
+# [log]69 expire $arg:2:0 r2
+# [log]70 expire %64 r5
+# [log]71 expire $arg:0:71 r0
+# [log]71 expire $arg:1:71 r1
+# [log]71 expire $arg:2:71 r2
+# [log]72 expire $arg:3:71 r3
+# [log]72 expire %63 r5
+# [log]73 expire %60 r0
+# [log]73 expire %61 r4
+# [log]74 expire %59 r4
+# [log]74 expire $arg:0:74 r0
+# [log]74 expire $arg:1:74 r1
+# [log]74 expire $arg:2:74 r2
+# [log]75 expire $arg:3:74 r3
+# [log]75 expire %58 r4
+# [log]80 expire %55 r10
+# [log]82 expire %67 r0
+# [log]84 expire $arg:0:84 r0
+# [log]84 expire $arg:1:84 r1
+# [log]84 expire $arg:2:84 r2
+# [log]85 expire $arg:3:84 r3
+# [log]85 expire %72 r5
+# [log]92 expire %75 r6
+# [log]93 expire %74 r10
+# [log]94 expire $arg:0:94 r0
+# [log]94 expire $arg:1:94 r1
+# [log]94 expire $arg:2:94 r2
+# [log]95 expire $arg:3:94 r3
+# [log]95 expire %73 r6
+# [log]96 expire %70 r0
+# [log]96 expire %71 r5
+# [log]97 expire %69 r5
+# [log]97 expire $arg:0:97 r0
+# [log]97 expire $arg:1:97 r1
+# [log]97 expire $arg:2:97 r2
+# [log]98 expire $arg:3:97 r3
+# [log]98 expire %68 r5
+# [log]103 expire %65 r4
+# [log]105 expire %78 r0
+# [log]107 expire $arg:0:107 r0
+# [log]107 expire $arg:1:107 r1
+# [log]107 expire $arg:2:107 r2
+# [log]108 expire $arg:3:107 r3
+# [log]108 expire %83 r4
+# [log]114 expire %86 r10
+# [log]115 expire %85 r6
+# [log]117 expire $arg:0:117 r0
+# [log]117 expire $arg:1:117 r1
+# [log]117 expire $arg:2:117 r2
+# [log]118 expire $arg:3:117 r3
+# [log]118 expire %84 r6
+# [log]119 expire %81 r0
+# [log]119 expire %82 r4
+# [log]120 expire %80 r4
+# [log]120 expire $arg:0:120 r0
+# [log]120 expire $arg:1:120 r1
+# [log]120 expire $arg:2:120 r2
+# [log]121 expire $arg:3:120 r3
+# [log]121 expire %79 r4
+# [log]126 expire %76 r5
+# [log]128 expire %89 r0
+# [log]130 expire $arg:0:130 r0
+# [log]130 expire $arg:1:130 r1
+# [log]130 expire $arg:2:130 r2
+# [log]131 expire $arg:3:130 r3
+# [log]131 expire %94 r5
+# [log]136 expire %97 r10
+# [log]137 expire %96 r6
+# [log]140 expire $arg:0:140 r0
+# [log]140 expire $arg:1:140 r1
+# [log]140 expire $arg:2:140 r2
+# [log]141 expire $arg:3:140 r3
+# [log]141 expire %95 r6
+# [log]142 expire %92 r0
+# [log]142 expire %93 r5
+# [log]143 expire %91 r5
+# [log]143 expire $arg:0:143 r0
+# [log]143 expire $arg:1:143 r1
+# [log]143 expire $arg:2:143 r2
+# [log]144 expire $arg:3:143 r3
+# [log]144 expire %90 r5
+# [log]149 expire %87 r4
+# [log]151 expire %100 r0
+# [log]155 expire %106 r0
+# [log]155 expire %105 r4
+# [log]159 expire $arg:0:159 r0
+# [log]159 expire $arg:1:159 r1
+# [log]159 expire $arg:2:159 r2
+# [log]160 expire $arg:3:159 r3
+# [log]160 expire %104 r4
+# [log]161 expire %103 r0
+# [log]162 expire %102 r4
+# [log]162 expire $arg:0:162 r0
+# [log]162 expire $arg:1:162 r1
+# [log]162 expire $arg:2:162 r2
+# [log]163 expire $arg:3:162 r3
+# [log]163 expire %101 r4
+# [log]168 expire %107 r4
+# [log]168 expire %98 r5
+# [log]168 expire $arg:0:168 r0
+# [log]168 expire $arg:1:168 r1
+# [log]168 expire $arg:2:168 r2
+# [log]169 expire $arg:3:168 r3
+# [log]172 expire %109 r0
+# [log]172 expire %112 r2
+# [log]175 expire %113 r0
+# [log]175 expire %110 r1
+# [log]175 expire %115 r3
+# [log]178 expire %116 r0
+# [log]178 expire %114 r2
+# [log]178 expire %118 r3
+# [log]181 expire %119 r0
+# [log]181 expire %117 r1
+# [log]181 expire %121 r3
+# [log]184 expire %122 r0
+# [log]184 expire %123 r1
+# [log]184 expire %120 r2
+# [log]184 expire %124 r3
+# [log]186 expire %125 r0
+# [log]186 expire %108 r4
+# [log]186 expire %10 r9
+# [log]189 expire %127 r0
+# [log]189 expire %130 r2
+# [log]189 expire %9 r8
+# [log]191 expire %8 r7
+# [log]192 expire %131 r0
+# [log]192 expire %128 r1
+# [log]192 expire %133 r3
+# [log]195 expire %134 r0
+# [log]195 expire %132 r2
+# [log]195 expire %136 r3
+# [log]198 expire %137 r0
+# [log]198 expire %135 r1
+# [log]198 expire %139 r3
+# [log]201 expire %140 r0
+# [log]201 expire %141 r1
+# [log]201 expire %138 r2
+# [log]201 expire %142 r3
+# [log]202 expire %143 r0
+#FUNCTION_BEGIN  	6			dfs
+.text
+.global dfs
+.type dfs, %function
+dfs:
+    SUB sp, sp, #56
+    STR lr, [sp, #52]
+    STR r11, [sp, #20]
+    STR r4, [sp, #24]
+    STR r5, [sp, #28]
+    STR r6, [sp, #32]
+    STR r7, [sp, #36]
+    STR r8, [sp, #40]
+    STR r9, [sp, #44]
+    STR r10, [sp, #48]
+#MOV             %5	$arg0			
+    STR r0, [sp, #8]
+#MOV             %6	$arg1			
+    STR r1, [sp, #12]
+#MOV             %7	$arg2			
+    STR r2, [sp, #16]
+#MOV             %8	$arg3			
+   MOV r7, r3
+#MOV             %9	$arg4			
+    LDR r12, [sp, #56]
+   MOV r8, r12
+#MOV             %10	$arg5			
+    LDR r12, [sp, #60]
+   MOV r9, r12
+#SAL             %13	%10	2		
+   LSL r0, r9, #2
+#MOV             %14	28			
+    MOV r1, #28
+#IMUL            %16	%14	%9		
+    MUL r2, r1, r8
+#ADD             %17	%13	%16		
+    ADD r0, r0, r2
+#IMUL            %18	%14	18		
+    MOV r12, #18
+    MUL r2, r1, r12
+#IMUL            %19	%18	%8		
+    MUL r3, r2, r7
+#ADD             %20	%17	%19		
+    ADD r0, r0, r3
+#IMUL            %21	%18	18		
+    MOV r12, #18
+    MUL r1, r2, r12
+#IMUL            %22	%21	%7		
+    LDR r12, [sp,#16]
+    MUL r3, r1, r12
+#ADD             %23	%20	%22		
+    ADD r0, r0, r3
+#IMUL            %24	%21	18		
+    MOV r12, #18
+    MUL r2, r1, r12
+#IMUL            %25	%24	%6		
+    LDR r12, [sp,#12]
+    MUL r3, r2, r12
+#ADD             %26	%23	%25		
+    ADD r0, r0, r3
+#IMUL            %27	%24	18		
+    MOV r12, #18
+    MUL r1, r2, r12
+#IMUL            %28	%27	%5		
+    LDR r12, [sp,#8]
+    MUL r3, r1, r12
+#ADD             %29	%26	%28		
+    ADD r0, r0, r3
+#LOAD            %12	@&dp	%29		
+    MOV32 r12, __Var__2dp
+    ADD r12, r12, r0
+    LDR r0, [r12]
+#SUB             %30	0	1		
+    MOV r11, #0
+     SUB r1, r11, #1
+#CMP             	%12	%30		
+    CMP r0, r1
+#JEQ             				IF_11_ELSE
+   BEQ IF_11_ELSE
+#SAL             %32	%10	2		
+   LSL r0, r9, #2
+#MOV             %33	28			
+    MOV r1, #28
+#IMUL            %35	%33	%9		
+    MUL r2, r1, r8
+#ADD             %36	%32	%35		
+    ADD r0, r0, r2
+#IMUL            %37	%33	18		
+    MOV r12, #18
+    MUL r2, r1, r12
+#IMUL            %38	%37	%8		
+    MUL r3, r2, r7
+#ADD             %39	%36	%38		
+    ADD r0, r0, r3
+#IMUL            %40	%37	18		
+    MOV r12, #18
+    MUL r1, r2, r12
+#IMUL            %41	%40	%7		
+    LDR r12, [sp,#16]
+    MUL r3, r1, r12
+#ADD             %42	%39	%41		
+    ADD r0, r0, r3
+#IMUL            %43	%40	18		
+    MOV r12, #18
+    MUL r2, r1, r12
+#IMUL            %44	%43	%6		
+    LDR r12, [sp,#12]
+    MUL r3, r2, r12
+#ADD             %45	%42	%44		
+    ADD r0, r0, r3
+#IMUL            %46	%43	18		
+    MOV r12, #18
+    MUL r1, r2, r12
+#IMUL            %47	%46	%5		
+    LDR r12, [sp,#8]
+    MUL r3, r1, r12
+#ADD             %48	%45	%47		
+    ADD r0, r0, r3
+#LOAD            %31	@&dp	%48		
+    MOV32 r12, __Var__2dp
+    ADD r12, r12, r0
+    LDR r0, [r12]
+#RET             	%31			
+    LDR lr, [sp, #52]
+    LDR r11, [sp,#20]
+    LDR r4, [sp,#24]
+    LDR r5, [sp,#28]
+    LDR r6, [sp,#32]
+    LDR r7, [sp,#36]
+    LDR r8, [sp,#40]
+    LDR r9, [sp,#44]
+    LDR r10, [sp,#48]
+    ADD sp, sp, #56
+    MOV PC, LR
+#LABEL           				IF_11_ELSE
+IF_11_ELSE:
+#LABEL           				IF_11_END
+IF_11_END:
+#ADD             %53	%5	%6		
+    LDR r12, [sp,#12]
+    LDR r11, [sp,#8]
+    ADD r0, r11, r12
+#ADD             %52	%53	%7		
+    LDR r12, [sp,#16]
+    ADD r0, r0, r12
+#ADD             %51	%52	%8		
+    ADD r0, r0, r7
+#ADD             %50	%51	%9		
+    ADD r0, r0, r8
+#CMP             	%50	0		
+    MOV r11, #0
+    CMP r0, r11
+#JNE             				IF_49_ELSE
+   BNE IF_49_ELSE
+#RET             	1			
+    MOV r0, #1
+    LDR lr, [sp, #52]
+    LDR r11, [sp,#20]
+    LDR r4, [sp,#24]
+    LDR r5, [sp,#28]
+    LDR r6, [sp,#32]
+    LDR r7, [sp,#36]
+    LDR r8, [sp,#40]
+    LDR r9, [sp,#44]
+    LDR r10, [sp,#48]
+    ADD sp, sp, #56
+    MOV PC, LR
+#LABEL           				IF_49_ELSE
+IF_49_ELSE:
+#LABEL           				IF_49_END
+IF_49_END:
+#MOV             %55	0			
+    MOV r10, #0
+#CMP             %57	%5	0		
+    LDR r12, [sp,#8]
+    MOV r11, #0
+    CMP r12, r11
+#JEQ             				IF_56_ELSE
+   BEQ IF_56_ELSE
+#SET_ARG         1	2			
+    MOV r1, #2
+#SET_ARG         0	%10			
+    MOV r0, r9
+#CALL            %62				equal
+   BL equal
+    MOV r4, r0
+#SUB             %61	%5	%62		
+    LDR r11, [sp,#8]
+     SUB r4, r11, r4
+#SUB             %64	%5	1		
+    LDR r11, [sp,#8]
+     SUB r5, r11, #1
+#SET_ARG         5	1			
+    MOV r12, #1
+    STR r12, [sp, #4]
+#SET_ARG         4	%9			
+    MOV r12, r8
+    STR r12, [sp, #0]
+#SET_ARG         3	%8			
+    MOV r3, r7
+#SET_ARG         2	%7			
+    LDR r2, [sp,#16]
+#SET_ARG         1	%6			
+    LDR r1, [sp,#12]
+#SET_ARG         0	%64			
+    MOV r0, r5
+#CALL            %63				dfs
+   BL dfs
+    MOV r5, r0
+#IMUL            %60	%61	%63		
+    MUL r0, r4, r5
+#ADD             %59	%55	%60		
+    ADD r4, r10, r0
+#MOD             %58	%59	@mod		
+    MOV r0, r4
+    MOV32 r1,__Var__3mod
+    LDR r1, [r1, #0]
+    BL __aeabi_idivmod
+    MOV r4, r1
+#PHI_MOV         %65	%58			
+#JMP             				IF_56_END
+   B IF_56_END
+#LABEL           				IF_56_ELSE
+IF_56_ELSE:
+#PHI_MOV         %65	%55			
+   MOV r4, r10
+#LABEL           				IF_56_END
+IF_56_END:
+#CMP             %67	%6	0		
+    LDR r12, [sp,#12]
+    MOV r11, #0
+    CMP r12, r11
+#JEQ             				IF_66_ELSE
+   BEQ IF_66_ELSE
+#SET_ARG         1	3			
+    MOV r1, #3
+#SET_ARG         0	%10			
+    MOV r0, r9
+#CALL            %72				equal
+   BL equal
+    MOV r5, r0
+#SUB             %71	%6	%72		
+    LDR r11, [sp,#12]
+     SUB r5, r11, r5
+#ADD             %74	%5	1		
+    LDR r11, [sp,#8]
+    ADD r10, r11, #1
+#SUB             %75	%6	1		
+    LDR r11, [sp,#12]
+     SUB r6, r11, #1
+#SET_ARG         5	2			
+    MOV r12, #2
+    STR r12, [sp, #4]
+#SET_ARG         4	%9			
+    MOV r12, r8
+    STR r12, [sp, #0]
+#SET_ARG         3	%8			
+    MOV r3, r7
+#SET_ARG         2	%7			
+    LDR r2, [sp,#16]
+#SET_ARG         1	%75			
+    MOV r1, r6
+#SET_ARG         0	%74			
+    MOV r0, r10
+#CALL            %73				dfs
+   BL dfs
+    MOV r6, r0
+#IMUL            %70	%71	%73		
+    MUL r0, r5, r6
+#ADD             %69	%65	%70		
+    ADD r5, r4, r0
+#MOD             %68	%69	@mod		
+    MOV r0, r5
+    MOV32 r1,__Var__3mod
+    LDR r1, [r1, #0]
+    BL __aeabi_idivmod
+    MOV r5, r1
+#PHI_MOV         %76	%68			
+#JMP             				IF_66_END
+   B IF_66_END
+#LABEL           				IF_66_ELSE
+IF_66_ELSE:
+#PHI_MOV         %76	%65			
+   MOV r5, r4
+#LABEL           				IF_66_END
+IF_66_END:
+#CMP             %78	%7	0		
+    LDR r12, [sp,#16]
+    MOV r11, #0
+    CMP r12, r11
+#JEQ             				IF_77_ELSE
+   BEQ IF_77_ELSE
+#SET_ARG         1	4			
+    MOV r1, #4
+#SET_ARG         0	%10			
+    MOV r0, r9
+#CALL            %83				equal
+   BL equal
+    MOV r4, r0
+#SUB             %82	%7	%83		
+    LDR r11, [sp,#16]
+     SUB r4, r11, r4
+#ADD             %85	%6	1		
+    LDR r11, [sp,#12]
+    ADD r6, r11, #1
+#SUB             %86	%7	1		
+    LDR r11, [sp,#16]
+     SUB r10, r11, #1
+#SET_ARG         5	3			
+    MOV r12, #3
+    STR r12, [sp, #4]
+#SET_ARG         4	%9			
+    MOV r12, r8
+    STR r12, [sp, #0]
+#SET_ARG         3	%8			
+    MOV r3, r7
+#SET_ARG         2	%86			
+    MOV r2, r10
+#SET_ARG         1	%85			
+    MOV r1, r6
+#SET_ARG         0	%5			
+    LDR r0, [sp,#8]
+#CALL            %84				dfs
+   BL dfs
+    MOV r6, r0
+#IMUL            %81	%82	%84		
+    MUL r0, r4, r6
+#ADD             %80	%76	%81		
+    ADD r4, r5, r0
+#MOD             %79	%80	@mod		
+    MOV r0, r4
+    MOV32 r1,__Var__3mod
+    LDR r1, [r1, #0]
+    BL __aeabi_idivmod
+    MOV r4, r1
+#PHI_MOV         %87	%79			
+#JMP             				IF_77_END
+   B IF_77_END
+#LABEL           				IF_77_ELSE
+IF_77_ELSE:
+#PHI_MOV         %87	%76			
+   MOV r4, r5
+#LABEL           				IF_77_END
+IF_77_END:
+#CMP             %89	%8	0		
+    MOV r11, #0
+    CMP r7, r11
+#JEQ             				IF_88_ELSE
+   BEQ IF_88_ELSE
+#SET_ARG         1	5			
+    MOV r1, #5
+#SET_ARG         0	%10			
+    MOV r0, r9
+#CALL            %94				equal
+   BL equal
+    MOV r5, r0
+#SUB             %93	%8	%94		
+     SUB r5, r7, r5
+#ADD             %96	%7	1		
+    LDR r11, [sp,#16]
+    ADD r6, r11, #1
+#SUB             %97	%8	1		
+     SUB r10, r7, #1
+#SET_ARG         5	4			
+    MOV r12, #4
+    STR r12, [sp, #4]
+#SET_ARG         4	%9			
+    MOV r12, r8
+    STR r12, [sp, #0]
+#SET_ARG         3	%97			
+    MOV r3, r10
+#SET_ARG         2	%96			
+    MOV r2, r6
+#SET_ARG         1	%6			
+    LDR r1, [sp,#12]
+#SET_ARG         0	%5			
+    LDR r0, [sp,#8]
+#CALL            %95				dfs
+   BL dfs
+    MOV r6, r0
+#IMUL            %92	%93	%95		
+    MUL r0, r5, r6
+#ADD             %91	%87	%92		
+    ADD r5, r4, r0
+#MOD             %90	%91	@mod		
+    MOV r0, r5
+    MOV32 r1,__Var__3mod
+    LDR r1, [r1, #0]
+    BL __aeabi_idivmod
+    MOV r5, r1
+#PHI_MOV         %98	%90			
+#JMP             				IF_88_END
+   B IF_88_END
+#LABEL           				IF_88_ELSE
+IF_88_ELSE:
+#PHI_MOV         %98	%87			
+   MOV r5, r4
+#LABEL           				IF_88_END
+IF_88_END:
+#CMP             %100	%9	0		
+    MOV r11, #0
+    CMP r8, r11
+#JEQ             				IF_99_ELSE
+   BEQ IF_99_ELSE
+#ADD             %105	%8	1		
+    ADD r4, r7, #1
+#SUB             %106	%9	1		
+     SUB r0, r8, #1
+#SET_ARG         5	5			
+    MOV r12, #5
+    STR r12, [sp, #4]
+#SET_ARG         4	%106			
+    MOV r12, r0
+    STR r12, [sp, #0]
+#SET_ARG         3	%105			
+    MOV r3, r4
+#SET_ARG         2	%7			
+    LDR r2, [sp,#16]
+#SET_ARG         1	%6			
+    LDR r1, [sp,#12]
+#SET_ARG         0	%5			
+    LDR r0, [sp,#8]
+#CALL            %104				dfs
+   BL dfs
+    MOV r4, r0
+#IMUL            %103	%9	%104		
+    MUL r0, r8, r4
+#ADD             %102	%98	%103		
+    ADD r4, r5, r0
+#MOD             %101	%102	@mod		
+    MOV r0, r4
+    MOV32 r1,__Var__3mod
+    LDR r1, [r1, #0]
+    BL __aeabi_idivmod
+    MOV r4, r1
+#PHI_MOV         %107	%101			
+#JMP             				IF_99_END
+   B IF_99_END
+#LABEL           				IF_99_ELSE
+IF_99_ELSE:
+#PHI_MOV         %107	%98			
+   MOV r4, r5
+#LABEL           				IF_99_END
+IF_99_END:
+#MOD             %108	%107	@mod		
+    MOV r0, r4
+    MOV32 r1,__Var__3mod
+    LDR r1, [r1, #0]
+    BL __aeabi_idivmod
+    MOV r4, r1
+#SAL             %109	%10	2		
+   LSL r0, r9, #2
+#MOV             %110	28			
+    MOV r1, #28
+#IMUL            %112	%110	%9		
+    MUL r2, r1, r8
+#ADD             %113	%109	%112		
+    ADD r0, r0, r2
+#IMUL            %114	%110	18		
+    MOV r12, #18
+    MUL r2, r1, r12
+#IMUL            %115	%114	%8		
+    MUL r3, r2, r7
+#ADD             %116	%113	%115		
+    ADD r0, r0, r3
+#IMUL            %117	%114	18		
+    MOV r12, #18
+    MUL r1, r2, r12
+#IMUL            %118	%117	%7		
+    LDR r12, [sp,#16]
+    MUL r3, r1, r12
+#ADD             %119	%116	%118		
+    ADD r0, r0, r3
+#IMUL            %120	%117	18		
+    MOV r12, #18
+    MUL r2, r1, r12
+#IMUL            %121	%120	%6		
+    LDR r12, [sp,#12]
+    MUL r3, r2, r12
+#ADD             %122	%119	%121		
+    ADD r0, r0, r3
+#IMUL            %123	%120	18		
+    MOV r12, #18
+    MUL r1, r2, r12
+#IMUL            %124	%123	%5		
+    LDR r12, [sp,#8]
+    MUL r3, r1, r12
+#ADD             %125	%122	%124		
+    ADD r0, r0, r3
+#STORE           	@&dp	%125	%108	
+    MOV32 r12, __Var__2dp
+   ADD r12, r12, r0
+    STR r4, [r12]
+#SAL             %127	%10	2		
+   LSL r0, r9, #2
+#MOV             %128	28			
+    MOV r1, #28
+#IMUL            %130	%128	%9		
+    MUL r2, r1, r8
+#ADD             %131	%127	%130		
+    ADD r0, r0, r2
+#IMUL            %132	%128	18		
+    MOV r12, #18
+    MUL r2, r1, r12
+#IMUL            %133	%132	%8		
+    MUL r3, r2, r7
+#ADD             %134	%131	%133		
+    ADD r0, r0, r3
+#IMUL            %135	%132	18		
+    MOV r12, #18
+    MUL r1, r2, r12
+#IMUL            %136	%135	%7		
+    LDR r12, [sp,#16]
+    MUL r3, r1, r12
+#ADD             %137	%134	%136		
+    ADD r0, r0, r3
+#IMUL            %138	%135	18		
+    MOV r12, #18
+    MUL r2, r1, r12
+#IMUL            %139	%138	%6		
+    LDR r12, [sp,#12]
+    MUL r3, r2, r12
+#ADD             %140	%137	%139		
+    ADD r0, r0, r3
+#IMUL            %141	%138	18		
+    MOV r12, #18
+    MUL r1, r2, r12
+#IMUL            %142	%141	%5		
+    LDR r12, [sp,#8]
+    MUL r3, r1, r12
+#ADD             %143	%140	%142		
+    ADD r0, r0, r3
+#LOAD            %126	@&dp	%143		
+    MOV32 r12, __Var__2dp
+    ADD r12, r12, r0
+    LDR r0, [r12]
+#RET             	%126			
+    LDR lr, [sp, #52]
+    LDR r11, [sp,#20]
+    LDR r4, [sp,#24]
+    LDR r5, [sp,#28]
+    LDR r6, [sp,#32]
+    LDR r7, [sp,#36]
+    LDR r8, [sp,#40]
+    LDR r9, [sp,#44]
+    LDR r10, [sp,#48]
+    ADD sp, sp, #56
+    MOV PC, LR
+#RET             0				
+    LDR lr, [sp, #52]
+    LDR r11, [sp,#20]
+    LDR r4, [sp,#24]
+    LDR r5, [sp,#28]
+    LDR r6, [sp,#32]
+    LDR r7, [sp,#36]
+    LDR r8, [sp,#40]
+    LDR r9, [sp,#44]
+    LDR r10, [sp,#48]
+    ADD sp, sp, #56
+    MOV PC, LR
+.data
+.global __Var__3cns
+__Var__3cns:
+.space 80
+# 1 FUNCTION_BEGIN  	0			main
+# 2 CALL            %145				getint
+# 3 MOV             %147	0			
+# 4 PHI_MOV         %149	%147			
+# 10 NOOP            				
+# 6 LABEL           				LOOP_148_BEGIN
+# 7 CMP             	%149	@maxn		
+# 8 JGE             				LOOP_148_END
+# 9 LABEL           				LOOP_148_DO
+# 10 NOOP            				
+# 11 PHI_MOV         %153	%151			
+# 17 NOOP            				
+# 13 LABEL           				LOOP_152_BEGIN
+# 14 CMP             	%153	@maxn		
+# 15 JGE             				LOOP_152_END
+# 16 LABEL           				LOOP_152_DO
+# 17 NOOP            				
+# 18 PHI_MOV         %157	%155			
+# 24 NOOP            				
+# 20 LABEL           				LOOP_156_BEGIN
+# 21 CMP             	%157	@maxn		
+# 22 JGE             				LOOP_156_END
+# 23 LABEL           				LOOP_156_DO
+# 24 NOOP            				
+# 25 PHI_MOV         %161	%159			
+# 31 NOOP            				
+# 27 LABEL           				LOOP_160_BEGIN
+# 28 CMP             	%161	@maxn		
+# 29 JGE             				LOOP_160_END
+# 30 LABEL           				LOOP_160_DO
+# 31 NOOP            				
+# 32 PHI_MOV         %165	%163			
+# 38 NOOP            				
+# 34 LABEL           				LOOP_164_BEGIN
+# 35 CMP             	%165	@maxn		
+# 36 JGE             				LOOP_164_END
+# 37 LABEL           				LOOP_164_DO
+# 38 NOOP            				
+# 39 PHI_MOV         %169	%167			
+# 55 NOOP            				
+# 57 NOOP            				
+# 58 NOOP            				
+# 60 NOOP            				
+# 61 NOOP            				
+# 63 NOOP            				
+# 64 NOOP            				
+# 66 NOOP            				
+# 67 NOOP            				
+# 69 NOOP            				
+# 70 NOOP            				
+# 51 LABEL           				LOOP_168_BEGIN
+# 52 CMP             	%169	7		
+# 53 JGE             				LOOP_168_END
+# 54 LABEL           				LOOP_168_DO
+# 55 NOOP            				
+# 56 SAL             %171	%169	2		
+# 57 NOOP            				
+# 58 NOOP            				
+# 59 ADD             %175	%171			
+# 60 NOOP            				
+# 61 NOOP            				
+# 62 ADD             %178	%175			
+# 63 NOOP            				
+# 64 NOOP            				
+# 65 ADD             %181	%178			
+# 66 NOOP            				
+# 67 NOOP            				
+# 68 ADD             %184	%181			
+# 69 NOOP            				
+# 70 NOOP            				
+# 71 ADD             %187	%184			
+# 72 STORE           	@&dp	%187		
+# 73 ADD             %188	%169	1		
+# 74 NOOP            				
+# 75 LABEL           				LOOP_168_CONTINUE
+# 76 PHI_MOV         %169	%188			
+# 77 JMP             				LOOP_168_BEGIN
+# 78 NOOP            	%169			
+# 79 NOOP            	%169			
+# 80 NOOP            	@&dp			
+# 81 NOOP            	%169			
+# 82 LABEL           				LOOP_168_END
+# 83 ADD             %189	%165	1		
+# 84 NOOP            				
+# 85 LABEL           				LOOP_164_CONTINUE
+# 86 PHI_MOV         %165	%189			
+# 87 JMP             				LOOP_164_BEGIN
+# 88 NOOP            	%165			
+# 89 NOOP            	@maxn			
+# 90 NOOP            	%167			
+# 91 NOOP            	@&dp			
+# 92 NOOP            	@&dp			
+# 93 NOOP            	%165			
+# 94 LABEL           				LOOP_164_END
+# 95 ADD             %190	%161	1		
+# 96 NOOP            				
+# 97 LABEL           				LOOP_160_CONTINUE
+# 98 PHI_MOV         %161	%190			
+# 99 JMP             				LOOP_160_BEGIN
+# 100 NOOP            	%161			
+# 101 NOOP            	@maxn			
+# 102 NOOP            	%163			
+# 103 NOOP            	@maxn			
+# 104 NOOP            	%167			
+# 105 NOOP            	@&dp			
+# 106 NOOP            	@&dp			
+# 107 NOOP            	@maxn			
+# 108 NOOP            	%167			
+# 109 NOOP            	@&dp			
+# 110 NOOP            	@&dp			
+# 111 NOOP            	%161			
+# 112 LABEL           				LOOP_160_END
+# 113 ADD             %191	%157	1		
+# 114 NOOP            				
+# 115 LABEL           				LOOP_156_CONTINUE
+# 116 PHI_MOV         %157	%191			
+# 117 JMP             				LOOP_156_BEGIN
+# 118 NOOP            	%157			
+# 119 NOOP            	@maxn			
+# 120 NOOP            	%159			
+# 121 NOOP            	@maxn			
+# 122 NOOP            	%163			
+# 123 NOOP            	@maxn			
+# 124 NOOP            	%167			
+# 125 NOOP            	@&dp			
+# 126 NOOP            	@&dp			
+# 127 NOOP            	@maxn			
+# 128 NOOP            	%167			
+# 129 NOOP            	@&dp			
+# 130 NOOP            	@&dp			
+# 131 NOOP            	@maxn			
+# 132 NOOP            	%163			
+# 133 NOOP            	@maxn			
+# 134 NOOP            	%167			
+# 135 NOOP            	@&dp			
+# 136 NOOP            	@&dp			
+# 137 NOOP            	@maxn			
+# 138 NOOP            	%167			
+# 139 NOOP            	@&dp			
+# 140 NOOP            	@&dp			
+# 141 NOOP            	%157			
+# 142 LABEL           				LOOP_156_END
+# 143 ADD             %192	%153	1		
+# 144 NOOP            				
+# 145 LABEL           				LOOP_152_CONTINUE
+# 146 PHI_MOV         %153	%192			
+# 147 JMP             				LOOP_152_BEGIN
+# 148 NOOP            	%153			
+# 149 NOOP            	@maxn			
+# 150 NOOP            	%155			
+# 151 NOOP            	@maxn			
+# 152 NOOP            	%159			
+# 153 NOOP            	@maxn			
+# 154 NOOP            	%163			
+# 155 NOOP            	@maxn			
+# 156 NOOP            	%167			
+# 157 NOOP            	@&dp			
+# 158 NOOP            	@&dp			
+# 159 NOOP            	@maxn			
+# 160 NOOP            	%167			
+# 161 NOOP            	@&dp			
+# 162 NOOP            	@&dp			
+# 163 NOOP            	@maxn			
+# 164 NOOP            	%163			
+# 165 NOOP            	@maxn			
+# 166 NOOP            	%167			
+# 167 NOOP            	@&dp			
+# 168 NOOP            	@&dp			
+# 169 NOOP            	@maxn			
+# 170 NOOP            	%167			
+# 171 NOOP            	@&dp			
+# 172 NOOP            	@&dp			
+# 173 NOOP            	@maxn			
+# 174 NOOP            	%159			
+# 175 NOOP            	@maxn			
+# 176 NOOP            	%163			
+# 177 NOOP            	@maxn			
+# 178 NOOP            	%167			
+# 179 NOOP            	@&dp			
+# 180 NOOP            	@&dp			
+# 181 NOOP            	@maxn			
+# 182 NOOP            	%167			
+# 183 NOOP            	@&dp			
+# 184 NOOP            	@&dp			
+# 185 NOOP            	@maxn			
+# 186 NOOP            	%163			
+# 187 NOOP            	@maxn			
+# 188 NOOP            	%167			
+# 189 NOOP            	@&dp			
+# 190 NOOP            	@&dp			
+# 191 NOOP            	@maxn			
+# 192 NOOP            	%167			
+# 193 NOOP            	@&dp			
+# 194 NOOP            	@&dp			
+# 195 NOOP            	%153			
+# 196 LABEL           				LOOP_152_END
+# 197 ADD             %193	%149	1		
+# 198 NOOP            				
+# 199 LABEL           				LOOP_148_CONTINUE
+# 200 PHI_MOV         %149	%193			
+# 201 JMP             				LOOP_148_BEGIN
+# 202 NOOP            	%149			
+# 203 NOOP            	@maxn			
+# 204 NOOP            	%151			
+# 205 NOOP            	@maxn			
+# 206 NOOP            	%155			
+# 207 NOOP            	@maxn			
+# 208 NOOP            	%159			
+# 209 NOOP            	@maxn			
+# 210 NOOP            	%163			
+# 211 NOOP            	@maxn			
+# 212 NOOP            	%167			
+# 213 NOOP            	@&dp			
+# 214 NOOP            	@&dp			
+# 215 NOOP            	@maxn			
+# 216 NOOP            	%167			
+# 217 NOOP            	@&dp			
+# 218 NOOP            	@&dp			
+# 219 NOOP            	@maxn			
+# 220 NOOP            	%163			
+# 221 NOOP            	@maxn			
+# 222 NOOP            	%167			
+# 223 NOOP            	@&dp			
+# 224 NOOP            	@&dp			
+# 225 NOOP            	@maxn			
+# 226 NOOP            	%167			
+# 227 NOOP            	@&dp			
+# 228 NOOP            	@&dp			
+# 229 NOOP            	@maxn			
+# 230 NOOP            	%159			
+# 231 NOOP            	@maxn			
+# 232 NOOP            	%163			
+# 233 NOOP            	@maxn			
+# 234 NOOP            	%167			
+# 235 NOOP            	@&dp			
+# 236 NOOP            	@&dp			
+# 237 NOOP            	@maxn			
+# 238 NOOP            	%167			
+# 239 NOOP            	@&dp			
+# 240 NOOP            	@&dp			
+# 241 NOOP            	@maxn			
+# 242 NOOP            	%163			
+# 243 NOOP            	@maxn			
+# 244 NOOP            	%167			
+# 245 NOOP            	@&dp			
+# 246 NOOP            	@&dp			
+# 247 NOOP            	@maxn			
+# 248 NOOP            	%167			
+# 249 NOOP            	@&dp			
+# 250 NOOP            	@&dp			
+# 251 NOOP            	@maxn			
+# 252 NOOP            	%155			
+# 253 NOOP            	@maxn			
+# 254 NOOP            	%159			
+# 255 NOOP            	@maxn			
+# 256 NOOP            	%163			
+# 257 NOOP            	@maxn			
+# 258 NOOP            	%167			
+# 259 NOOP            	@&dp			
+# 260 NOOP            	@&dp			
+# 261 NOOP            	@maxn			
+# 262 NOOP            	%167			
+# 263 NOOP            	@&dp			
+# 264 NOOP            	@&dp			
+# 265 NOOP            	@maxn			
+# 266 NOOP            	%163			
+# 267 NOOP            	@maxn			
+# 268 NOOP            	%167			
+# 269 NOOP            	@&dp			
+# 270 NOOP            	@&dp			
+# 271 NOOP            	@maxn			
+# 272 NOOP            	%167			
+# 273 NOOP            	@&dp			
+# 274 NOOP            	@&dp			
+# 275 NOOP            	@maxn			
+# 276 NOOP            	%159			
+# 277 NOOP            	@maxn			
+# 278 NOOP            	%163			
+# 279 NOOP            	@maxn			
+# 280 NOOP            	%167			
+# 281 NOOP            	@&dp			
+# 282 NOOP            	@&dp			
+# 283 NOOP            	@maxn			
+# 284 NOOP            	%167			
+# 285 NOOP            	@&dp			
+# 286 NOOP            	@&dp			
+# 287 NOOP            	@maxn			
+# 288 NOOP            	%163			
+# 289 NOOP            	@maxn			
+# 290 NOOP            	%167			
+# 291 NOOP            	@&dp			
+# 292 NOOP            	@&dp			
+# 293 NOOP            	@maxn			
+# 294 NOOP            	%167			
+# 295 NOOP            	@&dp			
+# 296 NOOP            	@&dp			
+# 297 NOOP            	%149			
+# 298 LABEL           				LOOP_148_END
+# 299 MOV             %194	0			
+# 300 PHI_MOV         %196	%194			
+# 301 LABEL           				LOOP_195_BEGIN
+# 302 CMP             	%196	%145		
+# 303 JGE             				LOOP_195_END
+# 304 LABEL           				LOOP_195_DO
+# 305 CALL            %197				getint
+# 306 SAL             %198	%196	2		
+# 307 STORE           	@&list	%198	%197	
+# 308 SAL             %205	%196	2		
+# 309 LOAD            %204	@&list	%205		
+# 310 SAL             %202	%204	2		
+# 311 LOAD            %201	@&cns	%202		
+# 312 ADD             %200	%201	1		
+# 313 SAL             %210	%196	2		
+# 314 LOAD            %209	@&list	%210		
+# 315 SAL             %207	%209	2		
+# 316 STORE           	@&cns	%207	%200	
+# 317 ADD             %212	%196	1		
+# 318 NOOP            				
+# 319 LABEL           				LOOP_195_CONTINUE
+# 320 PHI_MOV         %196	%212			
+# 321 JMP             				LOOP_195_BEGIN
+# 322 NOOP            	%196			
+# 323 NOOP            	%145			
+# 324 NOOP            	%196			
+# 325 NOOP            	@&list			
+# 326 NOOP            	%196			
+# 327 NOOP            	@&list			
+# 328 NOOP            	@&cns			
+# 329 NOOP            	%196			
+# 330 NOOP            	@&list			
+# 331 NOOP            	@&cns			
+# 332 NOOP            	%196			
+# 333 LABEL           				LOOP_195_END
+# 334 SAL             %216	1	2		
+# 335 LOAD            %215	@&cns	%216		
+# 336 SAL             %219	2	2		
+# 337 LOAD            %218	@&cns	%219		
+# 338 SAL             %222	3	2		
+# 339 LOAD            %221	@&cns	%222		
+# 340 SAL             %225	4	2		
+# 341 LOAD            %224	@&cns	%225		
+# 342 SAL             %228	5	2		
+# 343 LOAD            %227	@&cns	%228		
+# 344 SET_ARG         5	0			
+# 345 SET_ARG         4	%227			
+# 346 SET_ARG         3	%224			
+# 347 SET_ARG         2	%221			
+# 348 SET_ARG         1	%218			
+# 349 SET_ARG         0	%215			
+# 350 CALL            %214				dfs
+# 351 SET_ARG         0	%214			
+# 352 CALL            %230				putint
+# 353 RET             	%214			
+# 354 RET             0				
+# [log]2 expire $arg:0:2 r0
+# [log]2 expire $arg:1:2 r1
+# [log]2 expire $arg:2:2 r2
+# [log]3 expire $arg:3:2 r3
+# [log]4 expire %147 r0
+# [log]59 expire %171 r7
+# [log]62 expire %175 r7
+# [log]65 expire %178 r7
+# [log]68 expire %181 r7
+# [log]71 expire %184 r7
+# [log]73 expire %187 r7
+# [log]83 expire %169 r6
+# [log]83 expire %188 r7
+# [log]95 expire %165 r5
+# [log]95 expire %189 r6
+# [log]113 expire %161 r3
+# [log]113 expire %190 r5
+# [log]143 expire %157 r2
+# [log]143 expire %191 r3
+# [log]197 expire %153 r1
+# [log]197 expire %192 r2
+# [log]299 expire %149 r0
+# [log]299 expire %193 r1
+# [log]300 expire %194 r0
+# [log]305 expire $arg:0:305 r0
+# [log]305 expire $arg:1:305 r1
+# [log]305 expire $arg:2:305 r2
+# [log]306 expire $arg:3:305 r3
+# [log]308 expire %198 r0
+# [log]308 expire %197 r6
+# [log]309 expire %205 r0
+# [log]310 expire %204 r0
+# [log]311 expire %202 r0
+# [log]312 expire %201 r0
+# [log]314 expire %210 r1
+# [log]315 expire %209 r1
+# [log]317 expire %200 r0
+# [log]317 expire %207 r1
+# [log]334 expire %212 r0
+# [log]334 expire %145 r4
+# [log]334 expire %196 r5
+# [log]335 expire %216 r0
+# [log]337 expire %219 r0
+# [log]339 expire %222 r0
+# [log]341 expire %225 r0
+# [log]343 expire %228 r0
+# [log]346 expire %227 r0
+# [log]346 expire %224 r7
+# [log]347 expire $arg:3:0 r3
+# [log]347 expire %221 r6
+# [log]348 expire $arg:2:0 r2
+# [log]348 expire %218 r5
+# [log]349 expire $arg:1:0 r1
+# [log]349 expire %215 r4
+# [log]350 expire $arg:0:0 r0
+# [log]350 expire $arg:0:350 r0
+# [log]350 expire $arg:1:350 r1
+# [log]350 expire $arg:2:350 r2
+# [log]351 expire $arg:3:350 r3
+# [log]352 expire %230 r5
+# [log]352 expire $arg:0:352 r0
+# [log]352 expire $arg:1:352 r1
+# [log]352 expire $arg:2:352 r2
+#FUNCTION_BEGIN  	0			main
+.text
+.global main
+.type main, %function
+main:
+    SUB sp, sp, #32
+    STR lr, [sp, #28]
+    STR r11, [sp, #8]
+    STR r4, [sp, #12]
+    STR r5, [sp, #16]
+    STR r6, [sp, #20]
+    STR r7, [sp, #24]
+#CALL            %145				getint
+   BL getint
+    MOV r4, r0
+#MOV             %147	0			
+    MOV r0, #0
+#PHI_MOV         %149	%147			
+#NOOP            				
+#LABEL           				LOOP_148_BEGIN
+LOOP_148_BEGIN:
+#CMP             	%149	@maxn		
+    MOV32 r11,__Var__4maxn
+    LDR r11, [r11, #0]
+    CMP r0, r11
+#JGE             				LOOP_148_END
+   BGE LOOP_148_END
+#LABEL           				LOOP_148_DO
+LOOP_148_DO:
+#NOOP            				
+#PHI_MOV         %153	%151			
+    LDR r12, [sp,#8]
+   MOV r1, r12
+#NOOP            				
+#LABEL           				LOOP_152_BEGIN
+LOOP_152_BEGIN:
+#CMP             	%153	@maxn		
+    MOV32 r11,__Var__4maxn
+    LDR r11, [r11, #0]
+    CMP r1, r11
+#JGE             				LOOP_152_END
+   BGE LOOP_152_END
+#LABEL           				LOOP_152_DO
+LOOP_152_DO:
+#NOOP            				
+#PHI_MOV         %157	%155			
+    LDR r12, [sp,#8]
+   MOV r2, r12
+#NOOP            				
+#LABEL           				LOOP_156_BEGIN
+LOOP_156_BEGIN:
+#CMP             	%157	@maxn		
+    MOV32 r11,__Var__4maxn
+    LDR r11, [r11, #0]
+    CMP r2, r11
+#JGE             				LOOP_156_END
+   BGE LOOP_156_END
+#LABEL           				LOOP_156_DO
+LOOP_156_DO:
+#NOOP            				
+#PHI_MOV         %161	%159			
+    LDR r12, [sp,#8]
+   MOV r3, r12
+#NOOP            				
+#LABEL           				LOOP_160_BEGIN
+LOOP_160_BEGIN:
+#CMP             	%161	@maxn		
+    MOV32 r11,__Var__4maxn
+    LDR r11, [r11, #0]
+    CMP r3, r11
+#JGE             				LOOP_160_END
+   BGE LOOP_160_END
+#LABEL           				LOOP_160_DO
+LOOP_160_DO:
+#NOOP            				
+#PHI_MOV         %165	%163			
+    LDR r12, [sp,#8]
+   MOV r5, r12
+#NOOP            				
+#LABEL           				LOOP_164_BEGIN
+LOOP_164_BEGIN:
+#CMP             	%165	@maxn		
+    MOV32 r11,__Var__4maxn
+    LDR r11, [r11, #0]
+    CMP r5, r11
+#JGE             				LOOP_164_END
+   BGE LOOP_164_END
+#LABEL           				LOOP_164_DO
+LOOP_164_DO:
+#NOOP            				
+#PHI_MOV         %169	%167			
+    LDR r12, [sp,#8]
+   MOV r6, r12
+#NOOP            				
+#NOOP            				
+#NOOP            				
+#NOOP            				
+#NOOP            				
+#NOOP            				
+#NOOP            				
+#NOOP            				
+#NOOP            				
+#NOOP            				
+#NOOP            				
+#LABEL           				LOOP_168_BEGIN
+LOOP_168_BEGIN:
+#CMP             	%169	7		
+    MOV r11, #7
+    CMP r6, r11
+#JGE             				LOOP_168_END
+   BGE LOOP_168_END
+#LABEL           				LOOP_168_DO
+LOOP_168_DO:
+#NOOP            				
+#SAL             %171	%169	2		
+   LSL r7, r6, #2
+#NOOP            				
+#NOOP            				
+#ADD             %175	%171			
+    ADD r7, r7, r12
+#NOOP            				
+#NOOP            				
+#ADD             %178	%175			
+    ADD r7, r7, r12
+#NOOP            				
+#NOOP            				
+#ADD             %181	%178			
+    ADD r7, r7, r12
+#NOOP            				
+#NOOP            				
+#ADD             %184	%181			
+    ADD r7, r7, r12
+#NOOP            				
+#NOOP            				
+#ADD             %187	%184			
+    ADD r7, r7, r12
+#STORE           	@&dp	%187		
+    MOV32 r12, __Var__2dp
+   ADD r12, r12, r7
+    STR r11, [r12]
+#ADD             %188	%169	1		
+    ADD r7, r6, #1
+#NOOP            				
+#LABEL           				LOOP_168_CONTINUE
+LOOP_168_CONTINUE:
+#PHI_MOV         %169	%188			
+   MOV r6, r7
+#JMP             				LOOP_168_BEGIN
+   B LOOP_168_BEGIN
+#NOOP            	%169			
+#NOOP            	%169			
+#NOOP            	@&dp			
+#NOOP            	%169			
+#LABEL           				LOOP_168_END
+LOOP_168_END:
+#ADD             %189	%165	1		
+    ADD r6, r5, #1
+#NOOP            				
+#LABEL           				LOOP_164_CONTINUE
+LOOP_164_CONTINUE:
+#PHI_MOV         %165	%189			
+   MOV r5, r6
+#JMP             				LOOP_164_BEGIN
+   B LOOP_164_BEGIN
+#NOOP            	%165			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	%165			
+#LABEL           				LOOP_164_END
+LOOP_164_END:
+#ADD             %190	%161	1		
+    ADD r5, r3, #1
+#NOOP            				
+#LABEL           				LOOP_160_CONTINUE
+LOOP_160_CONTINUE:
+#PHI_MOV         %161	%190			
+   MOV r3, r5
+#JMP             				LOOP_160_BEGIN
+   B LOOP_160_BEGIN
+#NOOP            	%161			
+#NOOP            	@maxn			
+#NOOP            	%163			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	%161			
+#LABEL           				LOOP_160_END
+LOOP_160_END:
+#ADD             %191	%157	1		
+    ADD r3, r2, #1
+#NOOP            				
+#LABEL           				LOOP_156_CONTINUE
+LOOP_156_CONTINUE:
+#PHI_MOV         %157	%191			
+   MOV r2, r3
+#JMP             				LOOP_156_BEGIN
+   B LOOP_156_BEGIN
+#NOOP            	%157			
+#NOOP            	@maxn			
+#NOOP            	%159			
+#NOOP            	@maxn			
+#NOOP            	%163			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	@maxn			
+#NOOP            	%163			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	%157			
+#LABEL           				LOOP_156_END
+LOOP_156_END:
+#ADD             %192	%153	1		
+    ADD r2, r1, #1
+#NOOP            				
+#LABEL           				LOOP_152_CONTINUE
+LOOP_152_CONTINUE:
+#PHI_MOV         %153	%192			
+   MOV r1, r2
+#JMP             				LOOP_152_BEGIN
+   B LOOP_152_BEGIN
+#NOOP            	%153			
+#NOOP            	@maxn			
+#NOOP            	%155			
+#NOOP            	@maxn			
+#NOOP            	%159			
+#NOOP            	@maxn			
+#NOOP            	%163			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	@maxn			
+#NOOP            	%163			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	@maxn			
+#NOOP            	%159			
+#NOOP            	@maxn			
+#NOOP            	%163			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	@maxn			
+#NOOP            	%163			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	%153			
+#LABEL           				LOOP_152_END
+LOOP_152_END:
+#ADD             %193	%149	1		
+    ADD r1, r0, #1
+#NOOP            				
+#LABEL           				LOOP_148_CONTINUE
+LOOP_148_CONTINUE:
+#PHI_MOV         %149	%193			
+   MOV r0, r1
+#JMP             				LOOP_148_BEGIN
+   B LOOP_148_BEGIN
+#NOOP            	%149			
+#NOOP            	@maxn			
+#NOOP            	%151			
+#NOOP            	@maxn			
+#NOOP            	%155			
+#NOOP            	@maxn			
+#NOOP            	%159			
+#NOOP            	@maxn			
+#NOOP            	%163			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	@maxn			
+#NOOP            	%163			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	@maxn			
+#NOOP            	%159			
+#NOOP            	@maxn			
+#NOOP            	%163			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	@maxn			
+#NOOP            	%163			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	@maxn			
+#NOOP            	%155			
+#NOOP            	@maxn			
+#NOOP            	%159			
+#NOOP            	@maxn			
+#NOOP            	%163			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	@maxn			
+#NOOP            	%163			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	@maxn			
+#NOOP            	%159			
+#NOOP            	@maxn			
+#NOOP            	%163			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	@maxn			
+#NOOP            	%163			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	@maxn			
+#NOOP            	%167			
+#NOOP            	@&dp			
+#NOOP            	@&dp			
+#NOOP            	%149			
+#LABEL           				LOOP_148_END
+LOOP_148_END:
+#MOV             %194	0			
+    MOV r0, #0
+#PHI_MOV         %196	%194			
+   MOV r5, r0
+#LABEL           				LOOP_195_BEGIN
+LOOP_195_BEGIN:
+#CMP             	%196	%145		
+    CMP r5, r4
+#JGE             				LOOP_195_END
+   BGE LOOP_195_END
+#LABEL           				LOOP_195_DO
+LOOP_195_DO:
+#CALL            %197				getint
+   BL getint
+    MOV r6, r0
+#SAL             %198	%196	2		
+   LSL r0, r5, #2
+#STORE           	@&list	%198	%197	
+    MOV32 r12, __Var__4list
+   ADD r12, r12, r0
+    STR r6, [r12]
+#SAL             %205	%196	2		
+   LSL r0, r5, #2
+#LOAD            %204	@&list	%205		
+    MOV32 r12, __Var__4list
+    ADD r12, r12, r0
+    LDR r0, [r12]
+#SAL             %202	%204	2		
+   LSL r0, r0, #2
+#LOAD            %201	@&cns	%202		
+    MOV32 r12, __Var__3cns
+    ADD r12, r12, r0
+    LDR r0, [r12]
+#ADD             %200	%201	1		
+    ADD r0, r0, #1
+#SAL             %210	%196	2		
+   LSL r1, r5, #2
+#LOAD            %209	@&list	%210		
+    MOV32 r12, __Var__4list
+    ADD r12, r12, r1
+    LDR r1, [r12]
+#SAL             %207	%209	2		
+   LSL r1, r1, #2
+#STORE           	@&cns	%207	%200	
+    MOV32 r12, __Var__3cns
+   ADD r12, r12, r1
+    STR r0, [r12]
+#ADD             %212	%196	1		
+    ADD r0, r5, #1
+#NOOP            				
+#LABEL           				LOOP_195_CONTINUE
+LOOP_195_CONTINUE:
+#PHI_MOV         %196	%212			
+   MOV r5, r0
+#JMP             				LOOP_195_BEGIN
+   B LOOP_195_BEGIN
+#NOOP            	%196			
+#NOOP            	%145			
+#NOOP            	%196			
+#NOOP            	@&list			
+#NOOP            	%196			
+#NOOP            	@&list			
+#NOOP            	@&cns			
+#NOOP            	%196			
+#NOOP            	@&list			
+#NOOP            	@&cns			
+#NOOP            	%196			
+#LABEL           				LOOP_195_END
+LOOP_195_END:
+#SAL             %216	1	2		
+    MOV r11, #1
+   LSL r0, r11, #2
+#LOAD            %215	@&cns	%216		
+    MOV32 r12, __Var__3cns
+    ADD r12, r12, r0
+    LDR r4, [r12]
+#SAL             %219	2	2		
+    MOV r11, #2
+   LSL r0, r11, #2
+#LOAD            %218	@&cns	%219		
+    MOV32 r12, __Var__3cns
+    ADD r12, r12, r0
+    LDR r5, [r12]
+#SAL             %222	3	2		
+    MOV r11, #3
+   LSL r0, r11, #2
+#LOAD            %221	@&cns	%222		
+    MOV32 r12, __Var__3cns
+    ADD r12, r12, r0
+    LDR r6, [r12]
+#SAL             %225	4	2		
+    MOV r11, #4
+   LSL r0, r11, #2
+#LOAD            %224	@&cns	%225		
+    MOV32 r12, __Var__3cns
+    ADD r12, r12, r0
+    LDR r7, [r12]
+#SAL             %228	5	2		
+    MOV r11, #5
+   LSL r0, r11, #2
+#LOAD            %227	@&cns	%228		
+    MOV32 r12, __Var__3cns
+    ADD r12, r12, r0
+    LDR r0, [r12]
+#SET_ARG         5	0			
+    MOV r12, #0
+    STR r12, [sp, #4]
+#SET_ARG         4	%227			
+    MOV r12, r0
+    STR r12, [sp, #0]
+#SET_ARG         3	%224			
+    MOV r3, r7
+#SET_ARG         2	%221			
+    MOV r2, r6
+#SET_ARG         1	%218			
+    MOV r1, r5
+#SET_ARG         0	%215			
+    MOV r0, r4
+#CALL            %214				dfs
+   BL dfs
+    MOV r4, r0
+#SET_ARG         0	%214			
+    MOV r0, r4
+#CALL            %230				putint
+   BL putint
+    MOV r5, r0
+#RET             	%214			
+    MOV r0, r4
+    LDR lr, [sp, #28]
+    LDR r11, [sp,#8]
+    LDR r4, [sp,#12]
+    LDR r5, [sp,#16]
+    LDR r6, [sp,#20]
+    LDR r7, [sp,#24]
+    ADD sp, sp, #32
+    MOV PC, LR
+#RET             0				
+    LDR lr, [sp, #28]
+    LDR r11, [sp,#8]
+    LDR r4, [sp,#12]
+    LDR r5, [sp,#16]
+    LDR r6, [sp,#20]
+    LDR r7, [sp,#24]
+    ADD sp, sp, #32
+    MOV PC, LR

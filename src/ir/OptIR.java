@@ -241,4 +241,93 @@ public class OptIR {
         }
         return ret;
     }
+
+    public static boolean loop_invariant_code_motion(List<IR> ir_before,List<IR> ir_cond,
+                                                     List<IR> ir_jmp, List<IR> ir_do,
+                                                     List<IR> ir_continue){
+
+        HashSet<String> never_write_var=new HashSet<>();
+        boolean do_optimize=false;
+        Vector<List<IR>> temp=new Vector<>();
+        temp.add(ir_cond);
+        temp.add(ir_jmp);
+        temp.add(ir_do);
+        temp.add(ir_continue);
+        for(List<IR> irs:temp){
+            for(IR ir:irs){
+                if(ir.op_code==IR.OpCode.LOAD || ir.op_code==IR.OpCode.CALL){
+                    continue;
+                }
+
+                if(ir.op1.type==OpName.Type.Var){
+                    never_write_var.add(ir.op1.name);
+                }
+
+                if(ir.op2.type==OpName.Type.Var){
+                    never_write_var.add(ir.op2.name);
+                }
+
+                if(ir.op3.type==OpName.Type.Var){
+                    never_write_var.add(ir.op3.name);
+                }
+            }
+        }
+        for(List<IR> irs:temp){
+            for(IR ir:irs) {
+                if(ir.dest.type==OpName.Type.Var){
+                    never_write_var.remove(ir.dest.name);
+                }
+            }
+        }
+
+        for(List<IR> irs:temp) {
+            for (IR ir : irs) {
+                boolean can_optimize=true;
+                if(ir.op_code==IR.OpCode.LOAD || ir.op_code==IR.OpCode.CALL ||
+                ir.op_code==IR.OpCode.PHI_MOV ||
+                ir.op_code==IR.OpCode.LABEL || ir.op_code==IR.OpCode.CMP ||
+                ir.op_code==IR.OpCode.MOVEQ || ir.op_code==IR.OpCode.MOVNE ||
+                ir.op_code==IR.OpCode.MOVGT || ir.op_code==IR.OpCode.MOVGE ||
+                ir.op_code==IR.OpCode.MOVLT || ir.op_code==IR.OpCode.MOVLE ||
+                ir.op_code==IR.OpCode.NOOP){
+                    can_optimize=false;
+                }
+
+                if(ir.op1.type==OpName.Type.Var &&
+                    !never_write_var.contains(ir.op1.name)){
+                    can_optimize=false;
+                }
+
+                if(ir.op2.type==OpName.Type.Var &&
+                        !never_write_var.contains(ir.op2.name)){
+                    can_optimize=false;
+                }
+
+                if(ir.op3.type==OpName.Type.Var &&
+                        !never_write_var.contains(ir.op3.name)){
+                    can_optimize=false;
+                }
+
+                if(ir.dest.type!=OpName.Type.Var){
+                    can_optimize=false;
+                }
+
+                if(can_optimize){
+                    ir_before.add(ir);
+                    ir.op_code=IR.OpCode.NOOP;
+                    ir.op1.type=OpName.Type.Null;
+                    ir.op2.type=OpName.Type.Null;
+                    ir.op3.type=OpName.Type.Null;
+                    ir.dest.type=OpName.Type.Null;
+                    do_optimize=true;
+                }
+            }
+        }
+        return do_optimize;
+    }
+
+    public static void optimize_loop_ir(List<IR> ir_before,List<IR> ir_cond,List<IR> ir_jmp,
+                                        List<IR> ir_do,List<IR> ir_continue){
+        while(loop_invariant_code_motion(ir_before,ir_cond,ir_jmp,ir_do,ir_continue));
+    }
 }
