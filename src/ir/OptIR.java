@@ -11,12 +11,114 @@ public class OptIR {
         Set<String> constexpr_function=find_constexpr_function(ir);
         for(int i=0;i<2;i++){
             local_common_subexpression_elimination(ir);
+            local_common_constexpr_function(ir,constexpr_function);
+
         }
+    }
+
+    public static void local_common_constexpr_function(List<IR> irs,Set<String> constexpr_function){
+        HashMap<String,Vector<TreeMap<HashMap<Integer,OpName>,String>>> calls=null;
+
+        for(int i=0;i<irs.size();i++){
+            IR temp1=irs.get(i);
+            if(temp1.op_code==IR.OpCode.LABEL ||
+                temp1.op_code==IR.OpCode.FUNCTION_BEGIN){
+                calls=null;
+            }
+
+            if(temp1.op_code==IR.OpCode.CALL){
+                HashMap<Integer,OpName> args=null;
+                String function_name=temp1.label;
+                if(constexpr_function.contains(function_name)){
+                    continue;
+                }
+                int j=i;
+                IR temp2=irs.get(j);
+                while(temp2.op_code==IR.OpCode.SET_ARG){
+                    args.put(temp2.dest.value,temp2.op1);
+                    j--;
+                    temp2=irs.get(j);
+                }
+                boolean can_optimize=true;
+                if(args!=null) {
+                    for (Integer key : args.keySet()) {
+                        if (args.get(key).type == OpName.Type.Var) {
+                            if (!args.get(key).name.startsWith("%")) {
+                                can_optimize = false;
+                                break;
+                            }
+                            if (args.get(key).name.substring(0, 2).equals("%&")) {
+                                can_optimize = false;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if(!can_optimize)
+                    continue;
+                boolean has_same_call=false;
+                String prev_call_result=null;
+                if(calls!=null) {
+                    for (TreeMap<HashMap<Integer, OpName>, String> prev_call : calls.get(function_name)) {
+                        boolean same = true;
+                        HashMap<Integer, OpName> prev_call_args = prev_call.firstKey();
+                        prev_call_result = prev_call.get(prev_call_args);
+                        for (Integer key : args.keySet()) {
+                            if (prev_call_args.get(key) == null) {
+                                same = false;
+                                break;
+                            }
+                            if (!eq(args.get(key), prev_call_args.get(key))) {
+                                same = false;
+                                break;
+                            }
+                        }
+                        if (same) {
+                            has_same_call = true;
+                            break;
+                        }
+                    }
+                }
+                if(!has_same_call){
+                    if(temp1.dest.type==OpName.Type.Var){
+                        TreeMap<HashMap<Integer,OpName>,String> tree1=new TreeMap<>();
+                        if(args!=null)
+                            tree1.put(args, temp1.dest.name);
+                        if(calls!=null)
+                            calls.get(function_name).add(tree1);
+                    }
+                }
+                else{
+                    if(temp1.dest.type==OpName.Type.Var){
+                        temp1.op_code=IR.OpCode.MOV;
+                        temp1.op1.type=OpName.Type.Var;
+                        temp1.op1.name=prev_call_result;
+                        temp1.op2.type=OpName.Type.Null;
+                        temp1.op2.name=null;
+                        temp1.label=null;
+                        irs.set(i,temp1);
+                    }
+                }
+            }
+        }
+
+    }
+
+    public static boolean eq(OpName a, OpName b){
+        if(a.type!=b.type)
+            return false;
+        if(a.type==OpName.Type.Imm){
+            return a.value==b.value;
+        }
+        if(a.type==OpName.Type.Var){
+            return a.name.equals(b.name);
+        }
+        return true;
     }
 
     public static void local_common_subexpression_elimination(List<IR> ir){
         TreeMap<IR,Integer> maybe_opt=new TreeMap<>();
-        TreeSet<String> mutability_var = new TreeSet<>();
+        Set<String> mutability_var = new TreeSet<>();
 
         ListIterator<IR> ir_begin= ir.listIterator();
         ContextAsm ctx=new ContextAsm(ir,ir_begin);
@@ -43,10 +145,10 @@ public class OptIR {
             it.op_code!=IR.OpCode.MALLOC_IN_STACK &&
             it.op_code!=IR.OpCode.LOAD && it.op_code!=IR.OpCode.MOV &&
             it.op_code!=IR.OpCode.PHI_MOV){
-                if(maybe_opt.containsKey(it) && !it.equals(maybe_opt.lastKey())){
+                if(maybe_opt.containsKey(it)&&maybe_opt.containsValue(0)){
                     IR opt_ir = it;
                     Integer time=maybe_opt.get(it);
-                    if(mutability_var.last().equals(opt_ir.dest.name)){
+                    if(mutability_var.contains(opt_ir.dest.name)){
                         //相距太远
                         if(ctx.ir_to_time.get(it) - time <100){
                             IR temp1=new IR(IR.OpCode.MOV,it.dest,opt_ir.dest);
