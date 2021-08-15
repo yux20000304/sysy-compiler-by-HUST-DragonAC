@@ -69,13 +69,13 @@ public class OptIR {
             IR ir=irs.get(i);
 
             if(ir.op1.type==OpName.Type.Var){
-                if( !ir.op1.name.startsWith("%") && !ir.op1.name.substring(0,4).equals("$arg")){
+                if( !ir.op1.name.startsWith("%") && !ir.op1.name.substring(0,2).equals("$a")){
                     return false;
                 }
             }
 
             if(ir.op2.type==OpName.Type.Var){
-                if( !ir.op2.name.startsWith("%") && !ir.op2.name.substring(0,4).equals("$arg")){
+                if( !ir.op2.name.startsWith("%") && !ir.op2.name.substring(0,2).equals("$a")){
                     return false;
                 }
             }
