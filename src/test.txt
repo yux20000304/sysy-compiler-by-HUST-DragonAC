@@ -1,5 +1,11 @@
-//test addc
-const int a = 10;
+int a;
+int func(int p){
+	p = p - 1;
+	return p;
+}
 int main(){
-    return a + 5;
+	int b;
+	a = 10;
+	b = func(a);
+	return b;
 }

@@ -81,13 +81,13 @@ public class OptIR {
             }
 
             if(ir.op3.type==OpName.Type.Var){
-                if( !ir.op3.name.startsWith("%") && !ir.op3.name.substring(0,4).equals("$arg")){
+                if( !ir.op3.name.startsWith("%") && !ir.op3.name.substring(0,2).equals("$a")){
                     return false;
                 }
             }
 
             if(ir.dest.type==OpName.Type.Var){
-                if( !ir.dest.name.startsWith("%") && !ir.dest.name.substring(0,4).equals("$arg")){
+                if( !ir.dest.name.startsWith("%") && !ir.dest.name.substring(0,2).equals("$a")){
                     return false;
                 }
             }

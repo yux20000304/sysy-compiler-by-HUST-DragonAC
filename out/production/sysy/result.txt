@@ -1,0 +1,31 @@
+    .macro mov32, reg, val
+        movw \reg, #:lower16:\val
+        movt \reg, #:upper16:\val
+    .endm
+.data
+.global __Var__1a
+__Var__1a:
+.word 10
+# 1 FUNCTION_BEGIN  	0			main
+# 2 ADD             %2	@a	5		
+# 3 RET             	%2			
+# 4 RET             0				
+#FUNCTION_BEGIN  	0			main
+.text
+.global main
+.type main, %function
+main:
+    SUB sp, sp, #4
+    STR r11, [sp, #0]
+#ADD             %2	@a	5		
+    MOV32 r11,__Var__1a
+    LDR r11, [r11, #0]
+    ADD r0, r11, #5
+#RET             	%2			
+    LDR r11, [sp,#0]
+    ADD sp, sp, #4
+    MOV PC, LR
+#RET             0				
+    LDR r11, [sp,#0]
+    ADD sp, sp, #4
+    MOV PC, LR
