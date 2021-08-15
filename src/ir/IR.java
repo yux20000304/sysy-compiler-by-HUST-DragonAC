@@ -1,13 +1,12 @@
 package ir;
 
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
-public class IR {
-   public enum OpCode {
+public class IR implements Comparable {
+
+
+    public enum OpCode {
         MALLOC_IN_STACK,  // dest = offset(new StackArray(size op1))
         MOV,              // dest = op1
         ADD,              // dest = op1 + op2
@@ -63,6 +62,13 @@ public class IR {
     {
 
     }
+
+    public IR(OpCode op_code, OpName dest, OpName op1) {
+        this.dest = dest;
+        this.op1 = op1;
+        this.op_code = op_code;
+    }
+
     public IR(OpCode op_code, OpName dest, OpName op1, OpName op2, OpName op3,
               String label) {
         this.dest = dest;
@@ -298,6 +304,16 @@ public class IR {
         else if(op.type == OpName.Type.Null){
             out.add("\t");
         }
+    }
+
+
+
+    @Override
+    public int compareTo(Object o) {
+        IR ir = (IR) o;
+        if(!this.op_code.equals(ir.op_code))
+            return this.op_code.compareTo(ir.op_code);
+        return 0;
     }
 }
 

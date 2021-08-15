@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.*;
 
 import assembly.Asm;
+import assembly.OptAsm;
 import node.*;
 import parser.*;
 import ir.*;
@@ -15,6 +16,7 @@ public class Compiler {
         PrintStream file2=null;
         PrintStream file3=null;
         ArrayList<String> code=new ArrayList<>();
+        ArrayList<String> code1=new ArrayList<>();
         FileOutputStream outfile = null;
         String from = argv[3];
         if (argv.length > 1) {
@@ -30,7 +32,9 @@ public class Compiler {
         List<IR> ir = new ArrayList<>();
         ContextIR ctx = new ContextIR();
         root.generate_ir(ctx, ir);
+        OptIR.optimize_ir(ir);
         Asm.generate_asm(ir, code);
+//        OptAsm.optimize_asm(code,code1);
         for(String s:code) {
             file0.print(s);
             System.out.print(s);

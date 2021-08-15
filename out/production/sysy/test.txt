@@ -121,6 +121,6 @@ int main() {
   loop1(x, y);
   loop2();
   int temp=loop3(h, i, j, k, l, m, n);
-    putint(temp);
+  putint(temp);
     return 0;
 }

@@ -54,6 +54,13 @@ public class ContextAsm {
 
     }
 
+    public ContextAsm(List<IR> ir, ListIterator<IR> function_begin_it) {
+        this.ir = ir;
+        this.function_begin_it = ir.listIterator(function_begin_it.nextIndex());
+
+
+    }
+
 
     static String rename(String name) {
         if (name.length() > 3 && name.charAt(1) == '&' && name.charAt(2) == '^')
