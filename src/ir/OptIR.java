@@ -12,7 +12,7 @@ public class OptIR {
         for(int i=0;i<2;i++){
             local_common_subexpression_elimination(ir);
             local_common_constexpr_function(ir,constexpr_function);
-
+            dead_code_elimination(ir);
         }
     }
 
@@ -24,7 +24,7 @@ public class OptIR {
         }
 
         int index=irs.size();
-        for(int i=index-1;i!=0;i--){
+        for(int i=index-1;i>0;i--){
             IR temp1= irs.get(i);
             ctx.set_var_latest_use_timestamp(temp1);
             Integer cur=ctx.ir_to_time.get(temp1);

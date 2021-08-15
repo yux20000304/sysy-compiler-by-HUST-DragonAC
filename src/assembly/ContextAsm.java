@@ -118,6 +118,7 @@ public class ContextAsm {
             }
 
             var_latest_use_timestamp.put(name, ir_to_time.get(cur));//同上
+            if(ir_to_time.get(cur.phi_block)!=null)
             var_latest_use_timestamp_heap.put(ir_to_time.get(cur.phi_block), name);
         }
         if (cur.op_code == IR.OpCode.IMUL && cur.op1.type == OpName.Type.Var) {
