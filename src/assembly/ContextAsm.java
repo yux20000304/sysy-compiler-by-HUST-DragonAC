@@ -57,8 +57,6 @@ public class ContextAsm {
     public ContextAsm(List<IR> ir, ListIterator<IR> function_begin_it) {
         this.ir = ir;
         this.function_begin_it = ir.listIterator(function_begin_it.nextIndex());
-
-
     }
 
 

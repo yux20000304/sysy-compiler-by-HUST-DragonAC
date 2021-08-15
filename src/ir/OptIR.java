@@ -16,6 +16,32 @@ public class OptIR {
         }
     }
 
+    public static void dead_code_elimination(List<IR> irs){
+        ContextAsm ctx = new ContextAsm(irs,irs.listIterator());
+        ListIterator<IR> it=irs.listIterator();
+        while(it.hasNext()){
+            ctx.set_ir_timestamp(it.next());
+        }
+
+        int index=irs.size();
+        for(int i=index-1;i!=0;i--){
+            IR temp1= irs.get(i);
+            ctx.set_var_latest_use_timestamp(temp1);
+            Integer cur=ctx.ir_to_time.get(temp1);
+            if(temp1.dest.type==OpName.Type.Var && temp1.dest.name.startsWith("%") &&
+            temp1.op_code!=IR.OpCode.CALL && temp1.op_code!=IR.OpCode.PHI_MOV){
+                if(!ctx.var_latest_use_timestamp.containsKey(temp1.dest.name) ||
+                ctx.var_latest_use_timestamp.get(temp1.dest.name)<=cur){
+                    irs.remove(i);
+                }
+            }
+        }
+
+        for(int i=0;i< irs.size();i++){
+            ctx.set_var_define_timestamp(irs.get(i));
+        }
+    }
+
     public static void local_common_constexpr_function(List<IR> irs,Set<String> constexpr_function){
         HashMap<String,Vector<TreeMap<HashMap<Integer,OpName>,String>>> calls=null;
 
@@ -126,12 +152,11 @@ public class OptIR {
         while(ir_begin.hasNext()){
             ctx.set_ir_timestamp(ir_begin.next());
         }
-        ir_begin=ir.listIterator();
-        while(ir_begin.hasNext()){
-            IR it=ir.get(ir_begin.nextIndex());
+        for(int i=0;i<ir.size();i++){
+            IR it=ir.get(i);
             if(it.op_code!=IR.OpCode.PHI_MOV)
-                if(ir.get(ir_begin.nextIndex()).dest.name!=null)
-                mutability_var.add(ir.get(ir_begin.nextIndex()).dest.name);
+                if(it.dest.name!=null)
+                    mutability_var.add(it.dest.name);
             if(it.op_code!=IR.OpCode.LABEL ||
                 it.op_code!=IR.OpCode.FUNCTION_BEGIN){
                 maybe_opt.clear();
@@ -148,18 +173,16 @@ public class OptIR {
                 if(maybe_opt.containsKey(it)&&maybe_opt.containsValue(0)){
                     IR opt_ir = it;
                     Integer time=maybe_opt.get(it);
-                    if(mutability_var.contains(opt_ir.dest.name)){
+                    if(!mutability_var.contains(opt_ir.dest.name)){
                         //相距太远
                         if(ctx.ir_to_time.get(it) - time <100){
                             IR temp1=new IR(IR.OpCode.MOV,it.dest,opt_ir.dest);
-                            ir_begin.remove();
-                            ir_begin.add(temp1);
+                            ir.set(i,temp1);
                         }
                     }
                 }
-
+                maybe_opt.put(it,ctx.ir_to_time.get(it));
             }
-            maybe_opt.put(ir.get(ir_begin.nextIndex()),ctx.ir_to_time.get(ir_begin.next()));
         }
 
     }

@@ -4362,8 +4362,8 @@ LOOP_99_END:
 # 123 ADD             %280	%233	1		
 # 124 CMP             	%280	%176		
 # 125 JLT             				IF_281_ELSE
-# 126 MOV             %234	%235			
-# 127 MOV             %233	%280			
+# 126 MOV             %233	%280			
+# 127 MOV             %234	%235			
 # 128 JMP             				LOOP_232_END
 # 129 LABEL           				IF_281_ELSE
 # 130 LABEL           				IF_281_END
@@ -4397,8 +4397,8 @@ LOOP_99_END:
 # 158 CMP             	%282	%175		
 # 159 JLT             				IF_283_ELSE
 # 160 MOV             %228	%282			
-# 161 MOV             %229	%233			
-# 162 MOV             %230	%234			
+# 161 MOV             %230	%234			
+# 162 MOV             %229	%233			
 # 163 JMP             				LOOP_227_END
 # 164 LABEL           				IF_283_ELSE
 # 165 LABEL           				IF_283_END
@@ -4446,10 +4446,10 @@ LOOP_99_END:
 # 207 ADD             %284	%222	1		
 # 208 CMP             	%284	%174		
 # 209 JLT             				IF_285_ELSE
-# 210 MOV             %222	%284			
-# 211 MOV             %223	%228			
+# 210 MOV             %225	%230			
+# 211 MOV             %222	%284			
 # 212 MOV             %224	%229			
-# 213 MOV             %225	%230			
+# 213 MOV             %223	%228			
 # 214 JMP             				LOOP_221_END
 # 215 LABEL           				IF_285_ELSE
 # 216 LABEL           				IF_285_END
@@ -4523,11 +4523,11 @@ LOOP_99_END:
 # 284 ADD             %286	%215	1		
 # 285 CMP             	%286	%173		
 # 286 JLT             				IF_287_ELSE
-# 287 MOV             %217	%223			
-# 288 MOV             %219	%225			
-# 289 MOV             %216	%222			
-# 290 MOV             %218	%224			
-# 291 MOV             %215	%286			
+# 287 MOV             %218	%224			
+# 288 MOV             %216	%222			
+# 289 MOV             %215	%286			
+# 290 MOV             %219	%225			
+# 291 MOV             %217	%223			
 # 292 JMP             				LOOP_214_END
 # 293 LABEL           				IF_287_ELSE
 # 294 LABEL           				IF_287_END
@@ -4643,11 +4643,11 @@ LOOP_99_END:
 # 404 ADD             %288	%207	1		
 # 405 CMP             	%288	%172		
 # 406 JLT             				IF_289_ELSE
-# 407 MOV             %209	%216			
+# 407 MOV             %208	%215			
 # 408 MOV             %207	%288			
-# 409 MOV             %208	%215			
-# 410 MOV             %211	%218			
-# 411 MOV             %210	%217			
+# 409 MOV             %211	%218			
+# 410 MOV             %210	%217			
+# 411 MOV             %209	%216			
 # 412 MOV             %212	%219			
 # 413 JMP             				LOOP_206_END
 # 414 LABEL           				IF_289_ELSE
@@ -4832,11 +4832,11 @@ LOOP_99_END:
 # 593 JLT             				IF_291_ELSE
 # 594 MOV             %199	%207			
 # 595 MOV             %200	%208			
-# 596 MOV             %204	%212			
-# 597 MOV             %198	%290			
+# 596 MOV             %203	%211			
+# 597 MOV             %204	%212			
 # 598 MOV             %202	%210			
-# 599 MOV             %203	%211			
-# 600 MOV             %201	%209			
+# 599 MOV             %201	%209			
+# 600 MOV             %198	%290			
 # 601 JMP             				LOOP_197_END
 # 602 LABEL           				IF_291_ELSE
 # 603 LABEL           				IF_291_END
@@ -5116,14 +5116,14 @@ LOOP_99_END:
 # 877 ADD             %292	%188	1		
 # 878 CMP             	%292	%170		
 # 879 JLT             				IF_293_ELSE
-# 880 MOV             %188	%292			
-# 881 MOV             %189	%198			
-# 882 MOV             %193	%202			
-# 883 MOV             %192	%201			
+# 880 MOV             %189	%198			
+# 881 MOV             %188	%292			
+# 882 MOV             %195	%204			
+# 883 MOV             %193	%202			
 # 884 MOV             %191	%200			
-# 885 MOV             %194	%203			
-# 886 MOV             %195	%204			
-# 887 MOV             %190	%199			
+# 885 MOV             %190	%199			
+# 886 MOV             %194	%203			
+# 887 MOV             %192	%201			
 # 888 JMP             				LOOP_187_END
 # 889 LABEL           				IF_293_ELSE
 # 890 LABEL           				IF_293_END
@@ -5928,10 +5928,10 @@ LOOP_232_DO:
     CMP r1, r11
 #JLT             				IF_281_ELSE
    BLT IF_281_ELSE
-#MOV             %234	%235			
-   MOV r7, r0
 #MOV             %233	%280			
    MOV r8, r1
+#MOV             %234	%235			
+   MOV r7, r0
 #JMP             				LOOP_232_END
    B LOOP_232_END
 #LABEL           				IF_281_ELSE
@@ -5978,10 +5978,10 @@ LOOP_232_END:
    BLT IF_283_ELSE
 #MOV             %228	%282			
    MOV r9, r0
-#MOV             %229	%233			
-   MOV r4, r8
 #MOV             %230	%234			
    MOV r10, r7
+#MOV             %229	%233			
+   MOV r4, r8
 #JMP             				LOOP_227_END
    B LOOP_227_END
 #LABEL           				IF_283_ELSE
@@ -6042,14 +6042,14 @@ LOOP_227_END:
     CMP r0, r11
 #JLT             				IF_285_ELSE
    BLT IF_285_ELSE
-#MOV             %222	%284			
-   MOV r6, r0
-#MOV             %223	%228			
-    STR r9, [sp, #140]
-#MOV             %224	%229			
-    STR r4, [sp, #136]
 #MOV             %225	%230			
     STR r10, [sp, #132]
+#MOV             %222	%284			
+   MOV r6, r0
+#MOV             %224	%229			
+    STR r4, [sp, #136]
+#MOV             %223	%228			
+    STR r9, [sp, #140]
 #JMP             				LOOP_221_END
    B LOOP_221_END
 #LABEL           				IF_285_ELSE
@@ -6138,19 +6138,19 @@ LOOP_221_END:
     CMP r0, r11
 #JLT             				IF_287_ELSE
    BLT IF_287_ELSE
-#MOV             %217	%223			
-    LDR r12, [sp,#140]
-    STR r12, [sp, #120]
-#MOV             %219	%225			
-    LDR r12, [sp,#132]
-    STR r12, [sp, #112]
-#MOV             %216	%222			
-    STR r6, [sp, #124]
 #MOV             %218	%224			
     LDR r12, [sp,#136]
     STR r12, [sp, #116]
+#MOV             %216	%222			
+    STR r6, [sp, #124]
 #MOV             %215	%286			
     STR r0, [sp, #128]
+#MOV             %219	%225			
+    LDR r12, [sp,#132]
+    STR r12, [sp, #112]
+#MOV             %217	%223			
+    LDR r12, [sp,#140]
+    STR r12, [sp, #120]
 #JMP             				LOOP_214_END
    B LOOP_214_END
 #LABEL           				IF_287_ELSE
@@ -6285,20 +6285,20 @@ LOOP_214_END:
     CMP r0, r11
 #JLT             				IF_289_ELSE
    BLT IF_289_ELSE
-#MOV             %209	%216			
-    LDR r12, [sp,#124]
-    STR r12, [sp, #100]
-#MOV             %207	%288			
-    STR r0, [sp, #108]
 #MOV             %208	%215			
     LDR r12, [sp,#128]
     STR r12, [sp, #104]
+#MOV             %207	%288			
+    STR r0, [sp, #108]
 #MOV             %211	%218			
     LDR r12, [sp,#116]
     STR r12, [sp, #92]
 #MOV             %210	%217			
     LDR r12, [sp,#120]
     STR r12, [sp, #96]
+#MOV             %209	%216			
+    LDR r12, [sp,#124]
+    STR r12, [sp, #100]
 #MOV             %212	%219			
     LDR r12, [sp,#112]
     STR r12, [sp, #88]
@@ -6511,20 +6511,20 @@ LOOP_206_END:
 #MOV             %200	%208			
     LDR r12, [sp,#104]
     STR r12, [sp, #72]
-#MOV             %204	%212			
-    LDR r12, [sp,#88]
-    STR r12, [sp, #56]
-#MOV             %198	%290			
-    STR r0, [sp, #84]
-#MOV             %202	%210			
-    LDR r12, [sp,#96]
-    STR r12, [sp, #64]
 #MOV             %203	%211			
     LDR r12, [sp,#92]
     STR r12, [sp, #60]
+#MOV             %204	%212			
+    LDR r12, [sp,#88]
+    STR r12, [sp, #56]
+#MOV             %202	%210			
+    LDR r12, [sp,#96]
+    STR r12, [sp, #64]
 #MOV             %201	%209			
     LDR r12, [sp,#100]
     STR r12, [sp, #68]
+#MOV             %198	%290			
+    STR r0, [sp, #84]
 #JMP             				LOOP_197_END
    B LOOP_197_END
 #LABEL           				IF_291_ELSE
@@ -6828,29 +6828,29 @@ LOOP_197_END:
     CMP r0, r11
 #JLT             				IF_293_ELSE
    BLT IF_293_ELSE
-#MOV             %188	%292			
-    STR r0, [sp, #4]
 #MOV             %189	%198			
     LDR r12, [sp,#84]
     STR r12, [sp, #80]
-#MOV             %193	%202			
-    LDR r12, [sp,#64]
-    STR r12, [sp, #40]
-#MOV             %192	%201			
-    LDR r12, [sp,#68]
-    STR r12, [sp, #44]
-#MOV             %191	%200			
-    LDR r12, [sp,#72]
-    STR r12, [sp, #48]
-#MOV             %194	%203			
-    LDR r12, [sp,#60]
-    STR r12, [sp, #36]
+#MOV             %188	%292			
+    STR r0, [sp, #4]
 #MOV             %195	%204			
     LDR r12, [sp,#56]
     STR r12, [sp, #28]
+#MOV             %193	%202			
+    LDR r12, [sp,#64]
+    STR r12, [sp, #40]
+#MOV             %191	%200			
+    LDR r12, [sp,#72]
+    STR r12, [sp, #48]
 #MOV             %190	%199			
     LDR r12, [sp,#76]
     STR r12, [sp, #52]
+#MOV             %194	%203			
+    LDR r12, [sp,#60]
+    STR r12, [sp, #36]
+#MOV             %192	%201			
+    LDR r12, [sp,#68]
+    STR r12, [sp, #44]
 #JMP             				LOOP_187_END
    B LOOP_187_END
 #LABEL           				IF_293_ELSE
