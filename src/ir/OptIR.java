@@ -299,6 +299,9 @@ public class OptIR {
                 ir.op_code==IR.OpCode.NOOP){
                     can_optimize=false;
                 }
+                if(ir.op_code== IR.OpCode.MOV){
+                    can_optimize=false;
+                }
 
                 if(ir.op1.type==OpName.Type.Var &&
                     !never_write_var.contains(ir.op1.name)){

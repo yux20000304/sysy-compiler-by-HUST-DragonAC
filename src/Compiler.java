@@ -31,7 +31,7 @@ public class Compiler {
         List<IR> ir = new ArrayList<>();
         ContextIR ctx = new ContextIR();
         root.generate_ir(ctx, ir);
-//            OptIR.optimize_ir(ir);
+            OptIR.optimize_ir(ir);
         Asm.generate_asm(ir, code);
 //        OptAsm.optimize_asm(code,code1);
         for(String s:code) {
