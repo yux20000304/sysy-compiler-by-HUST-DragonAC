@@ -39,4 +39,19 @@ public class OpName {
         this.type = Type.Imm;
         this.value = value;
     }
+
+    public boolean is_var(){
+        return this.type== Type.Var;
+    }
+
+    public boolean is_local_var(){
+        return this.is_var() &&
+                (this.name.startsWith("%") || this.name.startsWith("$arg"));
+    }
+
+    public boolean is_global_var(){
+        return this.is_var() && this.name.startsWith("@");
+    }
+
+
 }

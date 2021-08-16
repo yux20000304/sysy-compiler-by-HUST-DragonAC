@@ -349,6 +349,9 @@ public class IR implements Comparable,Cloneable {
         return temp;
     }
 
+    public boolean reverse(){
+        return (this.op1.is_global_var() || this.op2.is_global_var() || this.op3.is_global_var());
+    }
 
 }
 

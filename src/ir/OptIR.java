@@ -274,10 +274,14 @@ public class OptIR {
                 }
             }
         }
+        boolean has_function_call=false;
         for(List<IR> irs:temp){
             for(IR ir:irs) {
                 if(ir.dest.type==OpName.Type.Var){
                     never_write_var.remove(ir.dest.name);
+                }
+                if(ir.op_code== IR.OpCode.CALL){
+                    has_function_call=true;
                 }
             }
         }
@@ -312,6 +316,10 @@ public class OptIR {
                 }
 
                 if(ir.dest.type!=OpName.Type.Var){
+                    can_optimize=false;
+                }
+
+                if(has_function_call && ir.reverse()){
                     can_optimize=false;
                 }
 
