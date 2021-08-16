@@ -22,7 +22,12 @@ public class Compiler {
             outfile = new FileOutputStream(out, false);
             file0 = new PrintStream(outfile);
         }
-
+        if(argv.length>4){
+            OptIR.optimize=true;
+        }
+        else{
+            OptIR.optimize=false;
+        }
 
         parser p = new parser(new Lexer(new FileReader(from)));
         Object result = p.parse().value;
@@ -31,6 +36,7 @@ public class Compiler {
         List<IR> ir = new ArrayList<>();
         ContextIR ctx = new ContextIR();
         root.generate_ir(ctx, ir);
+        if(OptIR.optimize)
             OptIR.optimize_ir(ir);
         Asm.generate_asm(ir, code);
 //        OptAsm.optimize_asm(code,code1);

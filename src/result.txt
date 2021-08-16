@@ -1444,7 +1444,7 @@ IF_69_END:
 # 788 CALL            %395				putint
 # 789 RET             	0			
 # 790 RET             0				
-# [log]5 expire $arg:0:0 r0
+# [log]5 expire $arg:0:null r0
 # [log]5 expire $arg:0:5 r0
 # [log]5 expire $arg:1:5 r1
 # [log]5 expire $arg:2:5 r2
@@ -1711,7 +1711,7 @@ IF_69_END:
 # [log]681 expire %357 r7
 # [log]682 expire %366 r0
 # [log]685 expire %365 r0
-# [log]686 expire $arg:1:0 r1
+# [log]686 expire $arg:1:null r1
 # [log]686 expire %330 r4
 # [log]686 expire %332 r5
 # [log]687 expire $arg:0:687 r0
