@@ -7,6 +7,8 @@ import java.util.*;
 
 public class OptIR {
 
+    public static boolean optimize;
+
     public static void optimize_ir(List<IR> ir){
         Set<String> constexpr_function=find_constexpr_function(ir);
         for(int i=0;i<2;i++){

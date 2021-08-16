@@ -9,13 +9,10 @@ import parser.*;
 import ir.*;
 
 public class Compiler {
-
     static public void main(String argv[]) throws Exception {
         String out = null;
         PrintStream file0=null;
-        PrintStream file1=null;
-        PrintStream file2=null;
-        PrintStream file3=null;
+
         ArrayList<String> code=new ArrayList<>();
         ArrayList<String> code1=new ArrayList<>();
         FileOutputStream outfile = null;
@@ -24,6 +21,12 @@ public class Compiler {
             out = argv[2];
             outfile = new FileOutputStream(out, false);
             file0 = new PrintStream(outfile);
+        }
+        if(argv.length>4){
+            OptIR.optimize=true;
+        }
+        else{
+            OptIR.optimize=false;
         }
 
         parser p = new parser(new Lexer(new FileReader(from)));
