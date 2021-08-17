@@ -13,9 +13,34 @@ public class OptIR {
         Set<String> constexpr_function=find_constexpr_function(ir);
         for(int i=0;i<2;i++){
 //            local_common_subexpression_elimination(ir);
-//            local_common_constexpr_function(ir,constexpr_function);
+            local_common_constexpr_function(ir,constexpr_function);
             dead_code_elimination(ir);
+            unaccessable_code(ir);
+
         }
+    }
+
+    public static void unaccessable_code(List<IR> irs){
+        for (int i=0;i< irs.size();i++){
+            IR it=irs.get(i);
+            if(it.op_code== IR.OpCode.RET || it.op_code== IR.OpCode.JMP){
+                for(int j=i+1;j<irs.size();){
+                    IR next=irs.get(j);
+                    if(next.op_code!= IR.OpCode.LABEL &&
+                        next.op_code!= IR.OpCode.FUNCTION_END){
+                        if(next.op_code!= IR.OpCode.NOOP && next.op_code!= IR.OpCode.INFO){
+                            irs.remove(next);
+                        }
+                        else
+                            j++;
+                    }
+                    else{
+                        break;
+                    }
+                }
+            }
+        }
+
     }
 
     public static void dead_code_elimination(List<IR> irs){
