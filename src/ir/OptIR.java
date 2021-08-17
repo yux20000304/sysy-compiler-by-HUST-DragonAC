@@ -23,6 +23,7 @@ public class OptIR {
     public static void unaccessable_code(List<IR> irs){
         for (int i=0;i< irs.size();i++){
             IR it=irs.get(i);
+
             if(it.op_code== IR.OpCode.RET || it.op_code== IR.OpCode.JMP){
                 for(int j=i+1;j<irs.size();){
                     IR next=irs.get(j);

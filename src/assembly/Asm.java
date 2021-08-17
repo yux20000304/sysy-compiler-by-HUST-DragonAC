@@ -167,6 +167,7 @@ public class Asm {
                     out.add("    SUB sp, sp, #" +
                             (stack_size[0] + stack_size[1] + stack_size[2] + stack_size[3])+"\n");
                 }
+
                 if (ctx.has_function_call) ctx.store_to_stack("lr", new OpName("$ra"), out, "STR");
 
 
@@ -339,6 +340,8 @@ public class Asm {
                     ctx.store_to_stack("r1", ir.dest, out, "STR");
                 }
             } else if (ir.op_code == IR.OpCode.CALL) {
+                if(ir.label.equals("_sysy_starttime") || ir.label.equals("_sysy_stoptime"))
+                    out.add("   MOV  r0 , #0"+"\n");
                 out.add("   BL " + ir.label+"\n");
                 if (ir.dest.type == OpName.Type.Var) {
                     if (ctx.var_in_reg(ir.dest.name)) {

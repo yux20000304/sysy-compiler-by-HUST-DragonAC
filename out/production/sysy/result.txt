@@ -2,3535 +2,1186 @@
         movw \reg, #:lower16:\val
         movt \reg, #:upper16:\val
     .endm
-.data
-.global __Var__4ints
-__Var__4ints:
-.space 40000
-.data
-.global __Var__4intt
-__Var__4intt:
-.word 0
-.data
-.global __Var__4chas
-__Var__4chas:
-.space 40000
-.data
-.global __Var__4chat
-__Var__4chat:
-.word 0
-.data
-.global __Var__1i
-__Var__1i:
-.word 0
-.data
-.global __Var__2ii
-__Var__2ii:
-.word 1
-.data
-.global __Var__1c
-__Var__1c:
-.word 0
-.data
-.global __Var__3get
-__Var__3get:
-.space 40000
-.data
-.global __Var__4get2
-__Var__4get2:
-.space 40000
-# 1 FUNCTION_BEGIN  	1			isdigit
+# 1 FUNCTION_BEGIN  	3			set
 # 2 MOV             %2	$arg0			
-# 3 CMP             	%2	48		
-# 4 PHI_MOV         %4	0			
-# 5 JLT             				COND5_end
-# 6 CMP             	%2	57		
-# 7 MOVLE           %6	1	0		
-# 8 PHI_MOV         %4	%6			
-# 9 LABEL           				COND5_end
-# 10 CMP             	%4	0		
-# 11 JEQ             				IF_3_ELSE
-# 12 RET             	1			
-# 13 LABEL           				IF_3_ELSE
-# 14 LABEL           				IF_3_END
-# 15 RET             	0			
-# 16 RET             0				
-# [log]7 expire %2 r0
-#FUNCTION_BEGIN  	1			isdigit
+# 3 INFO            				NOT CONSTEXPR
+# 4 MOV             %3	$arg1			
+# 5 MOV             %4	$arg2			
+# 6 MOV             %6	30			
+# 7 MALLOC_IN_STACK %&7	124			
+# 8 SET_ARG         0	%&7			
+# 9 SET_ARG         1	0			
+# 10 SET_ARG         2	124			
+# 11 CALL            				memset
+# 12 SAL             %8	0	2		
+# 13 STORE           	%&7	%8	1	
+# 14 SAL             %12	0	2		
+# 15 LOAD            %11	%&7	%12		
+# 16 IMUL            %10	%11	2		
+# 17 SAL             %14	1	2		
+# 18 STORE           	%&7	%14	%10	
+# 19 SAL             %18	1	2		
+# 20 LOAD            %17	%&7	%18		
+# 21 IMUL            %16	%17	2		
+# 22 SAL             %20	2	2		
+# 23 STORE           	%&7	%20	%16	
+# 24 SAL             %24	2	2		
+# 25 LOAD            %23	%&7	%24		
+# 26 IMUL            %22	%23	2		
+# 27 SAL             %26	3	2		
+# 28 STORE           	%&7	%26	%22	
+# 29 SAL             %30	3	2		
+# 30 LOAD            %29	%&7	%30		
+# 31 IMUL            %28	%29	2		
+# 32 SAL             %32	4	2		
+# 33 STORE           	%&7	%32	%28	
+# 34 SAL             %36	4	2		
+# 35 LOAD            %35	%&7	%36		
+# 36 IMUL            %34	%35	2		
+# 37 SAL             %38	5	2		
+# 38 STORE           	%&7	%38	%34	
+# 39 SAL             %42	5	2		
+# 40 LOAD            %41	%&7	%42		
+# 41 IMUL            %40	%41	2		
+# 42 SAL             %44	6	2		
+# 43 STORE           	%&7	%44	%40	
+# 44 SAL             %48	6	2		
+# 45 LOAD            %47	%&7	%48		
+# 46 IMUL            %46	%47	2		
+# 47 SAL             %50	7	2		
+# 48 STORE           	%&7	%50	%46	
+# 49 SAL             %54	7	2		
+# 50 LOAD            %53	%&7	%54		
+# 51 IMUL            %52	%53	2		
+# 52 SAL             %56	8	2		
+# 53 STORE           	%&7	%56	%52	
+# 54 SAL             %60	8	2		
+# 55 LOAD            %59	%&7	%60		
+# 56 IMUL            %58	%59	2		
+# 57 SAL             %62	9	2		
+# 58 STORE           	%&7	%62	%58	
+# 59 SAL             %66	9	2		
+# 60 LOAD            %65	%&7	%66		
+# 61 IMUL            %64	%65	2		
+# 62 SAL             %68	10	2		
+# 63 STORE           	%&7	%68	%64	
+# 64 MOV             %71	10			
+# 65 PHI_MOV         %73	%71			
+# 66 LABEL           				LOOP_72_BEGIN
+# 67 CMP             	%73	%6		
+# 68 JGE             				LOOP_72_END
+# 69 LABEL           				LOOP_72_DO
+# 70 ADD             %74	%73	1		
+# 71 SUB             %79	%74	1		
+# 72 SAL             %77	%79	2		
+# 73 LOAD            %76	%&7	%77		
+# 74 IMUL            %75	%76	2		
+# 75 SAL             %80	%74	2		
+# 76 STORE           	%&7	%80	%75	
+# 77 NOOP            				
+# 78 LABEL           				LOOP_72_CONTINUE
+# 79 PHI_MOV         %73	%74			
+# 80 JMP             				LOOP_72_BEGIN
+# 81 NOOP            	%73			
+# 82 NOOP            	%6			
+# 83 NOOP            	%73			
+# 84 NOOP            	%&7			
+# 85 NOOP            	%&7			
+# 86 LABEL           				LOOP_72_END
+# 87 MOV             %83	0			
+# 88 IDIV            %85	%3	%6		
+# 89 CMP             	%85	10000		
+# 90 JLT             				IF_84_ELSE
+# 91 RET             	0			
+# 92 LABEL           				IF_84_ELSE
+# 93 LABEL           				IF_84_END
+# 94 IDIV            %92	%3	%6		
+# 95 SAL             %90	%92	2		
+# 96 LOAD            %89	%2	%90		
+# 97 MOD             %96	%3	%6		
+# 98 SAL             %94	%96	2		
+# 99 LOAD            %93	%&7	%94		
+# 100 IDIV            %88	%89	%93		
+# 101 MOD             %87	%88	2		
+# 102 CMP             	%87	%4		
+# 103 JEQ             				IF_86_ELSE
+# 104 IDIV            %103	%3	%6		
+# 105 SAL             %101	%103	2		
+# 106 LOAD            %100	%2	%101		
+# 107 MOD             %107	%3	%6		
+# 108 SAL             %105	%107	2		
+# 109 LOAD            %104	%&7	%105		
+# 110 IDIV            %99	%100	%104		
+# 111 MOD             %98	%99	2		
+# 112 CMP             	%98	0		
+# 113 JNE             				IF_97_ELSE
+# 114 CMP             	%4	1		
+# 115 JNE             				IF_108_ELSE
+# 116 MOD             %112	%3	%6		
+# 117 SAL             %110	%112	2		
+# 118 LOAD            %109	%&7	%110		
+# 119 PHI_MOV         %113	%109			
+# 120 JMP             				IF_108_END
+# 121 LABEL           				IF_108_ELSE
+# 122 PHI_MOV         %113	%83			
+# 123 LABEL           				IF_108_END
+# 124 PHI_MOV         %114	%113			
+# 125 JMP             				IF_97_END
+# 126 LABEL           				IF_97_ELSE
+# 127 PHI_MOV         %114	%83			
+# 128 LABEL           				IF_97_END
+# 129 IDIV            %121	%3	%6		
+# 130 SAL             %119	%121	2		
+# 131 LOAD            %118	%2	%119		
+# 132 MOD             %125	%3	%6		
+# 133 SAL             %123	%125	2		
+# 134 LOAD            %122	%&7	%123		
+# 135 IDIV            %117	%118	%122		
+# 136 MOD             %116	%117	2		
+# 137 CMP             	%116	1		
+# 138 JNE             				IF_115_ELSE
+# 139 CMP             	%4	0		
+# 140 JNE             				IF_126_ELSE
+# 141 MOD             %131	%3	%6		
+# 142 SAL             %129	%131	2		
+# 143 LOAD            %128	%&7	%129		
+# 144 SUB             %127	%114	%128		
+# 145 PHI_MOV         %132	%127			
+# 146 JMP             				IF_126_END
+# 147 LABEL           				IF_126_ELSE
+# 148 PHI_MOV         %132	%114			
+# 149 LABEL           				IF_126_END
+# 150 PHI_MOV         %133	%132			
+# 151 JMP             				IF_115_END
+# 152 LABEL           				IF_115_ELSE
+# 153 PHI_MOV         %133	%114			
+# 154 LABEL           				IF_115_END
+# 155 PHI_MOV         %134	%133			
+# 156 JMP             				IF_86_END
+# 157 LABEL           				IF_86_ELSE
+# 158 PHI_MOV         %134	%83			
+# 159 LABEL           				IF_86_END
+# 160 IDIV            %139	%3	%6		
+# 161 SAL             %137	%139	2		
+# 162 LOAD            %136	%2	%137		
+# 163 ADD             %135	%136	%134		
+# 164 IDIV            %142	%3	%6		
+# 165 SAL             %140	%142	2		
+# 166 STORE           	%2	%140	%135	
+# 167 RET             	0			
+# [log]9 expire $arg:0:null r0
+# [log]10 expire $arg:1:null r1
+# [log]11 expire $arg:2:null r2
+# [log]11 expire $arg:0:11 r0
+# [log]11 expire $arg:1:11 r1
+# [log]11 expire $arg:2:11 r2
+# [log]12 expire $arg:3:11 r3
+# [log]14 expire %8 r0
+# [log]15 expire %12 r0
+# [log]17 expire %11 r0
+# [log]19 expire %14 r0
+# [log]19 expire %10 r1
+# [log]20 expire %18 r0
+# [log]22 expire %17 r0
+# [log]24 expire %20 r0
+# [log]24 expire %16 r1
+# [log]25 expire %24 r0
+# [log]27 expire %23 r0
+# [log]29 expire %26 r0
+# [log]29 expire %22 r1
+# [log]30 expire %30 r0
+# [log]32 expire %29 r0
+# [log]34 expire %32 r0
+# [log]34 expire %28 r1
+# [log]35 expire %36 r0
+# [log]37 expire %35 r0
+# [log]39 expire %38 r0
+# [log]39 expire %34 r1
+# [log]40 expire %42 r0
+# [log]42 expire %41 r0
+# [log]44 expire %44 r0
+# [log]44 expire %40 r1
+# [log]45 expire %48 r0
+# [log]47 expire %47 r0
+# [log]49 expire %50 r0
+# [log]49 expire %46 r1
+# [log]50 expire %54 r0
+# [log]52 expire %53 r0
+# [log]54 expire %56 r0
+# [log]54 expire %52 r1
+# [log]55 expire %60 r0
+# [log]57 expire %59 r0
+# [log]59 expire %62 r0
+# [log]59 expire %58 r1
+# [log]60 expire %66 r0
+# [log]62 expire %65 r0
+# [log]64 expire %68 r0
+# [log]64 expire %64 r1
+# [log]65 expire %71 r0
+# [log]72 expire %79 r2
+# [log]73 expire %77 r2
+# [log]75 expire %76 r2
+# [log]87 expire %73 r0
+# [log]87 expire %74 r1
+# [log]87 expire %80 r2
+# [log]87 expire %75 r3
+# [log]88 expire $arg:0:88 r0
+# [log]88 expire $arg:1:88 r1
+# [log]88 expire $arg:2:88 r2
+# [log]94 expire $arg:3:88 r3
+# [log]94 expire %85 r9
+# [log]94 expire $arg:0:94 r0
+# [log]94 expire $arg:1:94 r1
+# [log]94 expire $arg:2:94 r2
+# [log]95 expire $arg:3:94 r3
+# [log]95 expire %92 r9
+# [log]96 expire %90 r0
+# [log]97 expire $arg:0:97 r0
+# [log]97 expire $arg:1:97 r1
+# [log]97 expire $arg:2:97 r2
+# [log]98 expire $arg:3:97 r3
+# [log]98 expire %96 r10
+# [log]99 expire %94 r0
+# [log]100 expire %89 r9
+# [log]100 expire %93 r10
+# [log]100 expire $arg:0:100 r0
+# [log]100 expire $arg:1:100 r1
+# [log]100 expire $arg:2:100 r2
+# [log]101 expire $arg:3:100 r3
+# [log]101 expire %88 r9
+# [log]101 expire $arg:0:101 r0
+# [log]101 expire $arg:1:101 r1
+# [log]101 expire $arg:2:101 r2
+# [log]104 expire $arg:3:101 r3
+# [log]104 expire %87 r9
+# [log]104 expire $arg:0:104 r0
+# [log]104 expire $arg:1:104 r1
+# [log]104 expire $arg:2:104 r2
+# [log]105 expire $arg:3:104 r3
+# [log]105 expire %103 r9
+# [log]106 expire %101 r0
+# [log]107 expire $arg:0:107 r0
+# [log]107 expire $arg:1:107 r1
+# [log]107 expire $arg:2:107 r2
+# [log]108 expire $arg:3:107 r3
+# [log]108 expire %107 r10
+# [log]109 expire %105 r0
+# [log]110 expire %100 r9
+# [log]110 expire %104 r10
+# [log]110 expire $arg:0:110 r0
+# [log]110 expire $arg:1:110 r1
+# [log]110 expire $arg:2:110 r2
+# [log]111 expire $arg:3:110 r3
+# [log]111 expire %99 r9
+# [log]111 expire $arg:0:111 r0
+# [log]111 expire $arg:1:111 r1
+# [log]111 expire $arg:2:111 r2
+# [log]116 expire $arg:3:111 r3
+# [log]116 expire %98 r9
+# [log]116 expire $arg:0:116 r0
+# [log]116 expire $arg:1:116 r1
+# [log]116 expire $arg:2:116 r2
+# [log]117 expire $arg:3:116 r3
+# [log]117 expire %112 r9
+# [log]118 expire %110 r0
+# [log]119 expire %109 r0
+# [log]124 expire %113 r0
+# [log]129 expire $arg:0:129 r0
+# [log]129 expire $arg:1:129 r1
+# [log]129 expire $arg:2:129 r2
+# [log]130 expire $arg:3:129 r3
+# [log]130 expire %121 r10
+# [log]131 expire %119 r0
+# [log]132 expire $arg:0:132 r0
+# [log]132 expire $arg:1:132 r1
+# [log]132 expire $arg:2:132 r2
+# [log]133 expire $arg:3:132 r3
+# [log]133 expire %125 r4
+# [log]134 expire %123 r0
+# [log]135 expire %122 r4
+# [log]135 expire %118 r10
+# [log]135 expire $arg:0:135 r0
+# [log]135 expire $arg:1:135 r1
+# [log]135 expire $arg:2:135 r2
+# [log]136 expire $arg:3:135 r3
+# [log]136 expire %117 r4
+# [log]136 expire $arg:0:136 r0
+# [log]136 expire $arg:1:136 r1
+# [log]136 expire $arg:2:136 r2
+# [log]141 expire $arg:3:136 r3
+# [log]141 expire %116 r4
+# [log]141 expire %4 r6
+# [log]141 expire $arg:0:141 r0
+# [log]141 expire $arg:1:141 r1
+# [log]141 expire $arg:2:141 r2
+# [log]142 expire $arg:3:141 r3
+# [log]142 expire %131 r4
+# [log]143 expire %129 r0
+# [log]144 expire %128 r0
+# [log]145 expire %127 r0
+# [log]150 expire %132 r0
+# [log]155 expire %133 r0
+# [log]155 expire %114 r9
+# [log]160 expire %83 r8
+# [log]160 expire $arg:0:160 r0
+# [log]160 expire $arg:1:160 r1
+# [log]160 expire $arg:2:160 r2
+# [log]161 expire $arg:3:160 r3
+# [log]161 expire %139 r6
+# [log]162 expire %137 r0
+# [log]163 expire %136 r0
+# [log]163 expire %134 r4
+# [log]164 expire %3 r5
+# [log]164 expire %6 r7
+# [log]164 expire $arg:0:164 r0
+# [log]164 expire $arg:1:164 r1
+# [log]164 expire $arg:2:164 r2
+# [log]165 expire $arg:3:164 r3
+# [log]165 expire %142 r5
+#FUNCTION_BEGIN  	3			set
 .text
-.global isdigit
-.type isdigit, %function
-isdigit:
-    SUB sp, sp, #4
-    STR r11, [sp, #0]
+.global set
+.type set, %function
+set:
+    SUB sp, sp, #164
+    STR lr, [sp, #160]
+    STR r11, [sp, #128]
+    STR r4, [sp, #132]
+    STR r5, [sp, #136]
+    STR r6, [sp, #140]
+    STR r7, [sp, #144]
+    STR r8, [sp, #148]
+    STR r9, [sp, #152]
+    STR r10, [sp, #156]
 #MOV             %2	$arg0			
-#CMP             	%2	48		
-    MOV r11, #48
-    CMP r0, r11
-#PHI_MOV         %4	0			
+    STR r0, [sp, #124]
+#INFO            				NOT CONSTEXPR
+#MOV             %3	$arg1			
+   MOV r5, r1
+#MOV             %4	$arg2			
+   MOV r6, r2
+#MOV             %6	30			
+    MOV r7, #30
+#MALLOC_IN_STACK %&7	124			
+#SET_ARG         0	%&7			
+    ADD r0, sp, #0
+#SET_ARG         1	0			
     MOV r1, #0
-#JLT             				COND5_end
-   BLT COND5_end
-#CMP             	%2	57		
-    MOV r11, #57
-    CMP r0, r11
-#MOVLE           %6	1	0		
-    MOVLE r0, #1
-    MOVGT r0, #0
-#PHI_MOV         %4	%6			
-   MOV r1, r0
-#LABEL           				COND5_end
-COND5_end:
-#CMP             	%4	0		
+#SET_ARG         2	124			
+    MOV r2, #124
+#CALL            				memset
+   BL memset
+#SAL             %8	0	2		
     MOV r11, #0
-    CMP r1, r11
-#JEQ             				IF_3_ELSE
-   BEQ IF_3_ELSE
-#RET             	1			
-    MOV r0, #1
-    LDR r11, [sp,#0]
-    ADD sp, sp, #4
-    MOV PC, LR
-#LABEL           				IF_3_ELSE
-IF_3_ELSE:
-#LABEL           				IF_3_END
-IF_3_END:
+   LSL r0, r11, #2
+#STORE           	%&7	%8	1	
+    ADD r12, sp, #0
+   ADD r12, r12, r0
+    MOV r11, #1
+    STR r11, [r12]
+#SAL             %12	0	2		
+    MOV r11, #0
+   LSL r0, r11, #2
+#LOAD            %11	%&7	%12		
+    ADD r12, sp, #0
+    ADD r12, r12, r0
+    LDR r0, [r12]
+#IMUL            %10	%11	2		
+    MOV r12, #2
+    MUL r1, r0, r12
+#SAL             %14	1	2		
+    MOV r11, #1
+   LSL r0, r11, #2
+#STORE           	%&7	%14	%10	
+    ADD r12, sp, #0
+   ADD r12, r12, r0
+    STR r1, [r12]
+#SAL             %18	1	2		
+    MOV r11, #1
+   LSL r0, r11, #2
+#LOAD            %17	%&7	%18		
+    ADD r12, sp, #0
+    ADD r12, r12, r0
+    LDR r0, [r12]
+#IMUL            %16	%17	2		
+    MOV r12, #2
+    MUL r1, r0, r12
+#SAL             %20	2	2		
+    MOV r11, #2
+   LSL r0, r11, #2
+#STORE           	%&7	%20	%16	
+    ADD r12, sp, #0
+   ADD r12, r12, r0
+    STR r1, [r12]
+#SAL             %24	2	2		
+    MOV r11, #2
+   LSL r0, r11, #2
+#LOAD            %23	%&7	%24		
+    ADD r12, sp, #0
+    ADD r12, r12, r0
+    LDR r0, [r12]
+#IMUL            %22	%23	2		
+    MOV r12, #2
+    MUL r1, r0, r12
+#SAL             %26	3	2		
+    MOV r11, #3
+   LSL r0, r11, #2
+#STORE           	%&7	%26	%22	
+    ADD r12, sp, #0
+   ADD r12, r12, r0
+    STR r1, [r12]
+#SAL             %30	3	2		
+    MOV r11, #3
+   LSL r0, r11, #2
+#LOAD            %29	%&7	%30		
+    ADD r12, sp, #0
+    ADD r12, r12, r0
+    LDR r0, [r12]
+#IMUL            %28	%29	2		
+    MOV r12, #2
+    MUL r1, r0, r12
+#SAL             %32	4	2		
+    MOV r11, #4
+   LSL r0, r11, #2
+#STORE           	%&7	%32	%28	
+    ADD r12, sp, #0
+   ADD r12, r12, r0
+    STR r1, [r12]
+#SAL             %36	4	2		
+    MOV r11, #4
+   LSL r0, r11, #2
+#LOAD            %35	%&7	%36		
+    ADD r12, sp, #0
+    ADD r12, r12, r0
+    LDR r0, [r12]
+#IMUL            %34	%35	2		
+    MOV r12, #2
+    MUL r1, r0, r12
+#SAL             %38	5	2		
+    MOV r11, #5
+   LSL r0, r11, #2
+#STORE           	%&7	%38	%34	
+    ADD r12, sp, #0
+   ADD r12, r12, r0
+    STR r1, [r12]
+#SAL             %42	5	2		
+    MOV r11, #5
+   LSL r0, r11, #2
+#LOAD            %41	%&7	%42		
+    ADD r12, sp, #0
+    ADD r12, r12, r0
+    LDR r0, [r12]
+#IMUL            %40	%41	2		
+    MOV r12, #2
+    MUL r1, r0, r12
+#SAL             %44	6	2		
+    MOV r11, #6
+   LSL r0, r11, #2
+#STORE           	%&7	%44	%40	
+    ADD r12, sp, #0
+   ADD r12, r12, r0
+    STR r1, [r12]
+#SAL             %48	6	2		
+    MOV r11, #6
+   LSL r0, r11, #2
+#LOAD            %47	%&7	%48		
+    ADD r12, sp, #0
+    ADD r12, r12, r0
+    LDR r0, [r12]
+#IMUL            %46	%47	2		
+    MOV r12, #2
+    MUL r1, r0, r12
+#SAL             %50	7	2		
+    MOV r11, #7
+   LSL r0, r11, #2
+#STORE           	%&7	%50	%46	
+    ADD r12, sp, #0
+   ADD r12, r12, r0
+    STR r1, [r12]
+#SAL             %54	7	2		
+    MOV r11, #7
+   LSL r0, r11, #2
+#LOAD            %53	%&7	%54		
+    ADD r12, sp, #0
+    ADD r12, r12, r0
+    LDR r0, [r12]
+#IMUL            %52	%53	2		
+    MOV r12, #2
+    MUL r1, r0, r12
+#SAL             %56	8	2		
+    MOV r11, #8
+   LSL r0, r11, #2
+#STORE           	%&7	%56	%52	
+    ADD r12, sp, #0
+   ADD r12, r12, r0
+    STR r1, [r12]
+#SAL             %60	8	2		
+    MOV r11, #8
+   LSL r0, r11, #2
+#LOAD            %59	%&7	%60		
+    ADD r12, sp, #0
+    ADD r12, r12, r0
+    LDR r0, [r12]
+#IMUL            %58	%59	2		
+    MOV r12, #2
+    MUL r1, r0, r12
+#SAL             %62	9	2		
+    MOV r11, #9
+   LSL r0, r11, #2
+#STORE           	%&7	%62	%58	
+    ADD r12, sp, #0
+   ADD r12, r12, r0
+    STR r1, [r12]
+#SAL             %66	9	2		
+    MOV r11, #9
+   LSL r0, r11, #2
+#LOAD            %65	%&7	%66		
+    ADD r12, sp, #0
+    ADD r12, r12, r0
+    LDR r0, [r12]
+#IMUL            %64	%65	2		
+    MOV r12, #2
+    MUL r1, r0, r12
+#SAL             %68	10	2		
+    MOV r11, #10
+   LSL r0, r11, #2
+#STORE           	%&7	%68	%64	
+    ADD r12, sp, #0
+   ADD r12, r12, r0
+    STR r1, [r12]
+#MOV             %71	10			
+    MOV r0, #10
+#PHI_MOV         %73	%71			
+#LABEL           				LOOP_72_BEGIN
+LOOP_72_BEGIN:
+#CMP             	%73	%6		
+    CMP r0, r7
+#JGE             				LOOP_72_END
+   BGE LOOP_72_END
+#LABEL           				LOOP_72_DO
+LOOP_72_DO:
+#ADD             %74	%73	1		
+    ADD r1, r0, #1
+#SUB             %79	%74	1		
+     SUB r2, r1, #1
+#SAL             %77	%79	2		
+   LSL r2, r2, #2
+#LOAD            %76	%&7	%77		
+    ADD r12, sp, #0
+    ADD r12, r12, r2
+    LDR r2, [r12]
+#IMUL            %75	%76	2		
+    MOV r12, #2
+    MUL r3, r2, r12
+#SAL             %80	%74	2		
+   LSL r2, r1, #2
+#STORE           	%&7	%80	%75	
+    ADD r12, sp, #0
+   ADD r12, r12, r2
+    STR r3, [r12]
+#NOOP            				
+#LABEL           				LOOP_72_CONTINUE
+LOOP_72_CONTINUE:
+#PHI_MOV         %73	%74			
+   MOV r0, r1
+#JMP             				LOOP_72_BEGIN
+   B LOOP_72_BEGIN
+#NOOP            	%73			
+#NOOP            	%6			
+#NOOP            	%73			
+#NOOP            	%&7			
+#NOOP            	%&7			
+#LABEL           				LOOP_72_END
+LOOP_72_END:
+#MOV             %83	0			
+    MOV r8, #0
+#IDIV            %85	%3	%6		
+    MOV r0, r5
+    MOV r1, r7
+    BL __aeabi_idiv
+   MOV r9, r0
+#CMP             	%85	10000		
+    MOV r11, #10000
+    CMP r9, r11
+#JLT             				IF_84_ELSE
+   BLT IF_84_ELSE
 #RET             	0			
     MOV r0, #0
-    LDR r11, [sp,#0]
-    ADD sp, sp, #4
+    LDR lr, [sp, #160]
+    LDR r11, [sp,#128]
+    LDR r4, [sp,#132]
+    LDR r5, [sp,#136]
+    LDR r6, [sp,#140]
+    LDR r7, [sp,#144]
+    LDR r8, [sp,#148]
+    LDR r9, [sp,#152]
+    LDR r10, [sp,#156]
+    MOV r12, #164
+    ADD sp, sp, r12
     MOV PC, LR
-#RET             0				
-    LDR r11, [sp,#0]
-    ADD sp, sp, #4
+#LABEL           				IF_84_ELSE
+IF_84_ELSE:
+#LABEL           				IF_84_END
+IF_84_END:
+#IDIV            %92	%3	%6		
+    MOV r0, r5
+    MOV r1, r7
+    BL __aeabi_idiv
+   MOV r9, r0
+#SAL             %90	%92	2		
+   LSL r0, r9, #2
+#LOAD            %89	%2	%90		
+    LDR r12, [sp,#124]
+    ADD r12, r12, r0
+    LDR r9, [r12]
+#MOD             %96	%3	%6		
+    MOV r0, r5
+    MOV r1, r7
+    BL __aeabi_idivmod
+    MOV r10, r1
+#SAL             %94	%96	2		
+   LSL r0, r10, #2
+#LOAD            %93	%&7	%94		
+    ADD r12, sp, #0
+    ADD r12, r12, r0
+    LDR r10, [r12]
+#IDIV            %88	%89	%93		
+    MOV r0, r9
+    MOV r1, r10
+    BL __aeabi_idiv
+   MOV r9, r0
+#MOD             %87	%88	2		
+    MOV r0, r9
+    MOV r1, #2
+    BL __aeabi_idivmod
+    MOV r9, r1
+#CMP             	%87	%4		
+    CMP r9, r6
+#JEQ             				IF_86_ELSE
+   BEQ IF_86_ELSE
+#IDIV            %103	%3	%6		
+    MOV r0, r5
+    MOV r1, r7
+    BL __aeabi_idiv
+   MOV r9, r0
+#SAL             %101	%103	2		
+   LSL r0, r9, #2
+#LOAD            %100	%2	%101		
+    LDR r12, [sp,#124]
+    ADD r12, r12, r0
+    LDR r9, [r12]
+#MOD             %107	%3	%6		
+    MOV r0, r5
+    MOV r1, r7
+    BL __aeabi_idivmod
+    MOV r10, r1
+#SAL             %105	%107	2		
+   LSL r0, r10, #2
+#LOAD            %104	%&7	%105		
+    ADD r12, sp, #0
+    ADD r12, r12, r0
+    LDR r10, [r12]
+#IDIV            %99	%100	%104		
+    MOV r0, r9
+    MOV r1, r10
+    BL __aeabi_idiv
+   MOV r9, r0
+#MOD             %98	%99	2		
+    MOV r0, r9
+    MOV r1, #2
+    BL __aeabi_idivmod
+    MOV r9, r1
+#CMP             	%98	0		
+    MOV r11, #0
+    CMP r9, r11
+#JNE             				IF_97_ELSE
+   BNE IF_97_ELSE
+#CMP             	%4	1		
+    MOV r11, #1
+    CMP r6, r11
+#JNE             				IF_108_ELSE
+   BNE IF_108_ELSE
+#MOD             %112	%3	%6		
+    MOV r0, r5
+    MOV r1, r7
+    BL __aeabi_idivmod
+    MOV r9, r1
+#SAL             %110	%112	2		
+   LSL r0, r9, #2
+#LOAD            %109	%&7	%110		
+    ADD r12, sp, #0
+    ADD r12, r12, r0
+    LDR r0, [r12]
+#PHI_MOV         %113	%109			
+#JMP             				IF_108_END
+   B IF_108_END
+#LABEL           				IF_108_ELSE
+IF_108_ELSE:
+#PHI_MOV         %113	%83			
+   MOV r0, r8
+#LABEL           				IF_108_END
+IF_108_END:
+#PHI_MOV         %114	%113			
+   MOV r9, r0
+#JMP             				IF_97_END
+   B IF_97_END
+#LABEL           				IF_97_ELSE
+IF_97_ELSE:
+#PHI_MOV         %114	%83			
+   MOV r9, r8
+#LABEL           				IF_97_END
+IF_97_END:
+#IDIV            %121	%3	%6		
+    MOV r0, r5
+    MOV r1, r7
+    BL __aeabi_idiv
+   MOV r10, r0
+#SAL             %119	%121	2		
+   LSL r0, r10, #2
+#LOAD            %118	%2	%119		
+    LDR r12, [sp,#124]
+    ADD r12, r12, r0
+    LDR r10, [r12]
+#MOD             %125	%3	%6		
+    MOV r0, r5
+    MOV r1, r7
+    BL __aeabi_idivmod
+    MOV r4, r1
+#SAL             %123	%125	2		
+   LSL r0, r4, #2
+#LOAD            %122	%&7	%123		
+    ADD r12, sp, #0
+    ADD r12, r12, r0
+    LDR r4, [r12]
+#IDIV            %117	%118	%122		
+    MOV r0, r10
+    MOV r1, r4
+    BL __aeabi_idiv
+   MOV r4, r0
+#MOD             %116	%117	2		
+    MOV r0, r4
+    MOV r1, #2
+    BL __aeabi_idivmod
+    MOV r4, r1
+#CMP             	%116	1		
+    MOV r11, #1
+    CMP r4, r11
+#JNE             				IF_115_ELSE
+   BNE IF_115_ELSE
+#CMP             	%4	0		
+    MOV r11, #0
+    CMP r6, r11
+#JNE             				IF_126_ELSE
+   BNE IF_126_ELSE
+#MOD             %131	%3	%6		
+    MOV r0, r5
+    MOV r1, r7
+    BL __aeabi_idivmod
+    MOV r4, r1
+#SAL             %129	%131	2		
+   LSL r0, r4, #2
+#LOAD            %128	%&7	%129		
+    ADD r12, sp, #0
+    ADD r12, r12, r0
+    LDR r0, [r12]
+#SUB             %127	%114	%128		
+     SUB r0, r9, r0
+#PHI_MOV         %132	%127			
+#JMP             				IF_126_END
+   B IF_126_END
+#LABEL           				IF_126_ELSE
+IF_126_ELSE:
+#PHI_MOV         %132	%114			
+   MOV r0, r9
+#LABEL           				IF_126_END
+IF_126_END:
+#PHI_MOV         %133	%132			
+#JMP             				IF_115_END
+   B IF_115_END
+#LABEL           				IF_115_ELSE
+IF_115_ELSE:
+#PHI_MOV         %133	%114			
+   MOV r0, r9
+#LABEL           				IF_115_END
+IF_115_END:
+#PHI_MOV         %134	%133			
+   MOV r4, r0
+#JMP             				IF_86_END
+   B IF_86_END
+#LABEL           				IF_86_ELSE
+IF_86_ELSE:
+#PHI_MOV         %134	%83			
+   MOV r4, r8
+#LABEL           				IF_86_END
+IF_86_END:
+#IDIV            %139	%3	%6		
+    MOV r0, r5
+    MOV r1, r7
+    BL __aeabi_idiv
+   MOV r6, r0
+#SAL             %137	%139	2		
+   LSL r0, r6, #2
+#LOAD            %136	%2	%137		
+    LDR r12, [sp,#124]
+    ADD r12, r12, r0
+    LDR r0, [r12]
+#ADD             %135	%136	%134		
+    ADD r4, r0, r4
+#IDIV            %142	%3	%6		
+    MOV r0, r5
+    MOV r1, r7
+    BL __aeabi_idiv
+   MOV r5, r0
+#SAL             %140	%142	2		
+   LSL r0, r5, #2
+#STORE           	%2	%140	%135	
+    LDR r12, [sp,#124]
+   ADD r12, r12, r0
+    STR r4, [r12]
+#RET             	0			
+    MOV r0, #0
+    LDR lr, [sp, #160]
+    LDR r11, [sp,#128]
+    LDR r4, [sp,#132]
+    LDR r5, [sp,#136]
+    LDR r6, [sp,#140]
+    LDR r7, [sp,#144]
+    LDR r8, [sp,#148]
+    LDR r9, [sp,#152]
+    LDR r10, [sp,#156]
+    MOV r12, #164
+    ADD sp, sp, r12
     MOV PC, LR
-# 1 FUNCTION_BEGIN  	2			power
-# 2 MOV             %7	$arg0			
-# 3 MOV             %8	$arg1			
-# 4 MOV             %10	1			
-# 5 PHI_MOV         %12	%8			
-# 6 PHI_MOV         %13	%10			
-# 7 LABEL           				LOOP_11_BEGIN
-# 8 CMP             	%12	0		
-# 9 JEQ             				LOOP_11_END
-# 10 LABEL           				LOOP_11_DO
-# 11 IMUL            %14	%13	%7		
-# 12 SUB             %15	%12	1		
-# 13 NOOP            				
-# 14 LABEL           				LOOP_11_CONTINUE
-# 15 PHI_MOV         %12	%15			
-# 16 PHI_MOV         %13	%14			
-# 17 JMP             				LOOP_11_BEGIN
-# 18 NOOP            	%12			
-# 19 NOOP            	%13			
-# 20 NOOP            	%7			
-# 21 NOOP            	%12			
-# 22 LABEL           				LOOP_11_END
-# 23 RET             	%13			
-# 24 RET             0				
-# [log]5 expire %8 r1
-# [log]6 expire %10 r2
-#FUNCTION_BEGIN  	2			power
+.data
+.global __Var__4seed
+__Var__4seed:
+.word 19971231
+.word 19981013
+.word 1000000007
+.space 0
+.data
+.global __Var__11staticvalue
+__Var__11staticvalue:
+.word 0
+# 1 FUNCTION_BEGIN  	0			rand
+# 2 SAL             %146	0	2		
+# 3 LOAD            %145	@&seed	%146		
+# 4 IMUL            %144	@staticvalue	%145		
+# 5 SAL             %149	1	2		
+# 6 LOAD            %148	@&seed	%149		
+# 7 ADD             %143	%144	%148		
+# 8 MOV             @staticvalue	%143			
+# 9 SAL             %153	2	2		
+# 10 LOAD            %152	@&seed	%153		
+# 11 MOD             %151	@staticvalue	%152		
+# 12 MOV             @staticvalue	%151			
+# 13 CMP             	@staticvalue	0		
+# 14 JGE             				IF_155_ELSE
+# 15 SAL             %158	2	2		
+# 16 LOAD            %157	@&seed	%158		
+# 17 ADD             %156	%157	@staticvalue		
+# 18 MOV             @staticvalue	%156			
+# 19 LABEL           				IF_155_ELSE
+# 20 LABEL           				IF_155_END
+# 21 RET             	@staticvalue			
+# [log]3 expire %146 r0
+# [log]4 expire %145 r0
+# [log]6 expire %149 r1
+# [log]7 expire %144 r0
+# [log]7 expire %148 r1
+# [log]8 expire %143 r0
+# [log]10 expire %153 r0
+# [log]11 expire %152 r4
+# [log]11 expire $arg:0:11 r0
+# [log]11 expire $arg:1:11 r1
+# [log]11 expire $arg:2:11 r2
+# [log]15 expire $arg:3:11 r3
+# [log]15 expire %151 r4
+# [log]16 expire %158 r0
+# [log]17 expire %157 r0
+#FUNCTION_BEGIN  	0			rand
 .text
-.global power
-.type power, %function
-power:
-    SUB sp, sp, #8
+.global rand
+.type rand, %function
+rand:
+    SUB sp, sp, #12
+    STR lr, [sp, #8]
     STR r11, [sp, #0]
     STR r4, [sp, #4]
-#MOV             %7	$arg0			
-#MOV             %8	$arg1			
-#MOV             %10	1			
-    MOV r2, #1
-#PHI_MOV         %12	%8			
-#PHI_MOV         %13	%10			
-#LABEL           				LOOP_11_BEGIN
-LOOP_11_BEGIN:
-#CMP             	%12	0		
+#SAL             %146	0	2		
     MOV r11, #0
-    CMP r1, r11
-#JEQ             				LOOP_11_END
-   BEQ LOOP_11_END
-#LABEL           				LOOP_11_DO
-LOOP_11_DO:
-#IMUL            %14	%13	%7		
-    MUL r3, r2, r0
-#SUB             %15	%12	1		
-     SUB r4, r1, #1
-#NOOP            				
-#LABEL           				LOOP_11_CONTINUE
-LOOP_11_CONTINUE:
-#PHI_MOV         %12	%15			
-   MOV r1, r4
-#PHI_MOV         %13	%14			
-   MOV r2, r3
-#JMP             				LOOP_11_BEGIN
-   B LOOP_11_BEGIN
-#NOOP            	%12			
-#NOOP            	%13			
-#NOOP            	%7			
-#NOOP            	%12			
-#LABEL           				LOOP_11_END
-LOOP_11_END:
-#RET             	%13			
-    MOV r0, r2
+   LSL r0, r11, #2
+#LOAD            %145	@&seed	%146		
+    MOV32 r12, __Var__4seed
+    ADD r12, r12, r0
+    LDR r0, [r12]
+#IMUL            %144	@staticvalue	%145		
+    MOV32 r11,__Var__11staticvalue
+    LDR r11, [r11, #0]
+    MUL r0, r11, r0
+#SAL             %149	1	2		
+    MOV r11, #1
+   LSL r1, r11, #2
+#LOAD            %148	@&seed	%149		
+    MOV32 r12, __Var__4seed
+    ADD r12, r12, r1
+    LDR r1, [r12]
+#ADD             %143	%144	%148		
+    ADD r0, r0, r1
+#MOV             @staticvalue	%143			
+    MOV32 r11, __Var__11staticvalue
+    STR r0, [r11,#0]
+#SAL             %153	2	2		
+    MOV r11, #2
+   LSL r0, r11, #2
+#LOAD            %152	@&seed	%153		
+    MOV32 r12, __Var__4seed
+    ADD r12, r12, r0
+    LDR r4, [r12]
+#MOD             %151	@staticvalue	%152		
+    MOV32 r0,__Var__11staticvalue
+    LDR r0, [r0, #0]
+    MOV r1, r4
+    BL __aeabi_idivmod
+    MOV r4, r1
+#MOV             @staticvalue	%151			
+    MOV32 r11, __Var__11staticvalue
+    STR r4, [r11,#0]
+#CMP             	@staticvalue	0		
+    MOV32 r12,__Var__11staticvalue
+    LDR r12, [r12, #0]
+    MOV r11, #0
+    CMP r12, r11
+#JGE             				IF_155_ELSE
+   BGE IF_155_ELSE
+#SAL             %158	2	2		
+    MOV r11, #2
+   LSL r0, r11, #2
+#LOAD            %157	@&seed	%158		
+    MOV32 r12, __Var__4seed
+    ADD r12, r12, r0
+    LDR r0, [r12]
+#ADD             %156	%157	@staticvalue		
+    MOV32 r12,__Var__11staticvalue
+    LDR r12, [r12, #0]
+    ADD r0, r0, r12
+#MOV             @staticvalue	%156			
+    MOV32 r11, __Var__11staticvalue
+    STR r0, [r11,#0]
+#LABEL           				IF_155_ELSE
+IF_155_ELSE:
+#LABEL           				IF_155_END
+IF_155_END:
+#RET             	@staticvalue			
+    MOV32 r0,__Var__11staticvalue
+    LDR r0, [r0, #0]
+    LDR lr, [sp, #8]
     LDR r11, [sp,#0]
     LDR r4, [sp,#4]
-    ADD sp, sp, #8
+    ADD sp, sp, #12
     MOV PC, LR
-#RET             0				
-    LDR r11, [sp,#0]
-    LDR r4, [sp,#4]
-    ADD sp, sp, #8
-    MOV PC, LR
-# 1 FUNCTION_BEGIN  	1			getstr
-# 2 MOV             %16	$arg0			
-# 3 INFO            				NOT CONSTEXPR
-# 4 CALL            %18				getch
-# 5 MOV             %20	0			
-# 6 PHI_MOV         %22	%18			
-# 7 PHI_MOV         %23	%20			
-# 8 LABEL           				LOOP_21_BEGIN
-# 9 CMP             	%22	13		
-# 10 PHI_MOV         %24	0			
-# 11 JEQ             				COND25_end
-# 12 CMP             	%22	10		
-# 13 MOVNE           %26	1	0		
-# 14 PHI_MOV         %24	%26			
-# 15 LABEL           				COND25_end
-# 16 CMP             	%24	0		
-# 17 JEQ             				LOOP_21_END
-# 18 LABEL           				LOOP_21_DO
-# 19 SAL             %27	%23	2		
-# 20 STORE           	%16	%27	%22	
-# 21 ADD             %29	%23	1		
-# 22 CALL            %30				getch
-# 23 NOOP            				
-# 24 LABEL           				LOOP_21_CONTINUE
-# 25 PHI_MOV         %22	%30			
-# 26 PHI_MOV         %23	%29			
-# 27 JMP             				LOOP_21_BEGIN
-# 28 NOOP            	%22			
-# 29 NOOP            	%22			
-# 30 NOOP            	%23			
-# 31 NOOP            	%16			
-# 32 NOOP            	%22			
-# 33 NOOP            	%23			
-# 34 LABEL           				LOOP_21_END
-# 35 RET             	%23			
-# 36 RET             0				
-# [log]4 expire $arg:0:4 r0
-# [log]4 expire $arg:1:4 r1
-# [log]4 expire $arg:2:4 r2
-# [log]5 expire $arg:3:4 r3
-# [log]6 expire %18 r5
-# [log]7 expire %20 r0
-# [log]19 expire %24 r0
-# [log]19 expire %26 r1
-# [log]21 expire %27 r0
-# [log]22 expire $arg:0:22 r0
-# [log]22 expire $arg:1:22 r1
-# [log]22 expire $arg:2:22 r2
-#FUNCTION_BEGIN  	1			getstr
+.data
+.global __Var__1a
+__Var__1a:
+.space 40000
+# 1 FUNCTION_BEGIN  	0			main
+# 2 CALL            %161				getint
+# 3 CALL            %162				getint
+# 4 MOV             @staticvalue	%162			
+# 5 CALL            %163				_sysy_starttime
+# 6 PHI_MOV         %167	%164			
+# 7 PHI_MOV         %168	%165			
+# 8 PHI_MOV         %169	%161			
+# 9 LABEL           				LOOP_166_BEGIN
+# 10 CMP             	%169	0		
+# 11 JLE             				LOOP_166_END
+# 12 LABEL           				LOOP_166_DO
+# 13 SUB             %170	%169	1		
+# 14 CALL            %172				rand
+# 15 MOD             %171	%172	300000		
+# 16 CALL            %174				rand
+# 17 MOD             %173	%174	2		
+# 18 SET_ARG         2	%173			
+# 19 SET_ARG         1	%171			
+# 20 SET_ARG         0	@&a			
+# 21 CALL            %175				set
+# 22 NOOP            				
+# 23 LABEL           				LOOP_166_CONTINUE
+# 24 PHI_MOV         %167	%171			
+# 25 PHI_MOV         %168	%173			
+# 26 PHI_MOV         %169	%170			
+# 27 JMP             				LOOP_166_BEGIN
+# 28 NOOP            	%169			
+# 29 NOOP            	%169			
+# 30 NOOP            	@&a			
+# 31 LABEL           				LOOP_166_END
+# 32 CALL            %176				_sysy_stoptime
+# 33 SET_ARG         1	@&a			
+# 34 SET_ARG         0	10000			
+# 35 CALL            %177				putarray
+# 36 RET             	0			
+# [log]2 expire $arg:0:2 r0
+# [log]2 expire $arg:1:2 r1
+# [log]2 expire $arg:2:2 r2
+# [log]3 expire $arg:3:2 r3
+# [log]3 expire $arg:0:3 r0
+# [log]3 expire $arg:1:3 r1
+# [log]3 expire $arg:2:3 r2
+# [log]4 expire $arg:3:3 r3
+# [log]4 expire %162 r5
+# [log]5 expire %163 r5
+# [log]5 expire $arg:0:5 r0
+# [log]5 expire $arg:1:5 r1
+# [log]5 expire $arg:2:5 r2
+# [log]6 expire $arg:3:5 r3
+# [log]8 expire %161 r4
+# [log]14 expire $arg:0:14 r0
+# [log]14 expire $arg:1:14 r1
+# [log]14 expire $arg:2:14 r2
+# [log]15 expire $arg:3:14 r3
+# [log]15 expire %172 r8
+# [log]15 expire $arg:0:15 r0
+# [log]15 expire $arg:1:15 r1
+# [log]15 expire $arg:2:15 r2
+# [log]16 expire $arg:3:15 r3
+# [log]16 expire $arg:0:16 r0
+# [log]16 expire $arg:1:16 r1
+# [log]16 expire $arg:2:16 r2
+# [log]17 expire $arg:3:16 r3
+# [log]17 expire %174 r9
+# [log]17 expire $arg:0:17 r0
+# [log]17 expire $arg:1:17 r1
+# [log]17 expire $arg:2:17 r2
+# [log]18 expire $arg:3:17 r3
+# [log]19 expire $arg:2:null r2
+# [log]20 expire $arg:1:null r1
+# [log]21 expire $arg:0:null r0
+# [log]21 expire %175 r10
+# [log]21 expire $arg:0:21 r0
+# [log]21 expire $arg:1:21 r1
+# [log]21 expire $arg:2:21 r2
+# [log]32 expire $arg:3:21 r3
+# [log]32 expire %169 r4
+# [log]32 expire %167 r5
+# [log]32 expire %168 r6
+# [log]32 expire %170 r7
+# [log]32 expire %171 r8
+# [log]32 expire %173 r9
+# [log]32 expire %176 r4
+# [log]32 expire $arg:0:32 r0
+# [log]32 expire $arg:1:32 r1
+# [log]32 expire $arg:2:32 r2
+# [log]33 expire $arg:3:32 r3
+# [log]35 expire %177 r4
+# [log]35 expire $arg:0:35 r0
+# [log]35 expire $arg:1:35 r1
+# [log]35 expire $arg:2:35 r2
+#FUNCTION_BEGIN  	0			main
 .text
-.global getstr
-.type getstr, %function
-getstr:
-    SUB sp, sp, #28
-    STR lr, [sp, #24]
+.global main
+.type main, %function
+main:
+    SUB sp, sp, #36
+    STR lr, [sp, #32]
     STR r11, [sp, #0]
     STR r4, [sp, #4]
     STR r5, [sp, #8]
     STR r6, [sp, #12]
     STR r7, [sp, #16]
     STR r8, [sp, #20]
-#MOV             %16	$arg0			
-   MOV r4, r0
-#INFO            				NOT CONSTEXPR
-#CALL            %18				getch
-   BL getch
-    MOV r5, r0
-#MOV             %20	0			
-    MOV r0, #0
-#PHI_MOV         %22	%18			
-#PHI_MOV         %23	%20			
-   MOV r6, r0
-#LABEL           				LOOP_21_BEGIN
-LOOP_21_BEGIN:
-#CMP             	%22	13		
-    MOV r11, #13
-    CMP r5, r11
-#PHI_MOV         %24	0			
-    MOV r0, #0
-#JEQ             				COND25_end
-   BEQ COND25_end
-#CMP             	%22	10		
-    MOV r11, #10
-    CMP r5, r11
-#MOVNE           %26	1	0		
-    MOVNE r1, #1
-    MOVEQ r1, #0
-#PHI_MOV         %24	%26			
-   MOV r0, r1
-#LABEL           				COND25_end
-COND25_end:
-#CMP             	%24	0		
-    MOV r11, #0
-    CMP r0, r11
-#JEQ             				LOOP_21_END
-   BEQ LOOP_21_END
-#LABEL           				LOOP_21_DO
-LOOP_21_DO:
-#SAL             %27	%23	2		
-   LSL r0, r6, #2
-#STORE           	%16	%27	%22	
-    MOV r12, r4
-   ADD r12, r12, r0
-    STR r5, [r12]
-#ADD             %29	%23	1		
-    ADD r7, r6, #1
-#CALL            %30				getch
-   BL getch
-    MOV r8, r0
-#NOOP            				
-#LABEL           				LOOP_21_CONTINUE
-LOOP_21_CONTINUE:
-#PHI_MOV         %22	%30			
-   MOV r5, r8
-#PHI_MOV         %23	%29			
-   MOV r6, r7
-#JMP             				LOOP_21_BEGIN
-   B LOOP_21_BEGIN
-#NOOP            	%22			
-#NOOP            	%22			
-#NOOP            	%23			
-#NOOP            	%16			
-#NOOP            	%22			
-#NOOP            	%23			
-#LABEL           				LOOP_21_END
-LOOP_21_END:
-#RET             	%23			
-    MOV r0, r6
-    LDR lr, [sp, #24]
-    LDR r11, [sp,#0]
-    LDR r4, [sp,#4]
-    LDR r5, [sp,#8]
-    LDR r6, [sp,#12]
-    LDR r7, [sp,#16]
-    LDR r8, [sp,#20]
-    ADD sp, sp, #28
-    MOV PC, LR
-#RET             0				
-    LDR lr, [sp, #24]
-    LDR r11, [sp,#0]
-    LDR r4, [sp,#4]
-    LDR r5, [sp,#8]
-    LDR r6, [sp,#12]
-    LDR r7, [sp,#16]
-    LDR r8, [sp,#20]
-    ADD sp, sp, #28
-    MOV PC, LR
-# 1 FUNCTION_BEGIN  	1			intpush
-# 2 MOV             %31	$arg0			
-# 3 ADD             %32	@intt	1		
-# 4 MOV             @intt	%32			
-# 5 SAL             %33	@intt	2		
-# 6 STORE           	@&ints	%33	%31	
-# 7 RET             				
-# [log]4 expire %32 r1
-#FUNCTION_BEGIN  	1			intpush
-.text
-.global intpush
-.type intpush, %function
-intpush:
-    SUB sp, sp, #4
-    STR r11, [sp, #0]
-#MOV             %31	$arg0			
-#ADD             %32	@intt	1		
-    MOV32 r11,__Var__4intt
-    LDR r11, [r11, #0]
-    ADD r1, r11, #1
-#MOV             @intt	%32			
-    MOV32 r11, __Var__4intt
-    STR r1, [r11,#0]
-#SAL             %33	@intt	2		
-    MOV32 r11,__Var__4intt
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#STORE           	@&ints	%33	%31	
-    MOV32 r12, __Var__4ints
-   ADD r12, r12, r1
-    STR r0, [r12]
-#RET             				
-    LDR r11, [sp,#0]
-    ADD sp, sp, #4
-    MOV PC, LR
-# 1 FUNCTION_BEGIN  	1			chapush
-# 2 MOV             %35	$arg0			
-# 3 ADD             %36	@chat	1		
-# 4 MOV             @chat	%36			
-# 5 SAL             %37	@chat	2		
-# 6 STORE           	@&chas	%37	%35	
-# 7 RET             				
-# [log]4 expire %36 r1
-#FUNCTION_BEGIN  	1			chapush
-.text
-.global chapush
-.type chapush, %function
-chapush:
-    SUB sp, sp, #4
-    STR r11, [sp, #0]
-#MOV             %35	$arg0			
-#ADD             %36	@chat	1		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-    ADD r1, r11, #1
-#MOV             @chat	%36			
-    MOV32 r11, __Var__4chat
-    STR r1, [r11,#0]
-#SAL             %37	@chat	2		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#STORE           	@&chas	%37	%35	
-    MOV32 r12, __Var__4chas
-   ADD r12, r12, r1
-    STR r0, [r12]
-#RET             				
-    LDR r11, [sp,#0]
-    ADD sp, sp, #4
-    MOV PC, LR
-# 1 FUNCTION_BEGIN  	0			intpop
-# 2 SUB             %39	@intt	1		
-# 3 MOV             @intt	%39			
-# 4 ADD             %43	@intt	1		
-# 5 SAL             %41	%43	2		
-# 6 LOAD            %40	@&ints	%41		
-# 7 RET             	%40			
-# 8 RET             0				
-# [log]3 expire %39 r0
-# [log]5 expire %43 r0
-# [log]6 expire %41 r0
-#FUNCTION_BEGIN  	0			intpop
-.text
-.global intpop
-.type intpop, %function
-intpop:
-    SUB sp, sp, #4
-    STR r11, [sp, #0]
-#SUB             %39	@intt	1		
-    MOV32 r11,__Var__4intt
-    LDR r11, [r11, #0]
-     SUB r0, r11, #1
-#MOV             @intt	%39			
-    MOV32 r11, __Var__4intt
-    STR r0, [r11,#0]
-#ADD             %43	@intt	1		
-    MOV32 r11,__Var__4intt
-    LDR r11, [r11, #0]
-    ADD r0, r11, #1
-#SAL             %41	%43	2		
-   LSL r0, r0, #2
-#LOAD            %40	@&ints	%41		
-    MOV32 r12, __Var__4ints
-    ADD r12, r12, r0
-    LDR r0, [r12]
-#RET             	%40			
-    LDR r11, [sp,#0]
-    ADD sp, sp, #4
-    MOV PC, LR
-#RET             0				
-    LDR r11, [sp,#0]
-    ADD sp, sp, #4
-    MOV PC, LR
-# 1 FUNCTION_BEGIN  	0			chapop
-# 2 SUB             %44	@chat	1		
-# 3 MOV             @chat	%44			
-# 4 ADD             %48	@chat	1		
-# 5 SAL             %46	%48	2		
-# 6 LOAD            %45	@&chas	%46		
-# 7 RET             	%45			
-# 8 RET             0				
-# [log]3 expire %44 r0
-# [log]5 expire %48 r0
-# [log]6 expire %46 r0
-#FUNCTION_BEGIN  	0			chapop
-.text
-.global chapop
-.type chapop, %function
-chapop:
-    SUB sp, sp, #4
-    STR r11, [sp, #0]
-#SUB             %44	@chat	1		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-     SUB r0, r11, #1
-#MOV             @chat	%44			
-    MOV32 r11, __Var__4chat
-    STR r0, [r11,#0]
-#ADD             %48	@chat	1		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-    ADD r0, r11, #1
-#SAL             %46	%48	2		
-   LSL r0, r0, #2
-#LOAD            %45	@&chas	%46		
-    MOV32 r12, __Var__4chas
-    ADD r12, r12, r0
-    LDR r0, [r12]
-#RET             	%45			
-    LDR r11, [sp,#0]
-    ADD sp, sp, #4
-    MOV PC, LR
-#RET             0				
-    LDR r11, [sp,#0]
-    ADD sp, sp, #4
-    MOV PC, LR
-# 1 FUNCTION_BEGIN  	1			intadd
-# 2 MOV             %49	$arg0			
-# 3 SAL             %52	@intt	2		
-# 4 LOAD            %51	@&ints	%52		
-# 5 IMUL            %50	%51	10		
-# 6 SAL             %54	@intt	2		
-# 7 STORE           	@&ints	%54	%50	
-# 8 SAL             %58	@intt	2		
-# 9 LOAD            %57	@&ints	%58		
-# 10 ADD             %56	%57	%49		
-# 11 SAL             %60	@intt	2		
-# 12 STORE           	@&ints	%60	%56	
-# 13 RET             				
-# [log]4 expire %52 r1
-# [log]6 expire %51 r1
-# [log]8 expire %54 r1
-# [log]8 expire %50 r2
-# [log]9 expire %58 r1
-# [log]10 expire %49 r0
-# [log]10 expire %57 r1
-#FUNCTION_BEGIN  	1			intadd
-.text
-.global intadd
-.type intadd, %function
-intadd:
-    SUB sp, sp, #4
-    STR r11, [sp, #0]
-#MOV             %49	$arg0			
-#SAL             %52	@intt	2		
-    MOV32 r11,__Var__4intt
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#LOAD            %51	@&ints	%52		
-    MOV32 r12, __Var__4ints
-    ADD r12, r12, r1
-    LDR r1, [r12]
-#IMUL            %50	%51	10		
-    MOV r12, #10
-    MUL r2, r1, r12
-#SAL             %54	@intt	2		
-    MOV32 r11,__Var__4intt
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#STORE           	@&ints	%54	%50	
-    MOV32 r12, __Var__4ints
-   ADD r12, r12, r1
-    STR r2, [r12]
-#SAL             %58	@intt	2		
-    MOV32 r11,__Var__4intt
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#LOAD            %57	@&ints	%58		
-    MOV32 r12, __Var__4ints
-    ADD r12, r12, r1
-    LDR r1, [r12]
-#ADD             %56	%57	%49		
-    ADD r0, r1, r0
-#SAL             %60	@intt	2		
-    MOV32 r11,__Var__4intt
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#STORE           	@&ints	%60	%56	
-    MOV32 r12, __Var__4ints
-   ADD r12, r12, r1
-    STR r0, [r12]
-#RET             				
-    LDR r11, [sp,#0]
-    ADD sp, sp, #4
-    MOV PC, LR
-# 1 FUNCTION_BEGIN  	0			find
-# 2 CALL            %62				chapop
-# 3 MOV             @c	%62			
-# 4 SAL             %63	@ii	2		
-# 5 STORE           	@&get2	%63	32	
-# 6 ADD             %67	@ii	1		
-# 7 SAL             %65	%67	2		
-# 8 STORE           	@&get2	%65	@c	
-# 9 ADD             %68	@ii	2		
-# 10 MOV             @ii	%68			
-# 11 CMP             	@chat	0		
-# 12 JNE             				IF_69_ELSE
-# 13 RET             	0			
-# 14 LABEL           				IF_69_ELSE
-# 15 LABEL           				IF_69_END
-# 16 RET             	1			
-# 17 RET             0				
-# [log]2 expire $arg:0:2 r0
-# [log]2 expire $arg:1:2 r1
-# [log]2 expire $arg:2:2 r2
-# [log]3 expire $arg:3:2 r3
-# [log]3 expire %62 r4
-# [log]6 expire %63 r0
-# [log]7 expire %67 r0
-# [log]9 expire %65 r0
-# [log]10 expire %68 r0
-#FUNCTION_BEGIN  	0			find
-.text
-.global find
-.type find, %function
-find:
-    SUB sp, sp, #12
-    STR lr, [sp, #8]
-    STR r11, [sp, #0]
-    STR r4, [sp, #4]
-#CALL            %62				chapop
-   BL chapop
+    STR r9, [sp, #24]
+    STR r10, [sp, #28]
+#CALL            %161				getint
+   BL getint
     MOV r4, r0
-#MOV             @c	%62			
-    MOV32 r11, __Var__1c
-    STR r4, [r11,#0]
-#SAL             %63	@ii	2		
-    MOV32 r11,__Var__2ii
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#STORE           	@&get2	%63	32	
-    MOV32 r12, __Var__4get2
-   ADD r12, r12, r0
-    MOV r11, #32
-    STR r11, [r12]
-#ADD             %67	@ii	1		
-    MOV32 r11,__Var__2ii
-    LDR r11, [r11, #0]
-    ADD r0, r11, #1
-#SAL             %65	%67	2		
-   LSL r0, r0, #2
-#STORE           	@&get2	%65	@c	
-    MOV32 r12, __Var__4get2
-   ADD r12, r12, r0
-    MOV32 r11,__Var__1c
-    LDR r11, [r11, #0]
-    STR r11, [r12]
-#ADD             %68	@ii	2		
-    MOV32 r11,__Var__2ii
-    LDR r11, [r11, #0]
-    ADD r0, r11, #2
-#MOV             @ii	%68			
-    MOV32 r11, __Var__2ii
-    STR r0, [r11,#0]
-#CMP             	@chat	0		
-    MOV32 r12,__Var__4chat
-    LDR r12, [r12, #0]
-    MOV r11, #0
-    CMP r12, r11
-#JNE             				IF_69_ELSE
-   BNE IF_69_ELSE
-#RET             	0			
-    MOV r0, #0
-    LDR lr, [sp, #8]
-    LDR r11, [sp,#0]
-    LDR r4, [sp,#4]
-    ADD sp, sp, #12
-    MOV PC, LR
-#LABEL           				IF_69_ELSE
-IF_69_ELSE:
-#LABEL           				IF_69_END
-IF_69_END:
-#RET             	1			
-    MOV r0, #1
-    LDR lr, [sp, #8]
-    LDR r11, [sp,#0]
-    LDR r4, [sp,#4]
-    ADD sp, sp, #12
-    MOV PC, LR
-#RET             0				
-    LDR lr, [sp, #8]
-    LDR r11, [sp,#0]
-    LDR r4, [sp,#4]
-    ADD sp, sp, #12
-    MOV PC, LR
-# 1 FUNCTION_BEGIN  	0			main
-# 2 MOV             @intt	0			
-# 3 MOV             @chat	0			
-# 4 SET_ARG         0	@&get			
-# 5 CALL            %71				getstr
-# 6 LABEL           				LOOP_72_BEGIN
-# 7 CMP             	@i	%71		
-# 8 JGE             				LOOP_72_END
-# 9 LABEL           				LOOP_72_DO
-# 10 SAL             %76	@i	2		
-# 11 LOAD            %75	@&get	%76		
-# 12 SET_ARG         0	%75			
-# 13 CALL            %74				isdigit
-# 14 CMP             	%74	1		
-# 15 JNE             				IF_73_ELSE
-# 16 SAL             %79	@i	2		
-# 17 LOAD            %78	@&get	%79		
-# 18 SAL             %81	@ii	2		
-# 19 STORE           	@&get2	%81	%78	
-# 20 ADD             %83	@ii	1		
-# 21 MOV             @ii	%83			
-# 22 JMP             				IF_73_END
-# 23 LABEL           				IF_73_ELSE
-# 24 SAL             %86	@i	2		
-# 25 LOAD            %85	@&get	%86		
-# 26 CMP             	%85	40		
-# 27 JNE             				IF_84_ELSE
-# 28 SET_ARG         0	40			
-# 29 CALL            %88				chapush
-# 30 LABEL           				IF_84_ELSE
-# 31 LABEL           				IF_84_END
-# 32 SAL             %91	@i	2		
-# 33 LOAD            %90	@&get	%91		
-# 34 CMP             	%90	94		
-# 35 JNE             				IF_89_ELSE
-# 36 SET_ARG         0	94			
-# 37 CALL            %93				chapush
-# 38 LABEL           				IF_89_ELSE
-# 39 LABEL           				IF_89_END
-# 40 SAL             %96	@i	2		
-# 41 LOAD            %95	@&get	%96		
-# 42 CMP             	%95	41		
-# 43 JNE             				IF_94_ELSE
-# 44 CALL            %98				chapop
-# 45 MOV             @c	%98			
-# 46 LABEL           				LOOP_99_BEGIN
-# 47 CMP             	@c	40		
-# 48 JEQ             				LOOP_99_END
-# 49 LABEL           				LOOP_99_DO
-# 50 SAL             %100	@ii	2		
-# 51 STORE           	@&get2	%100	32	
-# 52 ADD             %104	@ii	1		
-# 53 SAL             %102	%104	2		
-# 54 STORE           	@&get2	%102	@c	
-# 55 ADD             %105	@ii	2		
-# 56 MOV             @ii	%105			
-# 57 CALL            %106				chapop
-# 58 MOV             @c	%106			
-# 59 NOOP            				
-# 60 LABEL           				LOOP_99_CONTINUE
-# 61 JMP             				LOOP_99_BEGIN
-# 62 NOOP            	@c			
-# 63 NOOP            	@ii			
-# 64 NOOP            	@&get2			
-# 65 NOOP            	@ii			
-# 66 NOOP            	@&get2			
-# 67 NOOP            	@c			
-# 68 NOOP            	@ii			
-# 69 LABEL           				LOOP_99_END
-# 70 LABEL           				IF_94_ELSE
-# 71 LABEL           				IF_94_END
-# 72 SAL             %109	@i	2		
-# 73 LOAD            %108	@&get	%109		
-# 74 CMP             	%108	43		
-# 75 JNE             				IF_107_ELSE
-# 76 LABEL           				LOOP_111_BEGIN
-# 77 SAL             %123	@chat	2		
-# 78 LOAD            %122	@&chas	%123		
-# 79 CMP             	%122	43		
-# 80 PHI_MOV         %120	1			
-# 81 JEQ             				COND121_end
-# 82 SAL             %127	@chat	2		
-# 83 LOAD            %126	@&chas	%127		
-# 84 CMP             	%126	45		
-# 85 MOVEQ           %125	1	0		
-# 86 PHI_MOV         %120	%125			
-# 87 LABEL           				COND121_end
-# 88 CMP             	%120	0		
-# 89 PHI_MOV         %118	1			
-# 90 JNE             				COND119_end
-# 91 SAL             %131	@chat	2		
-# 92 LOAD            %130	@&chas	%131		
-# 93 CMP             	%130	42		
-# 94 MOVEQ           %129	1	0		
-# 95 PHI_MOV         %118	%129			
-# 96 LABEL           				COND119_end
-# 97 CMP             	%118	0		
-# 98 PHI_MOV         %116	1			
-# 99 JNE             				COND117_end
-# 100 SAL             %135	@chat	2		
-# 101 LOAD            %134	@&chas	%135		
-# 102 CMP             	%134	47		
-# 103 MOVEQ           %133	1	0		
-# 104 PHI_MOV         %116	%133			
-# 105 LABEL           				COND117_end
-# 106 CMP             	%116	0		
-# 107 PHI_MOV         %114	1			
-# 108 JNE             				COND115_end
-# 109 SAL             %139	@chat	2		
-# 110 LOAD            %138	@&chas	%139		
-# 111 CMP             	%138	37		
-# 112 MOVEQ           %137	1	0		
-# 113 PHI_MOV         %114	%137			
-# 114 LABEL           				COND115_end
-# 115 CMP             	%114	0		
-# 116 PHI_MOV         %112	1			
-# 117 JNE             				COND113_end
-# 118 SAL             %143	@chat	2		
-# 119 LOAD            %142	@&chas	%143		
-# 120 CMP             	%142	94		
-# 121 MOVEQ           %141	1	0		
-# 122 PHI_MOV         %112	%141			
-# 123 LABEL           				COND113_end
-# 124 CMP             	%112	0		
-# 125 JEQ             				LOOP_111_END
-# 126 LABEL           				LOOP_111_DO
-# 127 CALL            %146				find
-# 128 CMP             	%146	0		
-# 129 JNE             				IF_145_ELSE
-# 130 JMP             				LOOP_111_END
-# 131 LABEL           				IF_145_ELSE
-# 132 LABEL           				IF_145_END
-# 133 NOOP            				
-# 134 LABEL           				LOOP_111_CONTINUE
-# 135 JMP             				LOOP_111_BEGIN
-# 136 NOOP            	@chat			
-# 137 NOOP            	@&chas			
-# 138 NOOP            	@chat			
-# 139 NOOP            	@&chas			
-# 140 NOOP            	@chat			
-# 141 NOOP            	@&chas			
-# 142 NOOP            	@chat			
-# 143 NOOP            	@&chas			
-# 144 NOOP            	@chat			
-# 145 NOOP            	@&chas			
-# 146 NOOP            	@chat			
-# 147 NOOP            	@&chas			
-# 148 LABEL           				LOOP_111_END
-# 149 SET_ARG         0	43			
-# 150 CALL            %147				chapush
-# 151 LABEL           				IF_107_ELSE
-# 152 LABEL           				IF_107_END
-# 153 SAL             %150	@i	2		
-# 154 LOAD            %149	@&get	%150		
-# 155 CMP             	%149	45		
-# 156 JNE             				IF_148_ELSE
-# 157 LABEL           				LOOP_152_BEGIN
-# 158 SAL             %164	@chat	2		
-# 159 LOAD            %163	@&chas	%164		
-# 160 CMP             	%163	43		
-# 161 PHI_MOV         %161	1			
-# 162 JEQ             				COND162_end
-# 163 SAL             %168	@chat	2		
-# 164 LOAD            %167	@&chas	%168		
-# 165 CMP             	%167	45		
-# 166 MOVEQ           %166	1	0		
-# 167 PHI_MOV         %161	%166			
-# 168 LABEL           				COND162_end
-# 169 CMP             	%161	0		
-# 170 PHI_MOV         %159	1			
-# 171 JNE             				COND160_end
-# 172 SAL             %172	@chat	2		
-# 173 LOAD            %171	@&chas	%172		
-# 174 CMP             	%171	42		
-# 175 MOVEQ           %170	1	0		
-# 176 PHI_MOV         %159	%170			
-# 177 LABEL           				COND160_end
-# 178 CMP             	%159	0		
-# 179 PHI_MOV         %157	1			
-# 180 JNE             				COND158_end
-# 181 SAL             %176	@chat	2		
-# 182 LOAD            %175	@&chas	%176		
-# 183 CMP             	%175	47		
-# 184 MOVEQ           %174	1	0		
-# 185 PHI_MOV         %157	%174			
-# 186 LABEL           				COND158_end
-# 187 CMP             	%157	0		
-# 188 PHI_MOV         %155	1			
-# 189 JNE             				COND156_end
-# 190 SAL             %180	@chat	2		
-# 191 LOAD            %179	@&chas	%180		
-# 192 CMP             	%179	37		
-# 193 MOVEQ           %178	1	0		
-# 194 PHI_MOV         %155	%178			
-# 195 LABEL           				COND156_end
-# 196 CMP             	%155	0		
-# 197 PHI_MOV         %153	1			
-# 198 JNE             				COND154_end
-# 199 SAL             %184	@chat	2		
-# 200 LOAD            %183	@&chas	%184		
-# 201 CMP             	%183	94		
-# 202 MOVEQ           %182	1	0		
-# 203 PHI_MOV         %153	%182			
-# 204 LABEL           				COND154_end
-# 205 CMP             	%153	0		
-# 206 JEQ             				LOOP_152_END
-# 207 LABEL           				LOOP_152_DO
-# 208 CALL            %187				find
-# 209 CMP             	%187	0		
-# 210 JNE             				IF_186_ELSE
-# 211 JMP             				LOOP_152_END
-# 212 LABEL           				IF_186_ELSE
-# 213 LABEL           				IF_186_END
-# 214 NOOP            				
-# 215 LABEL           				LOOP_152_CONTINUE
-# 216 JMP             				LOOP_152_BEGIN
-# 217 NOOP            	@chat			
-# 218 NOOP            	@&chas			
-# 219 NOOP            	@chat			
-# 220 NOOP            	@&chas			
-# 221 NOOP            	@chat			
-# 222 NOOP            	@&chas			
-# 223 NOOP            	@chat			
-# 224 NOOP            	@&chas			
-# 225 NOOP            	@chat			
-# 226 NOOP            	@&chas			
-# 227 NOOP            	@chat			
-# 228 NOOP            	@&chas			
-# 229 LABEL           				LOOP_152_END
-# 230 SET_ARG         0	45			
-# 231 CALL            %188				chapush
-# 232 LABEL           				IF_148_ELSE
-# 233 LABEL           				IF_148_END
-# 234 SAL             %191	@i	2		
-# 235 LOAD            %190	@&get	%191		
-# 236 CMP             	%190	42		
-# 237 JNE             				IF_189_ELSE
-# 238 LABEL           				LOOP_193_BEGIN
-# 239 SAL             %201	@chat	2		
-# 240 LOAD            %200	@&chas	%201		
-# 241 CMP             	%200	42		
-# 242 PHI_MOV         %198	1			
-# 243 JEQ             				COND199_end
-# 244 SAL             %205	@chat	2		
-# 245 LOAD            %204	@&chas	%205		
-# 246 CMP             	%204	47		
-# 247 MOVEQ           %203	1	0		
-# 248 PHI_MOV         %198	%203			
-# 249 LABEL           				COND199_end
-# 250 CMP             	%198	0		
-# 251 PHI_MOV         %196	1			
-# 252 JNE             				COND197_end
-# 253 SAL             %209	@chat	2		
-# 254 LOAD            %208	@&chas	%209		
-# 255 CMP             	%208	37		
-# 256 MOVEQ           %207	1	0		
-# 257 PHI_MOV         %196	%207			
-# 258 LABEL           				COND197_end
-# 259 CMP             	%196	0		
-# 260 PHI_MOV         %194	1			
-# 261 JNE             				COND195_end
-# 262 SAL             %213	@chat	2		
-# 263 LOAD            %212	@&chas	%213		
-# 264 CMP             	%212	94		
-# 265 MOVEQ           %211	1	0		
-# 266 PHI_MOV         %194	%211			
-# 267 LABEL           				COND195_end
-# 268 CMP             	%194	0		
-# 269 JEQ             				LOOP_193_END
-# 270 LABEL           				LOOP_193_DO
-# 271 CALL            %216				find
-# 272 CMP             	%216	0		
-# 273 JNE             				IF_215_ELSE
-# 274 JMP             				LOOP_193_END
-# 275 LABEL           				IF_215_ELSE
-# 276 LABEL           				IF_215_END
-# 277 NOOP            				
-# 278 LABEL           				LOOP_193_CONTINUE
-# 279 JMP             				LOOP_193_BEGIN
-# 280 NOOP            	@chat			
-# 281 NOOP            	@&chas			
-# 282 NOOP            	@chat			
-# 283 NOOP            	@&chas			
-# 284 NOOP            	@chat			
-# 285 NOOP            	@&chas			
-# 286 NOOP            	@chat			
-# 287 NOOP            	@&chas			
-# 288 LABEL           				LOOP_193_END
-# 289 SET_ARG         0	42			
-# 290 CALL            %217				chapush
-# 291 LABEL           				IF_189_ELSE
-# 292 LABEL           				IF_189_END
-# 293 SAL             %220	@i	2		
-# 294 LOAD            %219	@&get	%220		
-# 295 CMP             	%219	47		
-# 296 JNE             				IF_218_ELSE
-# 297 LABEL           				LOOP_222_BEGIN
-# 298 SAL             %230	@chat	2		
-# 299 LOAD            %229	@&chas	%230		
-# 300 CMP             	%229	42		
-# 301 PHI_MOV         %227	1			
-# 302 JEQ             				COND228_end
-# 303 SAL             %234	@chat	2		
-# 304 LOAD            %233	@&chas	%234		
-# 305 CMP             	%233	47		
-# 306 MOVEQ           %232	1	0		
-# 307 PHI_MOV         %227	%232			
-# 308 LABEL           				COND228_end
-# 309 CMP             	%227	0		
-# 310 PHI_MOV         %225	1			
-# 311 JNE             				COND226_end
-# 312 SAL             %238	@chat	2		
-# 313 LOAD            %237	@&chas	%238		
-# 314 CMP             	%237	37		
-# 315 MOVEQ           %236	1	0		
-# 316 PHI_MOV         %225	%236			
-# 317 LABEL           				COND226_end
-# 318 CMP             	%225	0		
-# 319 PHI_MOV         %223	1			
-# 320 JNE             				COND224_end
-# 321 SAL             %242	@chat	2		
-# 322 LOAD            %241	@&chas	%242		
-# 323 CMP             	%241	94		
-# 324 MOVEQ           %240	1	0		
-# 325 PHI_MOV         %223	%240			
-# 326 LABEL           				COND224_end
-# 327 CMP             	%223	0		
-# 328 JEQ             				LOOP_222_END
-# 329 LABEL           				LOOP_222_DO
-# 330 CALL            %245				find
-# 331 CMP             	%245	0		
-# 332 JNE             				IF_244_ELSE
-# 333 JMP             				LOOP_222_END
-# 334 LABEL           				IF_244_ELSE
-# 335 LABEL           				IF_244_END
-# 336 NOOP            				
-# 337 LABEL           				LOOP_222_CONTINUE
-# 338 JMP             				LOOP_222_BEGIN
-# 339 NOOP            	@chat			
-# 340 NOOP            	@&chas			
-# 341 NOOP            	@chat			
-# 342 NOOP            	@&chas			
-# 343 NOOP            	@chat			
-# 344 NOOP            	@&chas			
-# 345 NOOP            	@chat			
-# 346 NOOP            	@&chas			
-# 347 LABEL           				LOOP_222_END
-# 348 SET_ARG         0	47			
-# 349 CALL            %246				chapush
-# 350 LABEL           				IF_218_ELSE
-# 351 LABEL           				IF_218_END
-# 352 SAL             %249	@i	2		
-# 353 LOAD            %248	@&get	%249		
-# 354 CMP             	%248	37		
-# 355 JNE             				IF_247_ELSE
-# 356 LABEL           				LOOP_251_BEGIN
-# 357 SAL             %259	@chat	2		
-# 358 LOAD            %258	@&chas	%259		
-# 359 CMP             	%258	42		
-# 360 PHI_MOV         %256	1			
-# 361 JEQ             				COND257_end
-# 362 SAL             %263	@chat	2		
-# 363 LOAD            %262	@&chas	%263		
-# 364 CMP             	%262	47		
-# 365 MOVEQ           %261	1	0		
-# 366 PHI_MOV         %256	%261			
-# 367 LABEL           				COND257_end
-# 368 CMP             	%256	0		
-# 369 PHI_MOV         %254	1			
-# 370 JNE             				COND255_end
-# 371 SAL             %267	@chat	2		
-# 372 LOAD            %266	@&chas	%267		
-# 373 CMP             	%266	37		
-# 374 MOVEQ           %265	1	0		
-# 375 PHI_MOV         %254	%265			
-# 376 LABEL           				COND255_end
-# 377 CMP             	%254	0		
-# 378 PHI_MOV         %252	1			
-# 379 JNE             				COND253_end
-# 380 SAL             %271	@chat	2		
-# 381 LOAD            %270	@&chas	%271		
-# 382 CMP             	%270	94		
-# 383 MOVEQ           %269	1	0		
-# 384 PHI_MOV         %252	%269			
-# 385 LABEL           				COND253_end
-# 386 CMP             	%252	0		
-# 387 JEQ             				LOOP_251_END
-# 388 LABEL           				LOOP_251_DO
-# 389 CALL            %274				find
-# 390 CMP             	%274	0		
-# 391 JNE             				IF_273_ELSE
-# 392 JMP             				LOOP_251_END
-# 393 LABEL           				IF_273_ELSE
-# 394 LABEL           				IF_273_END
-# 395 NOOP            				
-# 396 LABEL           				LOOP_251_CONTINUE
-# 397 JMP             				LOOP_251_BEGIN
-# 398 NOOP            	@chat			
-# 399 NOOP            	@&chas			
-# 400 NOOP            	@chat			
-# 401 NOOP            	@&chas			
-# 402 NOOP            	@chat			
-# 403 NOOP            	@&chas			
-# 404 NOOP            	@chat			
-# 405 NOOP            	@&chas			
-# 406 LABEL           				LOOP_251_END
-# 407 SET_ARG         0	37			
-# 408 CALL            %275				chapush
-# 409 LABEL           				IF_247_ELSE
-# 410 LABEL           				IF_247_END
-# 411 SAL             %276	@ii	2		
-# 412 STORE           	@&get2	%276	32	
-# 413 ADD             %278	@ii	1		
-# 414 MOV             @ii	%278			
-# 415 LABEL           				IF_73_END
-# 416 ADD             %279	@i	1		
-# 417 MOV             @i	%279			
-# 418 NOOP            				
-# 419 LABEL           				LOOP_72_CONTINUE
-# 420 JMP             				LOOP_72_BEGIN
-# 421 NOOP            	@i			
-# 422 NOOP            	%71			
-# 423 NOOP            	@i			
-# 424 NOOP            	@&get			
-# 425 NOOP            	@i			
-# 426 NOOP            	@&get			
-# 427 NOOP            	@ii			
-# 428 NOOP            	@&get2			
-# 429 NOOP            	@ii			
-# 430 NOOP            	@i			
-# 431 NOOP            	@&get			
-# 432 NOOP            	@i			
-# 433 NOOP            	@&get			
-# 434 NOOP            	@i			
-# 435 NOOP            	@&get			
-# 436 NOOP            	@&get2			
-# 437 NOOP            	@&get2			
-# 438 NOOP            	@&get2			
-# 439 NOOP            	@&get2			
-# 440 NOOP            	@i			
-# 441 NOOP            	@&get			
-# 442 NOOP            	@chat			
-# 443 NOOP            	@&chas			
-# 444 NOOP            	@chat			
-# 445 NOOP            	@&chas			
-# 446 NOOP            	@chat			
-# 447 NOOP            	@&chas			
-# 448 NOOP            	@chat			
-# 449 NOOP            	@&chas			
-# 450 NOOP            	@chat			
-# 451 NOOP            	@&chas			
-# 452 NOOP            	@chat			
-# 453 NOOP            	@&chas			
-# 454 NOOP            	@chat			
-# 455 NOOP            	@&chas			
-# 456 NOOP            	@chat			
-# 457 NOOP            	@&chas			
-# 458 NOOP            	@chat			
-# 459 NOOP            	@&chas			
-# 460 NOOP            	@chat			
-# 461 NOOP            	@&chas			
-# 462 NOOP            	@chat			
-# 463 NOOP            	@&chas			
-# 464 NOOP            	@chat			
-# 465 NOOP            	@&chas			
-# 466 NOOP            	@i			
-# 467 NOOP            	@&get			
-# 468 NOOP            	@chat			
-# 469 NOOP            	@&chas			
-# 470 NOOP            	@chat			
-# 471 NOOP            	@&chas			
-# 472 NOOP            	@chat			
-# 473 NOOP            	@&chas			
-# 474 NOOP            	@chat			
-# 475 NOOP            	@&chas			
-# 476 NOOP            	@chat			
-# 477 NOOP            	@&chas			
-# 478 NOOP            	@chat			
-# 479 NOOP            	@&chas			
-# 480 NOOP            	@chat			
-# 481 NOOP            	@&chas			
-# 482 NOOP            	@chat			
-# 483 NOOP            	@&chas			
-# 484 NOOP            	@chat			
-# 485 NOOP            	@&chas			
-# 486 NOOP            	@chat			
-# 487 NOOP            	@&chas			
-# 488 NOOP            	@chat			
-# 489 NOOP            	@&chas			
-# 490 NOOP            	@chat			
-# 491 NOOP            	@&chas			
-# 492 NOOP            	@i			
-# 493 NOOP            	@&get			
-# 494 NOOP            	@chat			
-# 495 NOOP            	@&chas			
-# 496 NOOP            	@chat			
-# 497 NOOP            	@&chas			
-# 498 NOOP            	@chat			
-# 499 NOOP            	@&chas			
-# 500 NOOP            	@chat			
-# 501 NOOP            	@&chas			
-# 502 NOOP            	@chat			
-# 503 NOOP            	@&chas			
-# 504 NOOP            	@chat			
-# 505 NOOP            	@&chas			
-# 506 NOOP            	@chat			
-# 507 NOOP            	@&chas			
-# 508 NOOP            	@chat			
-# 509 NOOP            	@&chas			
-# 510 NOOP            	@i			
-# 511 NOOP            	@&get			
-# 512 NOOP            	@chat			
-# 513 NOOP            	@&chas			
-# 514 NOOP            	@chat			
-# 515 NOOP            	@&chas			
-# 516 NOOP            	@chat			
-# 517 NOOP            	@&chas			
-# 518 NOOP            	@chat			
-# 519 NOOP            	@&chas			
-# 520 NOOP            	@chat			
-# 521 NOOP            	@&chas			
-# 522 NOOP            	@chat			
-# 523 NOOP            	@&chas			
-# 524 NOOP            	@chat			
-# 525 NOOP            	@&chas			
-# 526 NOOP            	@chat			
-# 527 NOOP            	@&chas			
-# 528 NOOP            	@i			
-# 529 NOOP            	@&get			
-# 530 NOOP            	@chat			
-# 531 NOOP            	@&chas			
-# 532 NOOP            	@chat			
-# 533 NOOP            	@&chas			
-# 534 NOOP            	@chat			
-# 535 NOOP            	@&chas			
-# 536 NOOP            	@chat			
-# 537 NOOP            	@&chas			
-# 538 NOOP            	@chat			
-# 539 NOOP            	@&chas			
-# 540 NOOP            	@chat			
-# 541 NOOP            	@&chas			
-# 542 NOOP            	@chat			
-# 543 NOOP            	@&chas			
-# 544 NOOP            	@chat			
-# 545 NOOP            	@&chas			
-# 546 NOOP            	@&get2			
-# 547 NOOP            	@i			
-# 548 LABEL           				LOOP_72_END
-# 549 LABEL           				LOOP_280_BEGIN
-# 550 CMP             	@chat	0		
-# 551 JLE             				LOOP_280_END
-# 552 LABEL           				LOOP_280_DO
-# 553 CALL            %282				chapop
-# 554 SAL             %283	@ii	2		
-# 555 STORE           	@&get2	%283	32	
-# 556 ADD             %287	@ii	1		
-# 557 SAL             %285	%287	2		
-# 558 STORE           	@&get2	%285	%282	
-# 559 ADD             %288	@ii	2		
-# 560 MOV             @ii	%288			
-# 561 NOOP            				
-# 562 LABEL           				LOOP_280_CONTINUE
-# 563 JMP             				LOOP_280_BEGIN
-# 564 NOOP            	@chat			
-# 565 NOOP            	@ii			
-# 566 NOOP            	@&get2			
-# 567 NOOP            	@ii			
-# 568 NOOP            	@&get2			
-# 569 NOOP            	@ii			
-# 570 LABEL           				LOOP_280_END
-# 571 SAL             %289	@ii	2		
-# 572 STORE           	@&get2	%289	64	
-# 573 MOV             @i	1			
-# 574 LABEL           				LOOP_291_BEGIN
-# 575 SAL             %293	@i	2		
-# 576 LOAD            %292	@&get2	%293		
-# 577 CMP             	%292	64		
-# 578 JEQ             				LOOP_291_END
-# 579 LABEL           				LOOP_291_DO
-# 580 SAL             %307	@i	2		
-# 581 LOAD            %306	@&get2	%307		
-# 582 CMP             	%306	43		
-# 583 PHI_MOV         %304	1			
-# 584 JEQ             				COND305_end
-# 585 SAL             %311	@i	2		
-# 586 LOAD            %310	@&get2	%311		
-# 587 CMP             	%310	45		
-# 588 MOVEQ           %309	1	0		
-# 589 PHI_MOV         %304	%309			
-# 590 LABEL           				COND305_end
-# 591 CMP             	%304	0		
-# 592 PHI_MOV         %302	1			
-# 593 JNE             				COND303_end
-# 594 SAL             %315	@i	2		
-# 595 LOAD            %314	@&get2	%315		
-# 596 CMP             	%314	42		
-# 597 MOVEQ           %313	1	0		
-# 598 PHI_MOV         %302	%313			
-# 599 LABEL           				COND303_end
-# 600 CMP             	%302	0		
-# 601 PHI_MOV         %300	1			
-# 602 JNE             				COND301_end
-# 603 SAL             %319	@i	2		
-# 604 LOAD            %318	@&get2	%319		
-# 605 CMP             	%318	47		
-# 606 MOVEQ           %317	1	0		
-# 607 PHI_MOV         %300	%317			
-# 608 LABEL           				COND301_end
-# 609 CMP             	%300	0		
-# 610 PHI_MOV         %298	1			
-# 611 JNE             				COND299_end
-# 612 SAL             %323	@i	2		
-# 613 LOAD            %322	@&get2	%323		
-# 614 CMP             	%322	37		
-# 615 MOVEQ           %321	1	0		
-# 616 PHI_MOV         %298	%321			
-# 617 LABEL           				COND299_end
-# 618 CMP             	%298	0		
-# 619 PHI_MOV         %296	1			
-# 620 JNE             				COND297_end
-# 621 SAL             %327	@i	2		
-# 622 LOAD            %326	@&get2	%327		
-# 623 CMP             	%326	94		
-# 624 MOVEQ           %325	1	0		
-# 625 PHI_MOV         %296	%325			
-# 626 LABEL           				COND297_end
-# 627 CMP             	%296	0		
-# 628 JEQ             				IF_295_ELSE
-# 629 CALL            %330				intpop
-# 630 CALL            %332				intpop
-# 631 SAL             %336	@i	2		
-# 632 LOAD            %335	@&get2	%336		
-# 633 CMP             	%335	43		
-# 634 JNE             				IF_334_ELSE
-# 635 ADD             %338	%330	%332		
-# 636 PHI_MOV         %339	%338			
-# 637 JMP             				IF_334_END
-# 638 LABEL           				IF_334_ELSE
-# 639 PHI_MOV         %339	%333			
-# 640 LABEL           				IF_334_END
-# 641 SAL             %342	@i	2		
-# 642 LOAD            %341	@&get2	%342		
-# 643 CMP             	%341	45		
-# 644 JNE             				IF_340_ELSE
-# 645 SUB             %344	%332	%330		
-# 646 PHI_MOV         %345	%344			
-# 647 JMP             				IF_340_END
-# 648 LABEL           				IF_340_ELSE
-# 649 PHI_MOV         %345	%339			
-# 650 LABEL           				IF_340_END
-# 651 SAL             %348	@i	2		
-# 652 LOAD            %347	@&get2	%348		
-# 653 CMP             	%347	42		
-# 654 JNE             				IF_346_ELSE
-# 655 IMUL            %350	%330	%332		
-# 656 PHI_MOV         %351	%350			
-# 657 JMP             				IF_346_END
-# 658 LABEL           				IF_346_ELSE
-# 659 PHI_MOV         %351	%345			
-# 660 LABEL           				IF_346_END
-# 661 SAL             %354	@i	2		
-# 662 LOAD            %353	@&get2	%354		
-# 663 CMP             	%353	47		
-# 664 JNE             				IF_352_ELSE
-# 665 IDIV            %356	%332	%330		
-# 666 PHI_MOV         %357	%356			
-# 667 JMP             				IF_352_END
-# 668 LABEL           				IF_352_ELSE
-# 669 PHI_MOV         %357	%351			
-# 670 LABEL           				IF_352_END
-# 671 SAL             %360	@i	2		
-# 672 LOAD            %359	@&get2	%360		
-# 673 CMP             	%359	37		
-# 674 JNE             				IF_358_ELSE
-# 675 MOD             %362	%332	%330		
-# 676 PHI_MOV         %363	%362			
-# 677 JMP             				IF_358_END
-# 678 LABEL           				IF_358_ELSE
-# 679 PHI_MOV         %363	%357			
-# 680 LABEL           				IF_358_END
-# 681 SAL             %366	@i	2		
-# 682 LOAD            %365	@&get2	%366		
-# 683 CMP             	%365	94		
-# 684 JNE             				IF_364_ELSE
-# 685 SET_ARG         1	%330			
-# 686 SET_ARG         0	%332			
-# 687 CALL            %368				power
-# 688 PHI_MOV         %369	%368			
-# 689 JMP             				IF_364_END
-# 690 LABEL           				IF_364_ELSE
-# 691 PHI_MOV         %369	%363			
-# 692 LABEL           				IF_364_END
-# 693 SET_ARG         0	%369			
-# 694 CALL            %370				intpush
-# 695 JMP             				IF_295_END
-# 696 LABEL           				IF_295_ELSE
-# 697 SAL             %373	@i	2		
-# 698 LOAD            %372	@&get2	%373		
-# 699 CMP             	%372	32		
-# 700 JEQ             				IF_371_ELSE
-# 701 SAL             %378	@i	2		
-# 702 LOAD            %377	@&get2	%378		
-# 703 SUB             %376	%377	48		
-# 704 SET_ARG         0	%376			
-# 705 CALL            %375				intpush
-# 706 MOV             @ii	1			
-# 707 LABEL           				LOOP_380_BEGIN
-# 708 ADD             %384	@i	@ii		
-# 709 SAL             %382	%384	2		
-# 710 LOAD            %381	@&get2	%382		
-# 711 CMP             	%381	32		
-# 712 JEQ             				LOOP_380_END
-# 713 LABEL           				LOOP_380_DO
-# 714 ADD             %390	@i	@ii		
-# 715 SAL             %388	%390	2		
-# 716 LOAD            %387	@&get2	%388		
-# 717 SUB             %386	%387	48		
-# 718 SET_ARG         0	%386			
-# 719 CALL            %385				intadd
-# 720 ADD             %391	@ii	1		
-# 721 MOV             @ii	%391			
-# 722 NOOP            				
-# 723 LABEL           				LOOP_380_CONTINUE
-# 724 JMP             				LOOP_380_BEGIN
-# 725 NOOP            	@i			
-# 726 NOOP            	@ii			
-# 727 NOOP            	@&get2			
-# 728 NOOP            	@i			
-# 729 NOOP            	@ii			
-# 730 NOOP            	@&get2			
-# 731 NOOP            	@ii			
-# 732 LABEL           				LOOP_380_END
-# 733 ADD             %393	@i	@ii		
-# 734 SUB             %392	%393	1		
-# 735 MOV             @i	%392			
-# 736 LABEL           				IF_371_ELSE
-# 737 LABEL           				IF_371_END
-# 738 LABEL           				IF_295_END
-# 739 ADD             %394	@i	1		
-# 740 MOV             @i	%394			
-# 741 NOOP            				
-# 742 LABEL           				LOOP_291_CONTINUE
-# 743 JMP             				LOOP_291_BEGIN
-# 744 NOOP            	@i			
-# 745 NOOP            	@&get2			
-# 746 NOOP            	@i			
-# 747 NOOP            	@&get2			
-# 748 NOOP            	@i			
-# 749 NOOP            	@&get2			
-# 750 NOOP            	@i			
-# 751 NOOP            	@&get2			
-# 752 NOOP            	@i			
-# 753 NOOP            	@&get2			
-# 754 NOOP            	@i			
-# 755 NOOP            	@&get2			
-# 756 NOOP            	@i			
-# 757 NOOP            	@&get2			
-# 758 NOOP            	@i			
-# 759 NOOP            	@&get2			
-# 760 NOOP            	%333			
-# 761 NOOP            	@i			
-# 762 NOOP            	@&get2			
-# 763 NOOP            	@i			
-# 764 NOOP            	@&get2			
-# 765 NOOP            	@i			
-# 766 NOOP            	@&get2			
-# 767 NOOP            	@i			
-# 768 NOOP            	@&get2			
-# 769 NOOP            	@i			
-# 770 NOOP            	@&get2			
-# 771 NOOP            	@i			
-# 772 NOOP            	@&get2			
-# 773 NOOP            	@i			
-# 774 NOOP            	@&get2			
-# 775 NOOP            	@i			
-# 776 NOOP            	@&get2			
-# 777 NOOP            	@i			
-# 778 NOOP            	@&get2			
-# 779 NOOP            	@i			
-# 780 NOOP            	@&get2			
-# 781 NOOP            	@i			
-# 782 NOOP            	@&get2			
-# 783 NOOP            	@i			
-# 784 LABEL           				LOOP_291_END
-# 785 SAL             %397	1	2		
-# 786 LOAD            %396	@&ints	%397		
-# 787 SET_ARG         0	%396			
-# 788 CALL            %395				putint
-# 789 RET             	0			
-# 790 RET             0				
-# [log]5 expire $arg:0:0 r0
-# [log]5 expire $arg:0:5 r0
-# [log]5 expire $arg:1:5 r1
-# [log]5 expire $arg:2:5 r2
-# [log]10 expire $arg:3:5 r3
-# [log]11 expire %76 r0
-# [log]12 expire %75 r5
-# [log]13 expire $arg:0:13 r0
-# [log]13 expire $arg:1:13 r1
-# [log]13 expire $arg:2:13 r2
-# [log]16 expire $arg:3:13 r3
-# [log]16 expire %74 r5
-# [log]17 expire %79 r0
-# [log]20 expire %78 r0
-# [log]20 expire %81 r1
-# [log]21 expire %83 r0
-# [log]25 expire %86 r0
-# [log]28 expire %85 r0
-# [log]29 expire %88 r5
-# [log]29 expire $arg:0:29 r0
-# [log]29 expire $arg:1:29 r1
-# [log]29 expire $arg:2:29 r2
-# [log]32 expire $arg:3:29 r3
-# [log]33 expire %91 r0
-# [log]36 expire %90 r0
-# [log]37 expire %93 r5
-# [log]37 expire $arg:0:37 r0
-# [log]37 expire $arg:1:37 r1
-# [log]37 expire $arg:2:37 r2
-# [log]40 expire $arg:3:37 r3
-# [log]41 expire %96 r0
-# [log]44 expire %95 r0
-# [log]44 expire $arg:0:44 r0
-# [log]44 expire $arg:1:44 r1
-# [log]44 expire $arg:2:44 r2
-# [log]45 expire $arg:3:44 r3
-# [log]45 expire %98 r5
-# [log]52 expire %100 r0
-# [log]53 expire %104 r0
-# [log]55 expire %102 r0
-# [log]57 expire %105 r0
-# [log]57 expire $arg:0:57 r0
-# [log]57 expire $arg:1:57 r1
-# [log]57 expire $arg:2:57 r2
-# [log]72 expire $arg:3:57 r3
-# [log]72 expire %106 r5
-# [log]73 expire %109 r0
-# [log]77 expire %108 r0
-# [log]78 expire %123 r0
-# [log]80 expire %122 r0
-# [log]83 expire %127 r1
-# [log]85 expire %126 r1
-# [log]89 expire %120 r0
-# [log]89 expire %125 r1
-# [log]92 expire %131 r1
-# [log]94 expire %130 r1
-# [log]98 expire %118 r0
-# [log]98 expire %129 r1
-# [log]101 expire %135 r1
-# [log]103 expire %134 r1
-# [log]107 expire %116 r0
-# [log]107 expire %133 r1
-# [log]110 expire %139 r1
-# [log]112 expire %138 r1
-# [log]116 expire %114 r0
-# [log]116 expire %137 r1
-# [log]119 expire %143 r1
-# [log]121 expire %142 r1
-# [log]127 expire %112 r0
-# [log]127 expire %141 r1
-# [log]127 expire $arg:0:127 r0
-# [log]127 expire $arg:1:127 r1
-# [log]127 expire $arg:2:127 r2
-# [log]149 expire $arg:3:127 r3
-# [log]149 expire %146 r5
-# [log]150 expire %147 r5
-# [log]150 expire $arg:0:150 r0
-# [log]150 expire $arg:1:150 r1
-# [log]150 expire $arg:2:150 r2
-# [log]153 expire $arg:3:150 r3
-# [log]154 expire %150 r0
-# [log]158 expire %149 r0
-# [log]159 expire %164 r0
-# [log]161 expire %163 r0
-# [log]164 expire %168 r1
-# [log]166 expire %167 r1
-# [log]170 expire %161 r0
-# [log]170 expire %166 r1
-# [log]173 expire %172 r1
-# [log]175 expire %171 r1
-# [log]179 expire %159 r0
-# [log]179 expire %170 r1
-# [log]182 expire %176 r1
-# [log]184 expire %175 r1
-# [log]188 expire %157 r0
-# [log]188 expire %174 r1
-# [log]191 expire %180 r1
-# [log]193 expire %179 r1
-# [log]197 expire %155 r0
-# [log]197 expire %178 r1
-# [log]200 expire %184 r1
-# [log]202 expire %183 r1
-# [log]208 expire %153 r0
-# [log]208 expire %182 r1
-# [log]208 expire $arg:0:208 r0
-# [log]208 expire $arg:1:208 r1
-# [log]208 expire $arg:2:208 r2
-# [log]230 expire $arg:3:208 r3
-# [log]230 expire %187 r5
-# [log]231 expire %188 r5
-# [log]231 expire $arg:0:231 r0
-# [log]231 expire $arg:1:231 r1
-# [log]231 expire $arg:2:231 r2
-# [log]234 expire $arg:3:231 r3
-# [log]235 expire %191 r0
-# [log]239 expire %190 r0
-# [log]240 expire %201 r0
-# [log]242 expire %200 r0
-# [log]245 expire %205 r1
-# [log]247 expire %204 r1
-# [log]251 expire %198 r0
-# [log]251 expire %203 r1
-# [log]254 expire %209 r1
-# [log]256 expire %208 r1
-# [log]260 expire %196 r0
-# [log]260 expire %207 r1
-# [log]263 expire %213 r1
-# [log]265 expire %212 r1
-# [log]271 expire %194 r0
-# [log]271 expire %211 r1
-# [log]271 expire $arg:0:271 r0
-# [log]271 expire $arg:1:271 r1
-# [log]271 expire $arg:2:271 r2
-# [log]289 expire $arg:3:271 r3
-# [log]289 expire %216 r5
-# [log]290 expire %217 r5
-# [log]290 expire $arg:0:290 r0
-# [log]290 expire $arg:1:290 r1
-# [log]290 expire $arg:2:290 r2
-# [log]293 expire $arg:3:290 r3
-# [log]294 expire %220 r0
-# [log]298 expire %219 r0
-# [log]299 expire %230 r0
-# [log]301 expire %229 r0
-# [log]304 expire %234 r1
-# [log]306 expire %233 r1
-# [log]310 expire %227 r0
-# [log]310 expire %232 r1
-# [log]313 expire %238 r1
-# [log]315 expire %237 r1
-# [log]319 expire %225 r0
-# [log]319 expire %236 r1
-# [log]322 expire %242 r1
-# [log]324 expire %241 r1
-# [log]330 expire %223 r0
-# [log]330 expire %240 r1
-# [log]330 expire $arg:0:330 r0
-# [log]330 expire $arg:1:330 r1
-# [log]330 expire $arg:2:330 r2
-# [log]348 expire $arg:3:330 r3
-# [log]348 expire %245 r5
-# [log]349 expire %246 r5
-# [log]349 expire $arg:0:349 r0
-# [log]349 expire $arg:1:349 r1
-# [log]349 expire $arg:2:349 r2
-# [log]352 expire $arg:3:349 r3
-# [log]353 expire %249 r0
-# [log]357 expire %248 r0
-# [log]358 expire %259 r0
-# [log]360 expire %258 r0
-# [log]363 expire %263 r1
-# [log]365 expire %262 r1
-# [log]369 expire %256 r0
-# [log]369 expire %261 r1
-# [log]372 expire %267 r1
-# [log]374 expire %266 r1
-# [log]378 expire %254 r0
-# [log]378 expire %265 r1
-# [log]381 expire %271 r1
-# [log]383 expire %270 r1
-# [log]389 expire %252 r0
-# [log]389 expire %269 r1
-# [log]389 expire $arg:0:389 r0
-# [log]389 expire $arg:1:389 r1
-# [log]389 expire $arg:2:389 r2
-# [log]407 expire $arg:3:389 r3
-# [log]407 expire %274 r5
-# [log]408 expire %275 r5
-# [log]408 expire $arg:0:408 r0
-# [log]408 expire $arg:1:408 r1
-# [log]408 expire $arg:2:408 r2
-# [log]411 expire $arg:3:408 r3
-# [log]413 expire %276 r0
-# [log]416 expire %278 r0
-# [log]417 expire %279 r0
-# [log]553 expire %71 r4
-# [log]553 expire $arg:0:553 r0
-# [log]553 expire $arg:1:553 r1
-# [log]553 expire $arg:2:553 r2
-# [log]554 expire $arg:3:553 r3
-# [log]556 expire %283 r0
-# [log]557 expire %287 r0
-# [log]559 expire %285 r0
-# [log]559 expire %282 r4
-# [log]571 expire %288 r0
-# [log]575 expire %289 r0
-# [log]576 expire %293 r0
-# [log]580 expire %292 r0
-# [log]581 expire %307 r0
-# [log]583 expire %306 r0
-# [log]586 expire %311 r1
-# [log]588 expire %310 r1
-# [log]592 expire %304 r0
-# [log]592 expire %309 r1
-# [log]595 expire %315 r1
-# [log]597 expire %314 r1
-# [log]601 expire %302 r0
-# [log]601 expire %313 r1
-# [log]604 expire %319 r1
-# [log]606 expire %318 r1
-# [log]610 expire %300 r0
-# [log]610 expire %317 r1
-# [log]613 expire %323 r1
-# [log]615 expire %322 r1
-# [log]619 expire %298 r0
-# [log]619 expire %321 r1
-# [log]622 expire %327 r1
-# [log]624 expire %326 r1
-# [log]629 expire %296 r0
-# [log]629 expire %325 r1
-# [log]629 expire $arg:0:629 r0
-# [log]629 expire $arg:1:629 r1
-# [log]629 expire $arg:2:629 r2
-# [log]630 expire $arg:3:629 r3
-# [log]630 expire $arg:0:630 r0
-# [log]630 expire $arg:1:630 r1
-# [log]630 expire $arg:2:630 r2
-# [log]631 expire $arg:3:630 r3
-# [log]632 expire %336 r0
-# [log]635 expire %335 r0
-# [log]636 expire %338 r0
-# [log]642 expire %342 r1
-# [log]645 expire %341 r1
-# [log]646 expire %344 r1
-# [log]651 expire %339 r0
-# [log]652 expire %348 r0
-# [log]655 expire %347 r0
-# [log]656 expire %350 r0
-# [log]661 expire %345 r1
-# [log]662 expire %354 r0
-# [log]665 expire %353 r0
-# [log]665 expire $arg:0:665 r0
-# [log]665 expire $arg:1:665 r1
-# [log]665 expire $arg:2:665 r2
-# [log]666 expire $arg:3:665 r3
-# [log]666 expire %356 r7
-# [log]671 expire %351 r6
-# [log]672 expire %360 r0
-# [log]675 expire %359 r0
-# [log]675 expire $arg:0:675 r0
-# [log]675 expire $arg:1:675 r1
-# [log]675 expire $arg:2:675 r2
-# [log]676 expire $arg:3:675 r3
-# [log]676 expire %362 r6
-# [log]681 expire %357 r7
-# [log]682 expire %366 r0
-# [log]685 expire %365 r0
-# [log]686 expire $arg:1:0 r1
-# [log]686 expire %330 r4
-# [log]686 expire %332 r5
-# [log]687 expire $arg:0:687 r0
-# [log]687 expire $arg:1:687 r1
-# [log]687 expire $arg:2:687 r2
-# [log]688 expire $arg:3:687 r3
-# [log]688 expire %368 r4
-# [log]693 expire %369 r4
-# [log]693 expire %363 r6
-# [log]694 expire %370 r4
-# [log]694 expire $arg:0:694 r0
-# [log]694 expire $arg:1:694 r1
-# [log]694 expire $arg:2:694 r2
-# [log]697 expire $arg:3:694 r3
-# [log]698 expire %373 r0
-# [log]701 expire %372 r0
-# [log]702 expire %378 r0
-# [log]703 expire %377 r0
-# [log]704 expire %376 r4
-# [log]705 expire %375 r4
-# [log]705 expire $arg:0:705 r0
-# [log]705 expire $arg:1:705 r1
-# [log]705 expire $arg:2:705 r2
-# [log]708 expire $arg:3:705 r3
-# [log]709 expire %384 r0
-# [log]710 expire %382 r0
-# [log]714 expire %381 r0
-# [log]715 expire %390 r0
-# [log]716 expire %388 r0
-# [log]717 expire %387 r0
-# [log]718 expire %386 r4
-# [log]719 expire %385 r4
-# [log]719 expire $arg:0:719 r0
-# [log]719 expire $arg:1:719 r1
-# [log]719 expire $arg:2:719 r2
-# [log]720 expire $arg:3:719 r3
-# [log]733 expire %391 r0
-# [log]734 expire %393 r0
-# [log]739 expire %392 r0
-# [log]785 expire %394 r0
-# [log]786 expire %397 r0
-# [log]787 expire %396 r4
-# [log]788 expire %395 r4
-# [log]788 expire $arg:0:788 r0
-# [log]788 expire $arg:1:788 r1
-# [log]788 expire $arg:2:788 r2
-#FUNCTION_BEGIN  	0			main
-.text
-.global main
-.type main, %function
-main:
-    SUB sp, sp, #24
-    STR lr, [sp, #20]
-    STR r11, [sp, #0]
-    STR r4, [sp, #4]
-    STR r5, [sp, #8]
-    STR r6, [sp, #12]
-    STR r7, [sp, #16]
-#MOV             @intt	0			
-    MOV r12, #0
-    MOV32 r11, __Var__4intt
-    STR r12, [r11,#0]
-#MOV             @chat	0			
-    MOV r12, #0
-    MOV32 r11, __Var__4chat
-    STR r12, [r11,#0]
-#SET_ARG         0	@&get			
-    MOV32 r0, __Var__3get
-#CALL            %71				getstr
-   BL getstr
-    MOV r4, r0
-#LABEL           				LOOP_72_BEGIN
-LOOP_72_BEGIN:
-#CMP             	@i	%71		
-    MOV32 r12,__Var__1i
-    LDR r12, [r12, #0]
-    CMP r12, r4
-#JGE             				LOOP_72_END
-   BGE LOOP_72_END
-#LABEL           				LOOP_72_DO
-LOOP_72_DO:
-#SAL             %76	@i	2		
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#LOAD            %75	@&get	%76		
-    MOV32 r12, __Var__3get
-    ADD r12, r12, r0
-    LDR r5, [r12]
-#SET_ARG         0	%75			
-    MOV r0, r5
-#CALL            %74				isdigit
-   BL isdigit
+#CALL            %162				getint
+   BL getint
     MOV r5, r0
-#CMP             	%74	1		
-    MOV r11, #1
-    CMP r5, r11
-#JNE             				IF_73_ELSE
-   BNE IF_73_ELSE
-#SAL             %79	@i	2		
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#LOAD            %78	@&get	%79		
-    MOV32 r12, __Var__3get
-    ADD r12, r12, r0
-    LDR r0, [r12]
-#SAL             %81	@ii	2		
-    MOV32 r11,__Var__2ii
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#STORE           	@&get2	%81	%78	
-    MOV32 r12, __Var__4get2
-   ADD r12, r12, r1
-    STR r0, [r12]
-#ADD             %83	@ii	1		
-    MOV32 r11,__Var__2ii
-    LDR r11, [r11, #0]
-    ADD r0, r11, #1
-#MOV             @ii	%83			
-    MOV32 r11, __Var__2ii
-    STR r0, [r11,#0]
-#JMP             				IF_73_END
-   B IF_73_END
-#LABEL           				IF_73_ELSE
-IF_73_ELSE:
-#SAL             %86	@i	2		
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#LOAD            %85	@&get	%86		
-    MOV32 r12, __Var__3get
-    ADD r12, r12, r0
-    LDR r0, [r12]
-#CMP             	%85	40		
-    MOV r11, #40
-    CMP r0, r11
-#JNE             				IF_84_ELSE
-   BNE IF_84_ELSE
-#SET_ARG         0	40			
-    MOV r0, #40
-#CALL            %88				chapush
-   BL chapush
-    MOV r5, r0
-#LABEL           				IF_84_ELSE
-IF_84_ELSE:
-#LABEL           				IF_84_END
-IF_84_END:
-#SAL             %91	@i	2		
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#LOAD            %90	@&get	%91		
-    MOV32 r12, __Var__3get
-    ADD r12, r12, r0
-    LDR r0, [r12]
-#CMP             	%90	94		
-    MOV r11, #94
-    CMP r0, r11
-#JNE             				IF_89_ELSE
-   BNE IF_89_ELSE
-#SET_ARG         0	94			
-    MOV r0, #94
-#CALL            %93				chapush
-   BL chapush
-    MOV r5, r0
-#LABEL           				IF_89_ELSE
-IF_89_ELSE:
-#LABEL           				IF_89_END
-IF_89_END:
-#SAL             %96	@i	2		
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#LOAD            %95	@&get	%96		
-    MOV32 r12, __Var__3get
-    ADD r12, r12, r0
-    LDR r0, [r12]
-#CMP             	%95	41		
-    MOV r11, #41
-    CMP r0, r11
-#JNE             				IF_94_ELSE
-   BNE IF_94_ELSE
-#CALL            %98				chapop
-   BL chapop
-    MOV r5, r0
-#MOV             @c	%98			
-    MOV32 r11, __Var__1c
+#MOV             @staticvalue	%162			
+    MOV32 r11, __Var__11staticvalue
     STR r5, [r11,#0]
-#LABEL           				LOOP_99_BEGIN
-LOOP_99_BEGIN:
-#CMP             	@c	40		
-    MOV32 r12,__Var__1c
-    LDR r12, [r12, #0]
-    MOV r11, #40
-    CMP r12, r11
-#JEQ             				LOOP_99_END
-   BEQ LOOP_99_END
-#LABEL           				LOOP_99_DO
-LOOP_99_DO:
-#SAL             %100	@ii	2		
-    MOV32 r11,__Var__2ii
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#STORE           	@&get2	%100	32	
-    MOV32 r12, __Var__4get2
-   ADD r12, r12, r0
-    MOV r11, #32
-    STR r11, [r12]
-#ADD             %104	@ii	1		
-    MOV32 r11,__Var__2ii
-    LDR r11, [r11, #0]
-    ADD r0, r11, #1
-#SAL             %102	%104	2		
-   LSL r0, r0, #2
-#STORE           	@&get2	%102	@c	
-    MOV32 r12, __Var__4get2
-   ADD r12, r12, r0
-    MOV32 r11,__Var__1c
-    LDR r11, [r11, #0]
-    STR r11, [r12]
-#ADD             %105	@ii	2		
-    MOV32 r11,__Var__2ii
-    LDR r11, [r11, #0]
-    ADD r0, r11, #2
-#MOV             @ii	%105			
-    MOV32 r11, __Var__2ii
-    STR r0, [r11,#0]
-#CALL            %106				chapop
-   BL chapop
+#CALL            %163				_sysy_starttime
+   BL _sysy_starttime
     MOV r5, r0
-#MOV             @c	%106			
-    MOV32 r11, __Var__1c
-    STR r5, [r11,#0]
-#NOOP            				
-#LABEL           				LOOP_99_CONTINUE
-LOOP_99_CONTINUE:
-#JMP             				LOOP_99_BEGIN
-   B LOOP_99_BEGIN
-#NOOP            	@c			
-#NOOP            	@ii			
-#NOOP            	@&get2			
-#NOOP            	@ii			
-#NOOP            	@&get2			
-#NOOP            	@c			
-#NOOP            	@ii			
-#LABEL           				LOOP_99_END
-LOOP_99_END:
-#LABEL           				IF_94_ELSE
-IF_94_ELSE:
-#LABEL           				IF_94_END
-IF_94_END:
-#SAL             %109	@i	2		
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#LOAD            %108	@&get	%109		
-    MOV32 r12, __Var__3get
-    ADD r12, r12, r0
-    LDR r0, [r12]
-#CMP             	%108	43		
-    MOV r11, #43
-    CMP r0, r11
-#JNE             				IF_107_ELSE
-   BNE IF_107_ELSE
-#LABEL           				LOOP_111_BEGIN
-LOOP_111_BEGIN:
-#SAL             %123	@chat	2		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#LOAD            %122	@&chas	%123		
-    MOV32 r12, __Var__4chas
-    ADD r12, r12, r0
-    LDR r0, [r12]
-#CMP             	%122	43		
-    MOV r11, #43
-    CMP r0, r11
-#PHI_MOV         %120	1			
-    MOV r0, #1
-#JEQ             				COND121_end
-   BEQ COND121_end
-#SAL             %127	@chat	2		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#LOAD            %126	@&chas	%127		
-    MOV32 r12, __Var__4chas
-    ADD r12, r12, r1
-    LDR r1, [r12]
-#CMP             	%126	45		
-    MOV r11, #45
-    CMP r1, r11
-#MOVEQ           %125	1	0		
-    MOVEQ r1, #1
-    MOVNE r1, #0
-#PHI_MOV         %120	%125			
-   MOV r0, r1
-#LABEL           				COND121_end
-COND121_end:
-#CMP             	%120	0		
-    MOV r11, #0
-    CMP r0, r11
-#PHI_MOV         %118	1			
-    MOV r0, #1
-#JNE             				COND119_end
-   BNE COND119_end
-#SAL             %131	@chat	2		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#LOAD            %130	@&chas	%131		
-    MOV32 r12, __Var__4chas
-    ADD r12, r12, r1
-    LDR r1, [r12]
-#CMP             	%130	42		
-    MOV r11, #42
-    CMP r1, r11
-#MOVEQ           %129	1	0		
-    MOVEQ r1, #1
-    MOVNE r1, #0
-#PHI_MOV         %118	%129			
-   MOV r0, r1
-#LABEL           				COND119_end
-COND119_end:
-#CMP             	%118	0		
-    MOV r11, #0
-    CMP r0, r11
-#PHI_MOV         %116	1			
-    MOV r0, #1
-#JNE             				COND117_end
-   BNE COND117_end
-#SAL             %135	@chat	2		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#LOAD            %134	@&chas	%135		
-    MOV32 r12, __Var__4chas
-    ADD r12, r12, r1
-    LDR r1, [r12]
-#CMP             	%134	47		
-    MOV r11, #47
-    CMP r1, r11
-#MOVEQ           %133	1	0		
-    MOVEQ r1, #1
-    MOVNE r1, #0
-#PHI_MOV         %116	%133			
-   MOV r0, r1
-#LABEL           				COND117_end
-COND117_end:
-#CMP             	%116	0		
-    MOV r11, #0
-    CMP r0, r11
-#PHI_MOV         %114	1			
-    MOV r0, #1
-#JNE             				COND115_end
-   BNE COND115_end
-#SAL             %139	@chat	2		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#LOAD            %138	@&chas	%139		
-    MOV32 r12, __Var__4chas
-    ADD r12, r12, r1
-    LDR r1, [r12]
-#CMP             	%138	37		
-    MOV r11, #37
-    CMP r1, r11
-#MOVEQ           %137	1	0		
-    MOVEQ r1, #1
-    MOVNE r1, #0
-#PHI_MOV         %114	%137			
-   MOV r0, r1
-#LABEL           				COND115_end
-COND115_end:
-#CMP             	%114	0		
-    MOV r11, #0
-    CMP r0, r11
-#PHI_MOV         %112	1			
-    MOV r0, #1
-#JNE             				COND113_end
-   BNE COND113_end
-#SAL             %143	@chat	2		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#LOAD            %142	@&chas	%143		
-    MOV32 r12, __Var__4chas
-    ADD r12, r12, r1
-    LDR r1, [r12]
-#CMP             	%142	94		
-    MOV r11, #94
-    CMP r1, r11
-#MOVEQ           %141	1	0		
-    MOVEQ r1, #1
-    MOVNE r1, #0
-#PHI_MOV         %112	%141			
-   MOV r0, r1
-#LABEL           				COND113_end
-COND113_end:
-#CMP             	%112	0		
-    MOV r11, #0
-    CMP r0, r11
-#JEQ             				LOOP_111_END
-   BEQ LOOP_111_END
-#LABEL           				LOOP_111_DO
-LOOP_111_DO:
-#CALL            %146				find
-   BL find
-    MOV r5, r0
-#CMP             	%146	0		
-    MOV r11, #0
-    CMP r5, r11
-#JNE             				IF_145_ELSE
-   BNE IF_145_ELSE
-#JMP             				LOOP_111_END
-   B LOOP_111_END
-#LABEL           				IF_145_ELSE
-IF_145_ELSE:
-#LABEL           				IF_145_END
-IF_145_END:
-#NOOP            				
-#LABEL           				LOOP_111_CONTINUE
-LOOP_111_CONTINUE:
-#JMP             				LOOP_111_BEGIN
-   B LOOP_111_BEGIN
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#LABEL           				LOOP_111_END
-LOOP_111_END:
-#SET_ARG         0	43			
-    MOV r0, #43
-#CALL            %147				chapush
-   BL chapush
-    MOV r5, r0
-#LABEL           				IF_107_ELSE
-IF_107_ELSE:
-#LABEL           				IF_107_END
-IF_107_END:
-#SAL             %150	@i	2		
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#LOAD            %149	@&get	%150		
-    MOV32 r12, __Var__3get
-    ADD r12, r12, r0
-    LDR r0, [r12]
-#CMP             	%149	45		
-    MOV r11, #45
-    CMP r0, r11
-#JNE             				IF_148_ELSE
-   BNE IF_148_ELSE
-#LABEL           				LOOP_152_BEGIN
-LOOP_152_BEGIN:
-#SAL             %164	@chat	2		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#LOAD            %163	@&chas	%164		
-    MOV32 r12, __Var__4chas
-    ADD r12, r12, r0
-    LDR r0, [r12]
-#CMP             	%163	43		
-    MOV r11, #43
-    CMP r0, r11
-#PHI_MOV         %161	1			
-    MOV r0, #1
-#JEQ             				COND162_end
-   BEQ COND162_end
-#SAL             %168	@chat	2		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#LOAD            %167	@&chas	%168		
-    MOV32 r12, __Var__4chas
-    ADD r12, r12, r1
-    LDR r1, [r12]
-#CMP             	%167	45		
-    MOV r11, #45
-    CMP r1, r11
-#MOVEQ           %166	1	0		
-    MOVEQ r1, #1
-    MOVNE r1, #0
-#PHI_MOV         %161	%166			
-   MOV r0, r1
-#LABEL           				COND162_end
-COND162_end:
-#CMP             	%161	0		
-    MOV r11, #0
-    CMP r0, r11
-#PHI_MOV         %159	1			
-    MOV r0, #1
-#JNE             				COND160_end
-   BNE COND160_end
-#SAL             %172	@chat	2		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#LOAD            %171	@&chas	%172		
-    MOV32 r12, __Var__4chas
-    ADD r12, r12, r1
-    LDR r1, [r12]
-#CMP             	%171	42		
-    MOV r11, #42
-    CMP r1, r11
-#MOVEQ           %170	1	0		
-    MOVEQ r1, #1
-    MOVNE r1, #0
-#PHI_MOV         %159	%170			
-   MOV r0, r1
-#LABEL           				COND160_end
-COND160_end:
-#CMP             	%159	0		
-    MOV r11, #0
-    CMP r0, r11
-#PHI_MOV         %157	1			
-    MOV r0, #1
-#JNE             				COND158_end
-   BNE COND158_end
-#SAL             %176	@chat	2		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#LOAD            %175	@&chas	%176		
-    MOV32 r12, __Var__4chas
-    ADD r12, r12, r1
-    LDR r1, [r12]
-#CMP             	%175	47		
-    MOV r11, #47
-    CMP r1, r11
-#MOVEQ           %174	1	0		
-    MOVEQ r1, #1
-    MOVNE r1, #0
-#PHI_MOV         %157	%174			
-   MOV r0, r1
-#LABEL           				COND158_end
-COND158_end:
-#CMP             	%157	0		
-    MOV r11, #0
-    CMP r0, r11
-#PHI_MOV         %155	1			
-    MOV r0, #1
-#JNE             				COND156_end
-   BNE COND156_end
-#SAL             %180	@chat	2		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#LOAD            %179	@&chas	%180		
-    MOV32 r12, __Var__4chas
-    ADD r12, r12, r1
-    LDR r1, [r12]
-#CMP             	%179	37		
-    MOV r11, #37
-    CMP r1, r11
-#MOVEQ           %178	1	0		
-    MOVEQ r1, #1
-    MOVNE r1, #0
-#PHI_MOV         %155	%178			
-   MOV r0, r1
-#LABEL           				COND156_end
-COND156_end:
-#CMP             	%155	0		
-    MOV r11, #0
-    CMP r0, r11
-#PHI_MOV         %153	1			
-    MOV r0, #1
-#JNE             				COND154_end
-   BNE COND154_end
-#SAL             %184	@chat	2		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#LOAD            %183	@&chas	%184		
-    MOV32 r12, __Var__4chas
-    ADD r12, r12, r1
-    LDR r1, [r12]
-#CMP             	%183	94		
-    MOV r11, #94
-    CMP r1, r11
-#MOVEQ           %182	1	0		
-    MOVEQ r1, #1
-    MOVNE r1, #0
-#PHI_MOV         %153	%182			
-   MOV r0, r1
-#LABEL           				COND154_end
-COND154_end:
-#CMP             	%153	0		
-    MOV r11, #0
-    CMP r0, r11
-#JEQ             				LOOP_152_END
-   BEQ LOOP_152_END
-#LABEL           				LOOP_152_DO
-LOOP_152_DO:
-#CALL            %187				find
-   BL find
-    MOV r5, r0
-#CMP             	%187	0		
-    MOV r11, #0
-    CMP r5, r11
-#JNE             				IF_186_ELSE
-   BNE IF_186_ELSE
-#JMP             				LOOP_152_END
-   B LOOP_152_END
-#LABEL           				IF_186_ELSE
-IF_186_ELSE:
-#LABEL           				IF_186_END
-IF_186_END:
-#NOOP            				
-#LABEL           				LOOP_152_CONTINUE
-LOOP_152_CONTINUE:
-#JMP             				LOOP_152_BEGIN
-   B LOOP_152_BEGIN
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#LABEL           				LOOP_152_END
-LOOP_152_END:
-#SET_ARG         0	45			
-    MOV r0, #45
-#CALL            %188				chapush
-   BL chapush
-    MOV r5, r0
-#LABEL           				IF_148_ELSE
-IF_148_ELSE:
-#LABEL           				IF_148_END
-IF_148_END:
-#SAL             %191	@i	2		
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#LOAD            %190	@&get	%191		
-    MOV32 r12, __Var__3get
-    ADD r12, r12, r0
-    LDR r0, [r12]
-#CMP             	%190	42		
-    MOV r11, #42
-    CMP r0, r11
-#JNE             				IF_189_ELSE
-   BNE IF_189_ELSE
-#LABEL           				LOOP_193_BEGIN
-LOOP_193_BEGIN:
-#SAL             %201	@chat	2		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#LOAD            %200	@&chas	%201		
-    MOV32 r12, __Var__4chas
-    ADD r12, r12, r0
-    LDR r0, [r12]
-#CMP             	%200	42		
-    MOV r11, #42
-    CMP r0, r11
-#PHI_MOV         %198	1			
-    MOV r0, #1
-#JEQ             				COND199_end
-   BEQ COND199_end
-#SAL             %205	@chat	2		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#LOAD            %204	@&chas	%205		
-    MOV32 r12, __Var__4chas
-    ADD r12, r12, r1
-    LDR r1, [r12]
-#CMP             	%204	47		
-    MOV r11, #47
-    CMP r1, r11
-#MOVEQ           %203	1	0		
-    MOVEQ r1, #1
-    MOVNE r1, #0
-#PHI_MOV         %198	%203			
-   MOV r0, r1
-#LABEL           				COND199_end
-COND199_end:
-#CMP             	%198	0		
-    MOV r11, #0
-    CMP r0, r11
-#PHI_MOV         %196	1			
-    MOV r0, #1
-#JNE             				COND197_end
-   BNE COND197_end
-#SAL             %209	@chat	2		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#LOAD            %208	@&chas	%209		
-    MOV32 r12, __Var__4chas
-    ADD r12, r12, r1
-    LDR r1, [r12]
-#CMP             	%208	37		
-    MOV r11, #37
-    CMP r1, r11
-#MOVEQ           %207	1	0		
-    MOVEQ r1, #1
-    MOVNE r1, #0
-#PHI_MOV         %196	%207			
-   MOV r0, r1
-#LABEL           				COND197_end
-COND197_end:
-#CMP             	%196	0		
-    MOV r11, #0
-    CMP r0, r11
-#PHI_MOV         %194	1			
-    MOV r0, #1
-#JNE             				COND195_end
-   BNE COND195_end
-#SAL             %213	@chat	2		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#LOAD            %212	@&chas	%213		
-    MOV32 r12, __Var__4chas
-    ADD r12, r12, r1
-    LDR r1, [r12]
-#CMP             	%212	94		
-    MOV r11, #94
-    CMP r1, r11
-#MOVEQ           %211	1	0		
-    MOVEQ r1, #1
-    MOVNE r1, #0
-#PHI_MOV         %194	%211			
-   MOV r0, r1
-#LABEL           				COND195_end
-COND195_end:
-#CMP             	%194	0		
-    MOV r11, #0
-    CMP r0, r11
-#JEQ             				LOOP_193_END
-   BEQ LOOP_193_END
-#LABEL           				LOOP_193_DO
-LOOP_193_DO:
-#CALL            %216				find
-   BL find
-    MOV r5, r0
-#CMP             	%216	0		
-    MOV r11, #0
-    CMP r5, r11
-#JNE             				IF_215_ELSE
-   BNE IF_215_ELSE
-#JMP             				LOOP_193_END
-   B LOOP_193_END
-#LABEL           				IF_215_ELSE
-IF_215_ELSE:
-#LABEL           				IF_215_END
-IF_215_END:
-#NOOP            				
-#LABEL           				LOOP_193_CONTINUE
-LOOP_193_CONTINUE:
-#JMP             				LOOP_193_BEGIN
-   B LOOP_193_BEGIN
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#LABEL           				LOOP_193_END
-LOOP_193_END:
-#SET_ARG         0	42			
-    MOV r0, #42
-#CALL            %217				chapush
-   BL chapush
-    MOV r5, r0
-#LABEL           				IF_189_ELSE
-IF_189_ELSE:
-#LABEL           				IF_189_END
-IF_189_END:
-#SAL             %220	@i	2		
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#LOAD            %219	@&get	%220		
-    MOV32 r12, __Var__3get
-    ADD r12, r12, r0
-    LDR r0, [r12]
-#CMP             	%219	47		
-    MOV r11, #47
-    CMP r0, r11
-#JNE             				IF_218_ELSE
-   BNE IF_218_ELSE
-#LABEL           				LOOP_222_BEGIN
-LOOP_222_BEGIN:
-#SAL             %230	@chat	2		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#LOAD            %229	@&chas	%230		
-    MOV32 r12, __Var__4chas
-    ADD r12, r12, r0
-    LDR r0, [r12]
-#CMP             	%229	42		
-    MOV r11, #42
-    CMP r0, r11
-#PHI_MOV         %227	1			
-    MOV r0, #1
-#JEQ             				COND228_end
-   BEQ COND228_end
-#SAL             %234	@chat	2		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#LOAD            %233	@&chas	%234		
-    MOV32 r12, __Var__4chas
-    ADD r12, r12, r1
-    LDR r1, [r12]
-#CMP             	%233	47		
-    MOV r11, #47
-    CMP r1, r11
-#MOVEQ           %232	1	0		
-    MOVEQ r1, #1
-    MOVNE r1, #0
-#PHI_MOV         %227	%232			
-   MOV r0, r1
-#LABEL           				COND228_end
-COND228_end:
-#CMP             	%227	0		
-    MOV r11, #0
-    CMP r0, r11
-#PHI_MOV         %225	1			
-    MOV r0, #1
-#JNE             				COND226_end
-   BNE COND226_end
-#SAL             %238	@chat	2		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#LOAD            %237	@&chas	%238		
-    MOV32 r12, __Var__4chas
-    ADD r12, r12, r1
-    LDR r1, [r12]
-#CMP             	%237	37		
-    MOV r11, #37
-    CMP r1, r11
-#MOVEQ           %236	1	0		
-    MOVEQ r1, #1
-    MOVNE r1, #0
-#PHI_MOV         %225	%236			
-   MOV r0, r1
-#LABEL           				COND226_end
-COND226_end:
-#CMP             	%225	0		
-    MOV r11, #0
-    CMP r0, r11
-#PHI_MOV         %223	1			
-    MOV r0, #1
-#JNE             				COND224_end
-   BNE COND224_end
-#SAL             %242	@chat	2		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#LOAD            %241	@&chas	%242		
-    MOV32 r12, __Var__4chas
-    ADD r12, r12, r1
-    LDR r1, [r12]
-#CMP             	%241	94		
-    MOV r11, #94
-    CMP r1, r11
-#MOVEQ           %240	1	0		
-    MOVEQ r1, #1
-    MOVNE r1, #0
-#PHI_MOV         %223	%240			
-   MOV r0, r1
-#LABEL           				COND224_end
-COND224_end:
-#CMP             	%223	0		
-    MOV r11, #0
-    CMP r0, r11
-#JEQ             				LOOP_222_END
-   BEQ LOOP_222_END
-#LABEL           				LOOP_222_DO
-LOOP_222_DO:
-#CALL            %245				find
-   BL find
-    MOV r5, r0
-#CMP             	%245	0		
-    MOV r11, #0
-    CMP r5, r11
-#JNE             				IF_244_ELSE
-   BNE IF_244_ELSE
-#JMP             				LOOP_222_END
-   B LOOP_222_END
-#LABEL           				IF_244_ELSE
-IF_244_ELSE:
-#LABEL           				IF_244_END
-IF_244_END:
-#NOOP            				
-#LABEL           				LOOP_222_CONTINUE
-LOOP_222_CONTINUE:
-#JMP             				LOOP_222_BEGIN
-   B LOOP_222_BEGIN
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#LABEL           				LOOP_222_END
-LOOP_222_END:
-#SET_ARG         0	47			
-    MOV r0, #47
-#CALL            %246				chapush
-   BL chapush
-    MOV r5, r0
-#LABEL           				IF_218_ELSE
-IF_218_ELSE:
-#LABEL           				IF_218_END
-IF_218_END:
-#SAL             %249	@i	2		
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#LOAD            %248	@&get	%249		
-    MOV32 r12, __Var__3get
-    ADD r12, r12, r0
-    LDR r0, [r12]
-#CMP             	%248	37		
-    MOV r11, #37
-    CMP r0, r11
-#JNE             				IF_247_ELSE
-   BNE IF_247_ELSE
-#LABEL           				LOOP_251_BEGIN
-LOOP_251_BEGIN:
-#SAL             %259	@chat	2		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#LOAD            %258	@&chas	%259		
-    MOV32 r12, __Var__4chas
-    ADD r12, r12, r0
-    LDR r0, [r12]
-#CMP             	%258	42		
-    MOV r11, #42
-    CMP r0, r11
-#PHI_MOV         %256	1			
-    MOV r0, #1
-#JEQ             				COND257_end
-   BEQ COND257_end
-#SAL             %263	@chat	2		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#LOAD            %262	@&chas	%263		
-    MOV32 r12, __Var__4chas
-    ADD r12, r12, r1
-    LDR r1, [r12]
-#CMP             	%262	47		
-    MOV r11, #47
-    CMP r1, r11
-#MOVEQ           %261	1	0		
-    MOVEQ r1, #1
-    MOVNE r1, #0
-#PHI_MOV         %256	%261			
-   MOV r0, r1
-#LABEL           				COND257_end
-COND257_end:
-#CMP             	%256	0		
-    MOV r11, #0
-    CMP r0, r11
-#PHI_MOV         %254	1			
-    MOV r0, #1
-#JNE             				COND255_end
-   BNE COND255_end
-#SAL             %267	@chat	2		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#LOAD            %266	@&chas	%267		
-    MOV32 r12, __Var__4chas
-    ADD r12, r12, r1
-    LDR r1, [r12]
-#CMP             	%266	37		
-    MOV r11, #37
-    CMP r1, r11
-#MOVEQ           %265	1	0		
-    MOVEQ r1, #1
-    MOVNE r1, #0
-#PHI_MOV         %254	%265			
-   MOV r0, r1
-#LABEL           				COND255_end
-COND255_end:
-#CMP             	%254	0		
-    MOV r11, #0
-    CMP r0, r11
-#PHI_MOV         %252	1			
-    MOV r0, #1
-#JNE             				COND253_end
-   BNE COND253_end
-#SAL             %271	@chat	2		
-    MOV32 r11,__Var__4chat
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#LOAD            %270	@&chas	%271		
-    MOV32 r12, __Var__4chas
-    ADD r12, r12, r1
-    LDR r1, [r12]
-#CMP             	%270	94		
-    MOV r11, #94
-    CMP r1, r11
-#MOVEQ           %269	1	0		
-    MOVEQ r1, #1
-    MOVNE r1, #0
-#PHI_MOV         %252	%269			
-   MOV r0, r1
-#LABEL           				COND253_end
-COND253_end:
-#CMP             	%252	0		
-    MOV r11, #0
-    CMP r0, r11
-#JEQ             				LOOP_251_END
-   BEQ LOOP_251_END
-#LABEL           				LOOP_251_DO
-LOOP_251_DO:
-#CALL            %274				find
-   BL find
-    MOV r5, r0
-#CMP             	%274	0		
-    MOV r11, #0
-    CMP r5, r11
-#JNE             				IF_273_ELSE
-   BNE IF_273_ELSE
-#JMP             				LOOP_251_END
-   B LOOP_251_END
-#LABEL           				IF_273_ELSE
-IF_273_ELSE:
-#LABEL           				IF_273_END
-IF_273_END:
-#NOOP            				
-#LABEL           				LOOP_251_CONTINUE
-LOOP_251_CONTINUE:
-#JMP             				LOOP_251_BEGIN
-   B LOOP_251_BEGIN
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#LABEL           				LOOP_251_END
-LOOP_251_END:
-#SET_ARG         0	37			
-    MOV r0, #37
-#CALL            %275				chapush
-   BL chapush
-    MOV r5, r0
-#LABEL           				IF_247_ELSE
-IF_247_ELSE:
-#LABEL           				IF_247_END
-IF_247_END:
-#SAL             %276	@ii	2		
-    MOV32 r11,__Var__2ii
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#STORE           	@&get2	%276	32	
-    MOV32 r12, __Var__4get2
-   ADD r12, r12, r0
-    MOV r11, #32
-    STR r11, [r12]
-#ADD             %278	@ii	1		
-    MOV32 r11,__Var__2ii
-    LDR r11, [r11, #0]
-    ADD r0, r11, #1
-#MOV             @ii	%278			
-    MOV32 r11, __Var__2ii
-    STR r0, [r11,#0]
-#LABEL           				IF_73_END
-IF_73_END:
-#ADD             %279	@i	1		
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-    ADD r0, r11, #1
-#MOV             @i	%279			
-    MOV32 r11, __Var__1i
-    STR r0, [r11,#0]
-#NOOP            				
-#LABEL           				LOOP_72_CONTINUE
-LOOP_72_CONTINUE:
-#JMP             				LOOP_72_BEGIN
-   B LOOP_72_BEGIN
-#NOOP            	@i			
-#NOOP            	%71			
-#NOOP            	@i			
-#NOOP            	@&get			
-#NOOP            	@i			
-#NOOP            	@&get			
-#NOOP            	@ii			
-#NOOP            	@&get2			
-#NOOP            	@ii			
-#NOOP            	@i			
-#NOOP            	@&get			
-#NOOP            	@i			
-#NOOP            	@&get			
-#NOOP            	@i			
-#NOOP            	@&get			
-#NOOP            	@&get2			
-#NOOP            	@&get2			
-#NOOP            	@&get2			
-#NOOP            	@&get2			
-#NOOP            	@i			
-#NOOP            	@&get			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@i			
-#NOOP            	@&get			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@i			
-#NOOP            	@&get			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@i			
-#NOOP            	@&get			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@i			
-#NOOP            	@&get			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@chat			
-#NOOP            	@&chas			
-#NOOP            	@&get2			
-#NOOP            	@i			
-#LABEL           				LOOP_72_END
-LOOP_72_END:
-#LABEL           				LOOP_280_BEGIN
-LOOP_280_BEGIN:
-#CMP             	@chat	0		
-    MOV32 r12,__Var__4chat
-    LDR r12, [r12, #0]
-    MOV r11, #0
-    CMP r12, r11
-#JLE             				LOOP_280_END
-   BLE LOOP_280_END
-#LABEL           				LOOP_280_DO
-LOOP_280_DO:
-#CALL            %282				chapop
-   BL chapop
-    MOV r4, r0
-#SAL             %283	@ii	2		
-    MOV32 r11,__Var__2ii
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#STORE           	@&get2	%283	32	
-    MOV32 r12, __Var__4get2
-   ADD r12, r12, r0
-    MOV r11, #32
-    STR r11, [r12]
-#ADD             %287	@ii	1		
-    MOV32 r11,__Var__2ii
-    LDR r11, [r11, #0]
-    ADD r0, r11, #1
-#SAL             %285	%287	2		
-   LSL r0, r0, #2
-#STORE           	@&get2	%285	%282	
-    MOV32 r12, __Var__4get2
-   ADD r12, r12, r0
-    STR r4, [r12]
-#ADD             %288	@ii	2		
-    MOV32 r11,__Var__2ii
-    LDR r11, [r11, #0]
-    ADD r0, r11, #2
-#MOV             @ii	%288			
-    MOV32 r11, __Var__2ii
-    STR r0, [r11,#0]
-#NOOP            				
-#LABEL           				LOOP_280_CONTINUE
-LOOP_280_CONTINUE:
-#JMP             				LOOP_280_BEGIN
-   B LOOP_280_BEGIN
-#NOOP            	@chat			
-#NOOP            	@ii			
-#NOOP            	@&get2			
-#NOOP            	@ii			
-#NOOP            	@&get2			
-#NOOP            	@ii			
-#LABEL           				LOOP_280_END
-LOOP_280_END:
-#SAL             %289	@ii	2		
-    MOV32 r11,__Var__2ii
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#STORE           	@&get2	%289	64	
-    MOV32 r12, __Var__4get2
-   ADD r12, r12, r0
-    MOV r11, #64
-    STR r11, [r12]
-#MOV             @i	1			
-    MOV r12, #1
-    MOV32 r11, __Var__1i
-    STR r12, [r11,#0]
-#LABEL           				LOOP_291_BEGIN
-LOOP_291_BEGIN:
-#SAL             %293	@i	2		
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#LOAD            %292	@&get2	%293		
-    MOV32 r12, __Var__4get2
-    ADD r12, r12, r0
-    LDR r0, [r12]
-#CMP             	%292	64		
-    MOV r11, #64
-    CMP r0, r11
-#JEQ             				LOOP_291_END
-   BEQ LOOP_291_END
-#LABEL           				LOOP_291_DO
-LOOP_291_DO:
-#SAL             %307	@i	2		
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#LOAD            %306	@&get2	%307		
-    MOV32 r12, __Var__4get2
-    ADD r12, r12, r0
-    LDR r0, [r12]
-#CMP             	%306	43		
-    MOV r11, #43
-    CMP r0, r11
-#PHI_MOV         %304	1			
-    MOV r0, #1
-#JEQ             				COND305_end
-   BEQ COND305_end
-#SAL             %311	@i	2		
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#LOAD            %310	@&get2	%311		
-    MOV32 r12, __Var__4get2
-    ADD r12, r12, r1
-    LDR r1, [r12]
-#CMP             	%310	45		
-    MOV r11, #45
-    CMP r1, r11
-#MOVEQ           %309	1	0		
-    MOVEQ r1, #1
-    MOVNE r1, #0
-#PHI_MOV         %304	%309			
-   MOV r0, r1
-#LABEL           				COND305_end
-COND305_end:
-#CMP             	%304	0		
-    MOV r11, #0
-    CMP r0, r11
-#PHI_MOV         %302	1			
-    MOV r0, #1
-#JNE             				COND303_end
-   BNE COND303_end
-#SAL             %315	@i	2		
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#LOAD            %314	@&get2	%315		
-    MOV32 r12, __Var__4get2
-    ADD r12, r12, r1
-    LDR r1, [r12]
-#CMP             	%314	42		
-    MOV r11, #42
-    CMP r1, r11
-#MOVEQ           %313	1	0		
-    MOVEQ r1, #1
-    MOVNE r1, #0
-#PHI_MOV         %302	%313			
-   MOV r0, r1
-#LABEL           				COND303_end
-COND303_end:
-#CMP             	%302	0		
-    MOV r11, #0
-    CMP r0, r11
-#PHI_MOV         %300	1			
-    MOV r0, #1
-#JNE             				COND301_end
-   BNE COND301_end
-#SAL             %319	@i	2		
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#LOAD            %318	@&get2	%319		
-    MOV32 r12, __Var__4get2
-    ADD r12, r12, r1
-    LDR r1, [r12]
-#CMP             	%318	47		
-    MOV r11, #47
-    CMP r1, r11
-#MOVEQ           %317	1	0		
-    MOVEQ r1, #1
-    MOVNE r1, #0
-#PHI_MOV         %300	%317			
-   MOV r0, r1
-#LABEL           				COND301_end
-COND301_end:
-#CMP             	%300	0		
-    MOV r11, #0
-    CMP r0, r11
-#PHI_MOV         %298	1			
-    MOV r0, #1
-#JNE             				COND299_end
-   BNE COND299_end
-#SAL             %323	@i	2		
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#LOAD            %322	@&get2	%323		
-    MOV32 r12, __Var__4get2
-    ADD r12, r12, r1
-    LDR r1, [r12]
-#CMP             	%322	37		
-    MOV r11, #37
-    CMP r1, r11
-#MOVEQ           %321	1	0		
-    MOVEQ r1, #1
-    MOVNE r1, #0
-#PHI_MOV         %298	%321			
-   MOV r0, r1
-#LABEL           				COND299_end
-COND299_end:
-#CMP             	%298	0		
-    MOV r11, #0
-    CMP r0, r11
-#PHI_MOV         %296	1			
-    MOV r0, #1
-#JNE             				COND297_end
-   BNE COND297_end
-#SAL             %327	@i	2		
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#LOAD            %326	@&get2	%327		
-    MOV32 r12, __Var__4get2
-    ADD r12, r12, r1
-    LDR r1, [r12]
-#CMP             	%326	94		
-    MOV r11, #94
-    CMP r1, r11
-#MOVEQ           %325	1	0		
-    MOVEQ r1, #1
-    MOVNE r1, #0
-#PHI_MOV         %296	%325			
-   MOV r0, r1
-#LABEL           				COND297_end
-COND297_end:
-#CMP             	%296	0		
-    MOV r11, #0
-    CMP r0, r11
-#JEQ             				IF_295_ELSE
-   BEQ IF_295_ELSE
-#CALL            %330				intpop
-   BL intpop
-    MOV r4, r0
-#CALL            %332				intpop
-   BL intpop
-    MOV r5, r0
-#SAL             %336	@i	2		
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#LOAD            %335	@&get2	%336		
-    MOV32 r12, __Var__4get2
-    ADD r12, r12, r0
-    LDR r0, [r12]
-#CMP             	%335	43		
-    MOV r11, #43
-    CMP r0, r11
-#JNE             				IF_334_ELSE
-   BNE IF_334_ELSE
-#ADD             %338	%330	%332		
-    ADD r0, r4, r5
-#PHI_MOV         %339	%338			
-#JMP             				IF_334_END
-   B IF_334_END
-#LABEL           				IF_334_ELSE
-IF_334_ELSE:
-#PHI_MOV         %339	%333			
+#PHI_MOV         %167	%164			
     LDR r12, [sp,#0]
-   MOV r0, r12
-#LABEL           				IF_334_END
-IF_334_END:
-#SAL             %342	@i	2		
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-   LSL r1, r11, #2
-#LOAD            %341	@&get2	%342		
-    MOV32 r12, __Var__4get2
-    ADD r12, r12, r1
-    LDR r1, [r12]
-#CMP             	%341	45		
-    MOV r11, #45
-    CMP r1, r11
-#JNE             				IF_340_ELSE
-   BNE IF_340_ELSE
-#SUB             %344	%332	%330		
-     SUB r1, r5, r4
-#PHI_MOV         %345	%344			
-#JMP             				IF_340_END
-   B IF_340_END
-#LABEL           				IF_340_ELSE
-IF_340_ELSE:
-#PHI_MOV         %345	%339			
-   MOV r1, r0
-#LABEL           				IF_340_END
-IF_340_END:
-#SAL             %348	@i	2		
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#LOAD            %347	@&get2	%348		
-    MOV32 r12, __Var__4get2
-    ADD r12, r12, r0
-    LDR r0, [r12]
-#CMP             	%347	42		
-    MOV r11, #42
-    CMP r0, r11
-#JNE             				IF_346_ELSE
-   BNE IF_346_ELSE
-#IMUL            %350	%330	%332		
-    MUL r0, r4, r5
-#PHI_MOV         %351	%350			
-   MOV r6, r0
-#JMP             				IF_346_END
-   B IF_346_END
-#LABEL           				IF_346_ELSE
-IF_346_ELSE:
-#PHI_MOV         %351	%345			
-   MOV r6, r1
-#LABEL           				IF_346_END
-IF_346_END:
-#SAL             %354	@i	2		
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#LOAD            %353	@&get2	%354		
-    MOV32 r12, __Var__4get2
-    ADD r12, r12, r0
-    LDR r0, [r12]
-#CMP             	%353	47		
-    MOV r11, #47
-    CMP r0, r11
-#JNE             				IF_352_ELSE
-   BNE IF_352_ELSE
-#IDIV            %356	%332	%330		
-    MOV r0, r5
-    MOV r1, r4
-    BL __aeabi_idiv
-   MOV r7, r0
-#PHI_MOV         %357	%356			
-#JMP             				IF_352_END
-   B IF_352_END
-#LABEL           				IF_352_ELSE
-IF_352_ELSE:
-#PHI_MOV         %357	%351			
-   MOV r7, r6
-#LABEL           				IF_352_END
-IF_352_END:
-#SAL             %360	@i	2		
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#LOAD            %359	@&get2	%360		
-    MOV32 r12, __Var__4get2
-    ADD r12, r12, r0
-    LDR r0, [r12]
-#CMP             	%359	37		
-    MOV r11, #37
-    CMP r0, r11
-#JNE             				IF_358_ELSE
-   BNE IF_358_ELSE
-#MOD             %362	%332	%330		
-    MOV r0, r5
-    MOV r1, r4
+   MOV r5, r12
+#PHI_MOV         %168	%165			
+    LDR r12, [sp,#0]
+   MOV r6, r12
+#PHI_MOV         %169	%161			
+#LABEL           				LOOP_166_BEGIN
+LOOP_166_BEGIN:
+#CMP             	%169	0		
+    MOV r11, #0
+    CMP r4, r11
+#JLE             				LOOP_166_END
+   BLE LOOP_166_END
+#LABEL           				LOOP_166_DO
+LOOP_166_DO:
+#SUB             %170	%169	1		
+     SUB r7, r4, #1
+#CALL            %172				rand
+   BL rand
+    MOV r8, r0
+#MOD             %171	%172	300000		
+    MOV r0, r8
+    MOV32 r1,  300000
     BL __aeabi_idivmod
-    MOV r6, r1
-#PHI_MOV         %363	%362			
-#JMP             				IF_358_END
-   B IF_358_END
-#LABEL           				IF_358_ELSE
-IF_358_ELSE:
-#PHI_MOV         %363	%357			
-   MOV r6, r7
-#LABEL           				IF_358_END
-IF_358_END:
-#SAL             %366	@i	2		
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#LOAD            %365	@&get2	%366		
-    MOV32 r12, __Var__4get2
-    ADD r12, r12, r0
-    LDR r0, [r12]
-#CMP             	%365	94		
-    MOV r11, #94
-    CMP r0, r11
-#JNE             				IF_364_ELSE
-   BNE IF_364_ELSE
-#SET_ARG         1	%330			
-    MOV r1, r4
-#SET_ARG         0	%332			
-    MOV r0, r5
-#CALL            %368				power
-   BL power
-    MOV r4, r0
-#PHI_MOV         %369	%368			
-#JMP             				IF_364_END
-   B IF_364_END
-#LABEL           				IF_364_ELSE
-IF_364_ELSE:
-#PHI_MOV         %369	%363			
-   MOV r4, r6
-#LABEL           				IF_364_END
-IF_364_END:
-#SET_ARG         0	%369			
-    MOV r0, r4
-#CALL            %370				intpush
-   BL intpush
-    MOV r4, r0
-#JMP             				IF_295_END
-   B IF_295_END
-#LABEL           				IF_295_ELSE
-IF_295_ELSE:
-#SAL             %373	@i	2		
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#LOAD            %372	@&get2	%373		
-    MOV32 r12, __Var__4get2
-    ADD r12, r12, r0
-    LDR r0, [r12]
-#CMP             	%372	32		
-    MOV r11, #32
-    CMP r0, r11
-#JEQ             				IF_371_ELSE
-   BEQ IF_371_ELSE
-#SAL             %378	@i	2		
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-   LSL r0, r11, #2
-#LOAD            %377	@&get2	%378		
-    MOV32 r12, __Var__4get2
-    ADD r12, r12, r0
-    LDR r0, [r12]
-#SUB             %376	%377	48		
-     SUB r4, r0, #48
-#SET_ARG         0	%376			
-    MOV r0, r4
-#CALL            %375				intpush
-   BL intpush
-    MOV r4, r0
-#MOV             @ii	1			
-    MOV r12, #1
-    MOV32 r11, __Var__2ii
-    STR r12, [r11,#0]
-#LABEL           				LOOP_380_BEGIN
-LOOP_380_BEGIN:
-#ADD             %384	@i	@ii		
-    MOV32 r12,__Var__2ii
-    LDR r12, [r12, #0]
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-    ADD r0, r11, r12
-#SAL             %382	%384	2		
-   LSL r0, r0, #2
-#LOAD            %381	@&get2	%382		
-    MOV32 r12, __Var__4get2
-    ADD r12, r12, r0
-    LDR r0, [r12]
-#CMP             	%381	32		
-    MOV r11, #32
-    CMP r0, r11
-#JEQ             				LOOP_380_END
-   BEQ LOOP_380_END
-#LABEL           				LOOP_380_DO
-LOOP_380_DO:
-#ADD             %390	@i	@ii		
-    MOV32 r12,__Var__2ii
-    LDR r12, [r12, #0]
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-    ADD r0, r11, r12
-#SAL             %388	%390	2		
-   LSL r0, r0, #2
-#LOAD            %387	@&get2	%388		
-    MOV32 r12, __Var__4get2
-    ADD r12, r12, r0
-    LDR r0, [r12]
-#SUB             %386	%387	48		
-     SUB r4, r0, #48
-#SET_ARG         0	%386			
-    MOV r0, r4
-#CALL            %385				intadd
-   BL intadd
-    MOV r4, r0
-#ADD             %391	@ii	1		
-    MOV32 r11,__Var__2ii
-    LDR r11, [r11, #0]
-    ADD r0, r11, #1
-#MOV             @ii	%391			
-    MOV32 r11, __Var__2ii
-    STR r0, [r11,#0]
+    MOV r8, r1
+#CALL            %174				rand
+   BL rand
+    MOV r9, r0
+#MOD             %173	%174	2		
+    MOV r0, r9
+    MOV r1, #2
+    BL __aeabi_idivmod
+    MOV r9, r1
+#SET_ARG         2	%173			
+    MOV r2, r9
+#SET_ARG         1	%171			
+    MOV r1, r8
+#SET_ARG         0	@&a			
+    MOV32 r0, __Var__1a
+#CALL            %175				set
+   BL set
+    MOV r10, r0
 #NOOP            				
-#LABEL           				LOOP_380_CONTINUE
-LOOP_380_CONTINUE:
-#JMP             				LOOP_380_BEGIN
-   B LOOP_380_BEGIN
-#NOOP            	@i			
-#NOOP            	@ii			
-#NOOP            	@&get2			
-#NOOP            	@i			
-#NOOP            	@ii			
-#NOOP            	@&get2			
-#NOOP            	@ii			
-#LABEL           				LOOP_380_END
-LOOP_380_END:
-#ADD             %393	@i	@ii		
-    MOV32 r12,__Var__2ii
-    LDR r12, [r12, #0]
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-    ADD r0, r11, r12
-#SUB             %392	%393	1		
-     SUB r0, r0, #1
-#MOV             @i	%392			
-    MOV32 r11, __Var__1i
-    STR r0, [r11,#0]
-#LABEL           				IF_371_ELSE
-IF_371_ELSE:
-#LABEL           				IF_371_END
-IF_371_END:
-#LABEL           				IF_295_END
-IF_295_END:
-#ADD             %394	@i	1		
-    MOV32 r11,__Var__1i
-    LDR r11, [r11, #0]
-    ADD r0, r11, #1
-#MOV             @i	%394			
-    MOV32 r11, __Var__1i
-    STR r0, [r11,#0]
-#NOOP            				
-#LABEL           				LOOP_291_CONTINUE
-LOOP_291_CONTINUE:
-#JMP             				LOOP_291_BEGIN
-   B LOOP_291_BEGIN
-#NOOP            	@i			
-#NOOP            	@&get2			
-#NOOP            	@i			
-#NOOP            	@&get2			
-#NOOP            	@i			
-#NOOP            	@&get2			
-#NOOP            	@i			
-#NOOP            	@&get2			
-#NOOP            	@i			
-#NOOP            	@&get2			
-#NOOP            	@i			
-#NOOP            	@&get2			
-#NOOP            	@i			
-#NOOP            	@&get2			
-#NOOP            	@i			
-#NOOP            	@&get2			
-#NOOP            	%333			
-#NOOP            	@i			
-#NOOP            	@&get2			
-#NOOP            	@i			
-#NOOP            	@&get2			
-#NOOP            	@i			
-#NOOP            	@&get2			
-#NOOP            	@i			
-#NOOP            	@&get2			
-#NOOP            	@i			
-#NOOP            	@&get2			
-#NOOP            	@i			
-#NOOP            	@&get2			
-#NOOP            	@i			
-#NOOP            	@&get2			
-#NOOP            	@i			
-#NOOP            	@&get2			
-#NOOP            	@i			
-#NOOP            	@&get2			
-#NOOP            	@i			
-#NOOP            	@&get2			
-#NOOP            	@i			
-#NOOP            	@&get2			
-#NOOP            	@i			
-#LABEL           				LOOP_291_END
-LOOP_291_END:
-#SAL             %397	1	2		
-    MOV r11, #1
-   LSL r0, r11, #2
-#LOAD            %396	@&ints	%397		
-    MOV32 r12, __Var__4ints
-    ADD r12, r12, r0
-    LDR r4, [r12]
-#SET_ARG         0	%396			
-    MOV r0, r4
-#CALL            %395				putint
-   BL putint
+#LABEL           				LOOP_166_CONTINUE
+LOOP_166_CONTINUE:
+#PHI_MOV         %167	%171			
+   MOV r5, r8
+#PHI_MOV         %168	%173			
+   MOV r6, r9
+#PHI_MOV         %169	%170			
+   MOV r4, r7
+#JMP             				LOOP_166_BEGIN
+   B LOOP_166_BEGIN
+#NOOP            	%169			
+#NOOP            	%169			
+#NOOP            	@&a			
+#LABEL           				LOOP_166_END
+LOOP_166_END:
+#CALL            %176				_sysy_stoptime
+   BL _sysy_stoptime
+    MOV r4, r0
+#SET_ARG         1	@&a			
+    MOV32 r1, __Var__1a
+#SET_ARG         0	10000			
+    MOV r0, #10000
+#CALL            %177				putarray
+   BL putarray
     MOV r4, r0
 #RET             	0			
     MOV r0, #0
-    LDR lr, [sp, #20]
+    LDR lr, [sp, #32]
     LDR r11, [sp,#0]
     LDR r4, [sp,#4]
     LDR r5, [sp,#8]
     LDR r6, [sp,#12]
     LDR r7, [sp,#16]
-    ADD sp, sp, #24
-    MOV PC, LR
-#RET             0				
-    LDR lr, [sp, #20]
-    LDR r11, [sp,#0]
-    LDR r4, [sp,#4]
-    LDR r5, [sp,#8]
-    LDR r6, [sp,#12]
-    LDR r7, [sp,#16]
-    ADD sp, sp, #24
+    LDR r8, [sp,#20]
+    LDR r9, [sp,#24]
+    LDR r10, [sp,#28]
+    ADD sp, sp, #36
     MOV PC, LR
