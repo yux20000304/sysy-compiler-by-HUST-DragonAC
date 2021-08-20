@@ -1101,6 +1101,7 @@ main:
     MOV32 r11, __Var__11staticvalue
     STR r5, [r11,#0]
 #CALL            %163				_sysy_starttime
+   MOV  r0 , #0
    BL _sysy_starttime
     MOV r5, r0
 #PHI_MOV         %167	%164			
@@ -1163,6 +1164,7 @@ LOOP_166_CONTINUE:
 #LABEL           				LOOP_166_END
 LOOP_166_END:
 #CALL            %176				_sysy_stoptime
+   MOV  r0 , #0
    BL _sysy_stoptime
     MOV r4, r0
 #SET_ARG         1	@&a			
