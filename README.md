@@ -10,6 +10,8 @@ A compiler that translates Sysy into ARMv7a
 
 [Gitlab项目地址](https://gitlab.com/yux20000304/sysy.git)
 
+[所有测试样例地址](https://gitlab.eduxiji.net/nscscc/compiler2021/-/tree/master/%E5%85%AC%E5%BC%80%E7%94%A8%E4%BE%8B%E4%B8%8E%E8%BF%90%E8%A1%8C%E6%97%B6%E5%BA%93)
+
 ## Build
 ```bash
 cd ./src/parser
