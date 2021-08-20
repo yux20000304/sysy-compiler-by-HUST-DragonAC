@@ -12,16 +12,11 @@ A compiler that translates Sysy into ARMv7a
 
 ## Build
 
-cd ./parser;
-
-jflex Lexer.flex;
-
-java -cp .:java-cup-11b.jar java_cup.Main  < ycalc.cup;
-
-cd ../;
-
-javac -cp .:java-cup-11b.jar Main.java;
-
+$ cd ./parser;  
+$ jflex Lexer.flex;  
+$ java -cp .:java-cup-11b.jar java_cup.Main  < ycalc.cup;  
+$ cd ../;   
+$ javac -cp .:java-cup-11b.jar Main.java;  
 
 ## Run
 
