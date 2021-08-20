@@ -29,6 +29,7 @@ javac -cp .:java-cup-11b.jar Main.java
 
 性能测试：compiler -S -o testcase.s testcase.sy -O2
 ```
+
 ## Grade
 
 排名：17
@@ -40,6 +41,7 @@ javac -cp .:java-cup-11b.jar Main.java
 总分：40.2093
 
 ## 总结
+<<<<<<< HEAD
 ```
  - 前端采用的jflex-javacup自动化工具，实现起来较为的方便快捷  
  - IR的设计是本次大赛的一个难点，我们查看了很多的资料，最后参考LLVM框架的IR进行了相应的修改和改动  
@@ -48,3 +50,4 @@ javac -cp .:java-cup-11b.jar Main.java
  - 在本次大赛上，很多优胜队伍采用了2到3层的IR，能够进行较为深度的代码优化。 
  - 在优化技术上，我们没有采用更多更加新颖的技术手段，这是一大缺陷。官方希望看到更加优秀的优化技术出现，如：多向量、多线程等。包括利用树莓派的硬件进行gpu加速等技术。
 ```
+
