@@ -11,18 +11,19 @@ A compiler that translates Sysy into ARMv7a
 [Gitlab项目地址](https://gitlab.com/yux20000304/sysy.git)
 
 ## Build
-
-$ cd ./parser;  
-$ jflex Lexer.flex;  
-$ java -cp .:java-cup-11b.jar java_cup.Main  < ycalc.cup;  
-$ cd ../;   
-$ javac -cp .:java-cup-11b.jar Main.java;  
-
+```bash
+ cd ./parser;  
+ jflex Lexer.flex;  
+ java -cp .:java-cup-11b.jar java_cup.Main  < ycalc.cup;  
+ cd ../;   
+ javac -cp .:java-cup-11b.jar Main.java;  
+```
 ## Run
-
+```bash
 功能测试：compiler -S -o testcase.s testcase.sy
 
 性能测试：compiler -S -o testcase.s testcase.sy -O2
+```
 
 ## Grade
 
