@@ -4,7 +4,7 @@
 
 # Sysy
 
-A compiler that translates Sysy into ARMv7a
+A compiler that compiles Sysy into ARMv7a
 
 [GitHub项目地址](https://github.com/showstarpro/sysy.git)
 
